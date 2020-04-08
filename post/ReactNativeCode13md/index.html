@@ -1,0 +1,309 @@
+<!DOCTYPE html><html lang="en"><head><meta name="generator" content="React Static"/><title data-react-helmet="true">React Native 代码阅读（十三）：View 是如何创建的 | Maxiee Blog</title><meta data-react-helmet="true" charSet="UTF-8"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/vendors~src/pages/about~src/pages/post~src/pages/services.9ebe3a93.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/vendors~src/pages/bookmarks~src/pages/gallery~src/pages/post.0f2bae8a.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/vendors~src/pages/gallery~src/pages/post.bf181f2d.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/vendors~src/pages/post.3413cc1f.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/src/pages/post.083217cc.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/styles.ec85b004.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/vendors~main.fc8eff89.js"/><link rel="preload" as="script" href="https://maxiee.github.io/main.d5516191.js"/><link rel="preload" as="style" href="https://maxiee.github.io/styles.ec85b004.css"/><link rel="stylesheet" href="https://maxiee.github.io/styles.ec85b004.css"/><script data-react-helmet="true" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><meta charSet="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, shrink-to-fit=no"/></head><body><div id="root"><div style="outline:none" tabindex="-1" role="group"><div><div style="display:flex;flex-direction:row;justify-content:space-between;margin-left:26px;margin-right:26px;height:72px"><div style="display:flex;flex-direction:row;justify-content:center;align-items:center"><img src="data:image/jpeg;base64,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" class="ui mini circular centered image"/><div style="margin-left:12px;font-size:18px"><a href="https://maxiee.github.io/">Maxiee Blog</a></div></div><div style="display:flex;flex-direction:row;align-items:center"><div style="color:#666666;margin-left:26px"><a href="https://maxiee.github.io/post">博客</a></div><div style="margin-left:26px" role="listbox" aria-expanded="false" class="ui dropdown" tabindex="0"><div class="text" role="alert" aria-live="polite">作品</div><i aria-hidden="true" class="dropdown icon"></i><div class="menu transition"><div role="option" class="item"><div style="margin:10px" class="text"><a href="https://maxiee.github.io/post/RayInfomd">RayInfo</a><div style="color:#CCCCCC">资讯阅读 App</div></div></div><div role="option" class="item"><div style="margin:10px" class="text"><a href="https://maxiee.github.io/post/MaxieeRNLabmd">MaxieeRNLab</a><div style="color:#CCCCCC">React Native 综合示例 APP</div></div></div><div role="option" class="item"><div style="margin:10px" class="text"><a href="https://maxiee.github.io/post/JiuShengmd">韭生</a><div style="color:#CCCCCC">roguelike 人生模拟器游戏</div></div></div></div></div><div style="color:#666666;margin-left:26px"><a href="https://maxiee.github.io/daily">Daily</a></div><div style="color:#666666;margin-left:26px"><a href="https://maxiee.github.io/gallery">设计</a></div><div style="color:#666666;margin-left:26px"><a href="https://maxiee.github.io/about">关于</a></div></div></div><div class="ui grid"><div class="row"><div style="margin-left:20px;margin-right:20px" class="column"><h1 class="ui header">React Native 代码阅读（十三）：View 是如何创建的</h1><p style="margin-bottom:20px;color:gray">2019-03-27</p><div class="ui leaderboard ad"><ins class=" adsbygoogle" style="display:block" data-ad-client="ca-pub-8746515866560942" data-ad-slot="3546488844" data-ad-layout="" data-ad-format="auto" data-full-width-responsive="true"></ins></div><div><h2>前言</h2>
+<p>在上一篇中我们学习了 Yoga，这为分析 React Native 的视图层打了很好的基础。在本篇中我们分析一个 View 在 JavaScript 中写下，是如何被展示成 Android 原生的 View 的。</p>
+<p>首先我们在 React Native 应用的 JavaScript 组件中定义一个简单的组件：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">export default () =&gt; {
+    return &lt;View style={{
+        backgroundColor: &#x27;pink&#x27;,
+        width: 200, 
+        height: 200}}/&gt;        
+}
+</code></pre></pre>
+<p>这个组件会经由 JS → Native Bridge 转换为一下消息：</p>
+<pre><code style="background:#f5f7ff;padding:2px">UIManager.createView([343,&quot;RCTView&quot;,31,{&quot;backgroundColor&quot;:-16181,&quot;width&quot;:200,&quot;height&quot;:200}])
+</code></pre>
+<p>其中：</p>
+<ul>
+<li>Bridge message 中包含的属性就是我们在 JavaScript 中定义的属性</li>
+</ul>
+<h2>UIManagerModule.createView</h2>
+<p>这条 message 最终会触发到 com.facebook.react.uimanager.UIManagerModule#createView 方法，它的参数签名为：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">public void createView(int tag, String className, int rootViewTag, ReadableMap props) {
+</code></pre></pre>
+<p>各个参数的值为：</p>
+<table class="ui celled table">
+<thead>
+<tr>
+<th>参数</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tag</td>
+<td>343</td>
+</tr>
+<tr>
+<td>className</td>
+<td>RCTView</td>
+</tr>
+<tr>
+<td>rootViewTag</td>
+<td>31</td>
+</tr>
+<tr>
+<td>props</td>
+<td>{ NativeMap: {&quot;height&quot;:200,&quot;width&quot;:200,&quot;backgroundColor&quot;:-16181} }</td>
+</tr>
+</tbody>
+</table>
+<p>其中：</p>
+<ul>
+<li>tag 与 rootViewTag 与前面 message 中的值是一致的</li>
+</ul>
+<h2>UIImplementation.createView</h2>
+<p>UIManagerModule.createView 会继续调用 com.facebook.react.uimanager.UIImplementation#createView，它的方法签名与前者一致：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">public void createView(int tag, String className, int rootViewTag, ReadableMap props) {
+</code></pre></pre>
+<p>这里面这些参数都有什么作用呢？在我们继续分析的过程中会一一揭晓。</p>
+<p>下面我们来看在这个方法中都做了哪些事情：</p>
+<h3>创建 ReactShadowNode</h3>
+<p>首先会创建 ReactShadowNode：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">ReactShadowNode cssNode = createShadowNode(className);
+ReactShadowNode rootNode = mShadowNodeRegistry.getNode(rootViewTag);
+</code></pre></pre>
+<p>其中：</p>
+<ul>
+<li>className 是 <code style="background:#f5f7ff;padding:2px">RCTView</code>，UIImplementation 会用它从 mViewManagers 找出已经注册的 ViewManager，并执行这个 Manager 的 createShadowNodeInstance 方法</li>
+<li>在本例中实际调用的是 com.facebook.react.uimanager.ViewGroupManager#createShadowNodeInstance</li>
+<li>rootViewTag 是什么呢？它是每个节点的标识，在 UIImplementation 中 mShadowNodeRegistry 是盛放所有 Node 的地方。可以将 mShadowNodeRegistry 看做一个数组，将 rootViewTag 看做数组的 index，通过 index 向数组中获取 ReactShadowNode，在上面代码中获取到的是跟布局的 Node</li>
+</ul>
+<p>之后对创建的新节点进行一些设置：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">// 保存 tag
+cssNode.setReactTag(tag);
+// 保存类名
+cssNode.setViewClassName(className);
+// 保存父布局
+cssNode.setRootTag(rootNode.getReactTag());
+// 保存 ReactContext
+cssNode.setThemedContext(rootNode.getThemedContext());
+</code></pre></pre>
+<p>当这些步骤都完成后，将新 node 添加到 mShadowNodeRegistry 中：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">mShadowNodeRegistry.addNode(cssNode);
+</code></pre></pre>
+<p>之后保存 props 信息：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">ReactStylesDiffMap styles = null;
+if (props != null) {
+    styles = new ReactStylesDiffMap(props);
+    cssNode.updateProperties(styles);
+}
+</code></pre></pre>
+<h3>UIImplementation.handleCreateView</h3>
+<p>之后会调用 handleCreateView 方法：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">protected void handleCreateView(
+        ReactShadowNode cssNode,
+        int rootViewTag,
+        @Nullable ReactStylesDiffMap styles) {
+    if (!cssNode.isVirtual()) {
+        mNativeViewHierarchyOptimizer.handleCreateView(cssNode, cssNode.getThemedContext(), styles);
+    }
+}
+</code></pre></pre>
+<p>其中：</p>
+<ul>
+<li>如果新 node 不是 virtual node(有实际对应的 Native View)，则会调用 mNativeViewHierarchyOptimizer 的 handleCreateView</li>
+</ul>
+<h2>NativeViewHierarchyOptimizer.handleCreateView</h2>
+<p>在 NativeViewHierarchyOptimizer.handleCreateView 中也没有真正创建视图，而是向队列中入队一个操作：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">mUIViewOperationQueue.enqueueCreateView(
+    themedContext,
+    node.getReactTag(),
+    node.getViewClass(),
+    initialProps);
+</code></pre></pre>
+<h2>UIViewOperationQueue</h2>
+<p>UIViewOperationQueue 是一个任务队列，用于执行 JS batch bridge 中执行的指令。</p>
+<p>还记得我们操作 JS 侧的 BatchedBridge 时的用法吗？常用的方法是：</p>
+<ul>
+<li>创建一系列 message，如视图创建、属性更新</li>
+<li>调用 flushedQueue 方法</li>
+<li>在 JS 侧给我们的感觉是，一调 flushedQueue，前面的这些 message 就会批量执行</li>
+</ul>
+<p>在 Native 层，实现这个任务队列和批量执行的类想必已经猜到了，就是 UIViewOperationQueue。其中批量执行的方法对应于它的 flushPendingBatches 方法。</p>
+<h3>成员变量</h3>
+<p>下面先让我们看下 UIViewOperationQueue 的成员变量。</p>
+<table class="ui celled table">
+<thead>
+<tr>
+<th>成员变量</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mNativeViewHierarchyManager</td>
+<td>NativeViewHierarchyManager</td>
+<td>布局相关的实际操作</td>
+</tr>
+<tr>
+<td>mDispatchUIFrameCallback</td>
+<td>DispatchUIFrameCallback</td>
+<td>UI 更新回调</td>
+</tr>
+<tr>
+<td>mOperations</td>
+<td><code style="background:#f5f7ff;padding:2px">ArrayList&lt;UIOperation&gt;</code></td>
+<td>任务队列</td>
+</tr>
+<tr>
+<td>mDispatchUIRunnables</td>
+<td><code style="background:#f5f7ff;padding:2px">ArrayList&lt;Runnable&gt;</code></td>
+<td>积攒的一批一批任务</td>
+</tr>
+</tbody>
+</table>
+<h3>UIViewOperationQueue.enqueueCreateView</h3>
+<p>enqueueCreateView 方法会创建一个 CreateViewOperation，并插入 mOperations 中。</p>
+<p>我们来看下 CreateViewOperation 的代码：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">private final class CreateViewOperation extends ViewOperation {
+
+    private final ThemedReactContext mThemedContext;
+    private final String mClassName;
+    private final @Nullable ReactStylesDiffMap mInitialProps;
+
+    public CreateViewOperation(
+        ThemedReactContext themedContext,
+        int tag,
+        String className,
+        @Nullable ReactStylesDiffMap initialProps) {
+            super(tag);
+            mThemedContext = themedContext;
+            mClassName = className;
+            mInitialProps = initialProps;
+            Systrace.startAsyncFlow(Systrace.TRACE_TAG_REACT_VIEW, &quot;createView&quot;, mTag);
+    }
+
+    @Override
+    public void execute() {
+        Systrace.endAsyncFlow(Systrace.TRACE_TAG_REACT_VIEW, &quot;createView&quot;, mTag);
+        mNativeViewHierarchyManager.createView(
+            mThemedContext,
+            mTag,
+            mClassName,
+            mInitialProps);
+    }
+}
+</code></pre></pre>
+<p>其中：</p>
+<ul>
+<li>需要核心关注的是 execute 方法。任务队列在实际执行中会调用它，在内部通过 mNativeViewHierarchyManager 时间真正的视图创建操作</li>
+</ul>
+<h2>NativeViewHierarchyManager.createView</h2>
+<p>下面我们就来看是如何真正创建 View 的。</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">// 取出 ViewManager
+ViewManager viewManager = mViewManagers.get(className);
+
+// 创建视图
+// 实际调用 com.facebook.react.views.view.ReactViewManager#createViewInstance
+View view = viewManager.createView(themedContext, mJSResponderHandler);
+
+// 保存视图
+// 还是通过 tag 关联，现在跟 tag 关联的有 ReactShadowNode 和 View
+mTagsToViews.put(tag, view);
+// viewManager 和 tag 关联
+mTagsToViewManagers.put(tag, viewManager);
+
+// 用 Android id 来保存 React Node Tag
+view.setId(tag);
+
+// 更新 Props
+if (initialProps != null) {
+    viewManager.updateProperties(view, initialProps);
+}
+</code></pre></pre>
+<p>在这里问一个问题：<strong>经过上面的代码后，我们创建的这个 View 会出现在屏幕上吗？</strong></p>
+<p>答案是并没有，我们虽然创建了 View 的实例，但是它还并没有被摆到屏幕上。</p>
+<p>那么在哪里被摆到屏幕上呢？在此我们知道肯定会有一个统一的地方，统一的时机，来遍历视图树，将 View 摆放到正确的位置上。</p>
+<h2>manageChildren message</h2>
+<p>让我们再回到 JS → Native Bridge 上面，前面我们分析了 UIManager.createView 消息的解析。</p>
+<p>当绘制一个新 React 组件时，会创建多条 UIManager.createView 和 UIManager.setChildren 命令。</p>
+<p>在这些描述绘制的 message 发完后，最后会发一条 manageChildren 消息：</p>
+<pre><code style="background:#f5f7ff;padding:2px">UIManager.manageChildren([209,[],[],[299],[1],[]])
+</code></pre>
+<p>这条消息会触发最终的页面绘制。</p>
+<p>这条消息将会触发到 com.facebook.react.uimanager.UIManagerModule#manageChildren 方法。</p>
+<p>它的方法签名如下：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">public void manageChildren(
+    int viewTag,
+    @Nullable ReadableArray moveFrom,
+    @Nullable ReadableArray moveTo,
+    @Nullable ReadableArray addChildTags,
+    @Nullable ReadableArray addAtIndices,
+    @Nullable ReadableArray removeFrom) {
+</code></pre></pre>
+<p>结合文档和前面的 message log，我们来看各个参数的作用：</p>
+<table class="ui celled table">
+<thead>
+<tr>
+<th>参数名称</th>
+<th>值</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>viewTag</td>
+<td>209</td>
+<td>父 View 的 Tag</td>
+</tr>
+<tr>
+<td>moveFrom</td>
+<td>[]</td>
+<td>父 View 中要移出的视图</td>
+</tr>
+<tr>
+<td>moveTo</td>
+<td>[]</td>
+<td>与 moveFrom 已启用，移出后放到父 View 的序列</td>
+</tr>
+<tr>
+<td>addChildTags</td>
+<td>[299]</td>
+<td>要添加进入父 View 的视图</td>
+</tr>
+<tr>
+<td>addAtIndices</td>
+<td>[1]</td>
+<td>与 addChildTags 一起用，添加到的序列</td>
+</tr>
+<tr>
+<td>removeFrom</td>
+<td>[]</td>
+<td>需要从父视图中删除的序列的视图</td>
+</tr>
+</tbody>
+</table>
+<p>从中我们可以得出结论，需要做的是向 209 中添加一个 tag 为 299 的 View。</p>
+<p>经过一段与前面相同的辗转（这里虽然带过，但是内部的内容很多，ShadowTree 的层级创建就是在这一过程中），最后会向任务队列中插入一个 ManageChildrenOperation：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">private final class ManageChildrenOperation extends ViewOperation {
+
+  private final @Nullable int[] mIndicesToRemove;
+  private final @Nullable ViewAtIndex[] mViewsToAdd;
+  private final @Nullable int[] mTagsToDelete;
+
+  public ManageChildrenOperation(
+      int tag,
+      @Nullable int[] indicesToRemove,
+      @Nullable ViewAtIndex[] viewsToAdd,
+      @Nullable int[] tagsToDelete) {
+    super(tag);
+    mIndicesToRemove = indicesToRemove;
+    mViewsToAdd = viewsToAdd;
+    mTagsToDelete = tagsToDelete;
+  }
+
+  @Override
+  public void execute() {
+    mNativeViewHierarchyManager.manageChildren(
+        mTag,
+        mIndicesToRemove,
+        mViewsToAdd,
+        mTagsToDelete);
+  }
+}
+</code></pre></pre>
+<p>其中：最终执行的是 mNativeViewHierarchyManager.manageChildren，它会调用 ViewGroup 的 addView 方法，进行实际的 View 层级关联。</p>
+<h2>结论</h2>
+<p>本文是对 View 是如何创建的这个大过程的一个粗粒度的梳理，其中有很多步骤是不详尽的。其中有些过程可能梳理地不对，如有错误之处欢迎指正。</p>
+<p>在后续的文章中会逐渐细化这些过程。</p></div><div class="ui leaderboard ad"><ins class=" adsbygoogle" style="display:block" data-ad-client="ca-pub-8746515866560942" data-ad-slot="3546488844" data-ad-layout="" data-ad-format="auto" data-full-width-responsive="true"></ins></div></div></div></div></div></div></div><script type="text/javascript">
+    window.__routeInfo = {"template":"../src/pages/post","sharedHashesByProp":{},"data":{"post":{"name":"React Native 代码阅读（十三）：View 是如何创建的","desc":"在上一篇中我们学习了 Yoga，这为分析 React Native 的视图层打了很好的基础。在本篇中我们分析一个 View 在 JavaScript 中写下，是如何被展示成 Android 原生的 View 的。","type":"md","link":"ReactNativeCode13md","create":"2019-03-27","filename":"ReactNativeCode13.md"},"content":"## 前言\n\n在上一篇中我们学习了 Yoga，这为分析 React Native 的视图层打了很好的基础。在本篇中我们分析一个 View 在 JavaScript 中写下，是如何被展示成 Android 原生的 View 的。\n\n首先我们在 React Native 应用的 JavaScript 组件中定义一个简单的组件：\n\n```js\nexport default () => {\n    return <View style={{\n        backgroundColor: 'pink',\n        width: 200, \n        height: 200}}/>        \n}\n```\n\n这个组件会经由 JS → Native Bridge 转换为一下消息：\n\n```\nUIManager.createView([343,\"RCTView\",31,{\"backgroundColor\":-16181,\"width\":200,\"height\":200}])\n```\n\n其中：\n\n- Bridge message 中包含的属性就是我们在 JavaScript 中定义的属性\n\n## UIManagerModule.createView\n\n这条 message 最终会触发到 com.facebook.react.uimanager.UIManagerModule#createView 方法，它的参数签名为：\n\n```java\npublic void createView(int tag, String className, int rootViewTag, ReadableMap props) {\n```\n\n各个参数的值为：\n\n| 参数        | 值                                                           |\n| ----------- | ------------------------------------------------------------ |\n| tag         | 343                                                          |\n| className   | RCTView                                                      |\n| rootViewTag | 31                                                           |\n| props       | { NativeMap: {\"height\":200,\"width\":200,\"backgroundColor\":-16181} } |\n\n其中：\n\n- tag 与 rootViewTag 与前面 message 中的值是一致的\n\n## UIImplementation.createView\n\nUIManagerModule.createView 会继续调用 com.facebook.react.uimanager.UIImplementation#createView，它的方法签名与前者一致：\n\n```java\npublic void createView(int tag, String className, int rootViewTag, ReadableMap props) {\n```\n\n这里面这些参数都有什么作用呢？在我们继续分析的过程中会一一揭晓。\n\n下面我们来看在这个方法中都做了哪些事情：\n\n### 创建 ReactShadowNode\n\n首先会创建 ReactShadowNode：\n\n```java\nReactShadowNode cssNode = createShadowNode(className);\nReactShadowNode rootNode = mShadowNodeRegistry.getNode(rootViewTag);\n```\n\n其中：\n\n- className 是 `RCTView`，UIImplementation 会用它从 mViewManagers 找出已经注册的 ViewManager，并执行这个 Manager 的 createShadowNodeInstance 方法\n- 在本例中实际调用的是 com.facebook.react.uimanager.ViewGroupManager#createShadowNodeInstance\n- rootViewTag 是什么呢？它是每个节点的标识，在 UIImplementation 中 mShadowNodeRegistry 是盛放所有 Node 的地方。可以将 mShadowNodeRegistry 看做一个数组，将 rootViewTag 看做数组的 index，通过 index 向数组中获取 ReactShadowNode，在上面代码中获取到的是跟布局的 Node\n\n之后对创建的新节点进行一些设置：\n\n```java\n// 保存 tag\ncssNode.setReactTag(tag);\n// 保存类名\ncssNode.setViewClassName(className);\n// 保存父布局\ncssNode.setRootTag(rootNode.getReactTag());\n// 保存 ReactContext\ncssNode.setThemedContext(rootNode.getThemedContext());\n```\n\n当这些步骤都完成后，将新 node 添加到 mShadowNodeRegistry 中：\n\n```java\nmShadowNodeRegistry.addNode(cssNode);\n```\n\n之后保存 props 信息：\n\n```java\nReactStylesDiffMap styles = null;\nif (props != null) {\n    styles = new ReactStylesDiffMap(props);\n    cssNode.updateProperties(styles);\n}\n```\n\n### UIImplementation.handleCreateView\n\n之后会调用 handleCreateView 方法：\n\n```java\nprotected void handleCreateView(\n        ReactShadowNode cssNode,\n        int rootViewTag,\n        @Nullable ReactStylesDiffMap styles) {\n    if (!cssNode.isVirtual()) {\n        mNativeViewHierarchyOptimizer.handleCreateView(cssNode, cssNode.getThemedContext(), styles);\n    }\n}\n```\n\n其中：\n\n- 如果新 node 不是 virtual node(有实际对应的 Native View)，则会调用 mNativeViewHierarchyOptimizer 的 handleCreateView\n\n## NativeViewHierarchyOptimizer.handleCreateView\n\n在 NativeViewHierarchyOptimizer.handleCreateView 中也没有真正创建视图，而是向队列中入队一个操作：\n\n```java\nmUIViewOperationQueue.enqueueCreateView(\n    themedContext,\n    node.getReactTag(),\n    node.getViewClass(),\n    initialProps);\n```\n\n## UIViewOperationQueue\n\nUIViewOperationQueue 是一个任务队列，用于执行 JS batch bridge 中执行的指令。\n\n还记得我们操作 JS 侧的 BatchedBridge 时的用法吗？常用的方法是：\n\n- 创建一系列 message，如视图创建、属性更新\n- 调用 flushedQueue 方法\n- 在 JS 侧给我们的感觉是，一调 flushedQueue，前面的这些 message 就会批量执行\n\n在 Native 层，实现这个任务队列和批量执行的类想必已经猜到了，就是 UIViewOperationQueue。其中批量执行的方法对应于它的 flushPendingBatches 方法。\n\n### 成员变量\n\n下面先让我们看下 UIViewOperationQueue 的成员变量。\n\n| 成员变量                    | 类型                       | 说明               |\n| --------------------------- | -------------------------- | ------------------ |\n| mNativeViewHierarchyManager | NativeViewHierarchyManager | 布局相关的实际操作 |\n| mDispatchUIFrameCallback    | DispatchUIFrameCallback    | UI 更新回调        |\n| mOperations                 | `ArrayList<UIOperation>`   | 任务队列           |\n| mDispatchUIRunnables        | `ArrayList<Runnable>`      | 积攒的一批一批任务 |\n\n### UIViewOperationQueue.enqueueCreateView\n\nenqueueCreateView 方法会创建一个 CreateViewOperation，并插入 mOperations 中。\n\n我们来看下 CreateViewOperation 的代码：\n\n```java\nprivate final class CreateViewOperation extends ViewOperation {\n\n    private final ThemedReactContext mThemedContext;\n    private final String mClassName;\n    private final @Nullable ReactStylesDiffMap mInitialProps;\n\n    public CreateViewOperation(\n        ThemedReactContext themedContext,\n        int tag,\n        String className,\n        @Nullable ReactStylesDiffMap initialProps) {\n            super(tag);\n            mThemedContext = themedContext;\n            mClassName = className;\n            mInitialProps = initialProps;\n            Systrace.startAsyncFlow(Systrace.TRACE_TAG_REACT_VIEW, \"createView\", mTag);\n    }\n\n    @Override\n    public void execute() {\n        Systrace.endAsyncFlow(Systrace.TRACE_TAG_REACT_VIEW, \"createView\", mTag);\n        mNativeViewHierarchyManager.createView(\n            mThemedContext,\n            mTag,\n            mClassName,\n            mInitialProps);\n    }\n}\n```\n\n其中：\n\n- 需要核心关注的是 execute 方法。任务队列在实际执行中会调用它，在内部通过 mNativeViewHierarchyManager 时间真正的视图创建操作\n\n## NativeViewHierarchyManager.createView\n\n下面我们就来看是如何真正创建 View 的。\n\n```java\n// 取出 ViewManager\nViewManager viewManager = mViewManagers.get(className);\n\n// 创建视图\n// 实际调用 com.facebook.react.views.view.ReactViewManager#createViewInstance\nView view = viewManager.createView(themedContext, mJSResponderHandler);\n\n// 保存视图\n// 还是通过 tag 关联，现在跟 tag 关联的有 ReactShadowNode 和 View\nmTagsToViews.put(tag, view);\n// viewManager 和 tag 关联\nmTagsToViewManagers.put(tag, viewManager);\n\n// 用 Android id 来保存 React Node Tag\nview.setId(tag);\n\n// 更新 Props\nif (initialProps != null) {\n    viewManager.updateProperties(view, initialProps);\n}\n```\n\n在这里问一个问题：**经过上面的代码后，我们创建的这个 View 会出现在屏幕上吗？**\n\n答案是并没有，我们虽然创建了 View 的实例，但是它还并没有被摆到屏幕上。\n\n那么在哪里被摆到屏幕上呢？在此我们知道肯定会有一个统一的地方，统一的时机，来遍历视图树，将 View 摆放到正确的位置上。\n\n## manageChildren message\n\n让我们再回到 JS → Native Bridge 上面，前面我们分析了 UIManager.createView 消息的解析。\n\n当绘制一个新 React 组件时，会创建多条 UIManager.createView 和 UIManager.setChildren 命令。\n\n在这些描述绘制的 message 发完后，最后会发一条 manageChildren 消息：\n\n```\nUIManager.manageChildren([209,[],[],[299],[1],[]])\n```\n\n这条消息会触发最终的页面绘制。\n\n这条消息将会触发到 com.facebook.react.uimanager.UIManagerModule#manageChildren 方法。\n\n它的方法签名如下：\n\n```java\npublic void manageChildren(\n    int viewTag,\n    @Nullable ReadableArray moveFrom,\n    @Nullable ReadableArray moveTo,\n    @Nullable ReadableArray addChildTags,\n    @Nullable ReadableArray addAtIndices,\n    @Nullable ReadableArray removeFrom) {\n```\n\n结合文档和前面的 message log，我们来看各个参数的作用：\n\n| 参数名称     | 值    | 作用                                         |\n| ------------ | ----- | -------------------------------------------- |\n| viewTag      | 209   | 父 View 的 Tag                               |\n| moveFrom     | []    | 父 View 中要移出的视图                       |\n| moveTo       | []    | 与 moveFrom 已启用，移出后放到父 View 的序列 |\n| addChildTags | [299] | 要添加进入父 View 的视图                     |\n| addAtIndices | [1]   | 与 addChildTags 一起用，添加到的序列         |\n| removeFrom   | []    | 需要从父视图中删除的序列的视图               |\n\n从中我们可以得出结论，需要做的是向 209 中添加一个 tag 为 299 的 View。\n\n经过一段与前面相同的辗转（这里虽然带过，但是内部的内容很多，ShadowTree 的层级创建就是在这一过程中），最后会向任务队列中插入一个 ManageChildrenOperation：\n\n```java\nprivate final class ManageChildrenOperation extends ViewOperation {\n\n  private final @Nullable int[] mIndicesToRemove;\n  private final @Nullable ViewAtIndex[] mViewsToAdd;\n  private final @Nullable int[] mTagsToDelete;\n\n  public ManageChildrenOperation(\n      int tag,\n      @Nullable int[] indicesToRemove,\n      @Nullable ViewAtIndex[] viewsToAdd,\n      @Nullable int[] tagsToDelete) {\n    super(tag);\n    mIndicesToRemove = indicesToRemove;\n    mViewsToAdd = viewsToAdd;\n    mTagsToDelete = tagsToDelete;\n  }\n\n  @Override\n  public void execute() {\n    mNativeViewHierarchyManager.manageChildren(\n        mTag,\n        mIndicesToRemove,\n        mViewsToAdd,\n        mTagsToDelete);\n  }\n}\n\n```\n\n其中：最终执行的是 mNativeViewHierarchyManager.manageChildren，它会调用 ViewGroup 的 addView 方法，进行实际的 View 层级关联。\n\n## 结论\n\n本文是对 View 是如何创建的这个大过程的一个粗粒度的梳理，其中有很多步骤是不详尽的。其中有些过程可能梳理地不对，如有错误之处欢迎指正。\n\n在后续的文章中会逐渐细化这些过程。"},"path":"post/ReactNativeCode13md","sharedData":{},"siteData":{"title":"Maxiee Blog"}};</script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/vendors~src/pages/about~src/pages/post~src/pages/services.9ebe3a93.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/vendors~src/pages/bookmarks~src/pages/gallery~src/pages/post.0f2bae8a.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/vendors~src/pages/gallery~src/pages/post.bf181f2d.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/vendors~src/pages/post.3413cc1f.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/src/pages/post.083217cc.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/styles.ec85b004.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/vendors~main.fc8eff89.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/main.d5516191.js"></script></body></html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html><html lang="en"><head><meta name="generator" content="React Static"/><title data-react-helmet="true">我是如何在 2019 年还不使用 GUI 的：终端指南（翻译） | Maxiee Blog</title><meta data-react-helmet="true" charSet="UTF-8"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/vendors~src/pages/about~src/pages/post~src/pages/services.9ebe3a93.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/vendors~src/pages/bookmarks~src/pages/gallery~src/pages/post.0f2bae8a.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/vendors~src/pages/gallery~src/pages/post.bf181f2d.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/vendors~src/pages/post.3413cc1f.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/src/pages/post.083217cc.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/styles.ec85b004.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/vendors~main.fc8eff89.js"/><link rel="preload" as="script" href="https://maxiee.github.io/main.d5516191.js"/><link rel="preload" as="style" href="https://maxiee.github.io/styles.ec85b004.css"/><link rel="stylesheet" href="https://maxiee.github.io/styles.ec85b004.css"/><script data-react-helmet="true" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><meta charSet="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, shrink-to-fit=no"/></head><body><div id="root"><div style="outline:none" tabindex="-1" role="group"><div><div style="display:flex;flex-direction:row;justify-content:space-between;margin-left:26px;margin-right:26px;height:72px"><div style="display:flex;flex-direction:row;justify-content:center;align-items:center"><img src="data:image/jpeg;base64,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" class="ui mini circular centered image"/><div style="margin-left:12px;font-size:18px"><a href="https://maxiee.github.io/">Maxiee Blog</a></div></div><div style="display:flex;flex-direction:row;align-items:center"><div style="color:#666666;margin-left:26px"><a href="https://maxiee.github.io/post">博客</a></div><div style="margin-left:26px" role="listbox" aria-expanded="false" class="ui dropdown" tabindex="0"><div class="text" role="alert" aria-live="polite">作品</div><i aria-hidden="true" class="dropdown icon"></i><div class="menu transition"><div role="option" class="item"><div style="margin:10px" class="text"><a href="https://maxiee.github.io/post/RayInfomd">RayInfo</a><div style="color:#CCCCCC">资讯阅读 App</div></div></div><div role="option" class="item"><div style="margin:10px" class="text"><a href="https://maxiee.github.io/post/MaxieeRNLabmd">MaxieeRNLab</a><div style="color:#CCCCCC">React Native 综合示例 APP</div></div></div><div role="option" class="item"><div style="margin:10px" class="text"><a href="https://maxiee.github.io/post/JiuShengmd">韭生</a><div style="color:#CCCCCC">roguelike 人生模拟器游戏</div></div></div></div></div><div style="color:#666666;margin-left:26px"><a href="https://maxiee.github.io/daily">Daily</a></div><div style="color:#666666;margin-left:26px"><a href="https://maxiee.github.io/gallery">设计</a></div><div style="color:#666666;margin-left:26px"><a href="https://maxiee.github.io/about">关于</a></div></div></div><div class="ui grid"><div class="row"><div style="margin-left:20px;margin-right:20px" class="column"><h1 class="ui header">我是如何在 2019 年还不使用 GUI 的：终端指南（翻译）</h1><p style="margin-bottom:20px;color:gray">2019-03-16</p><div class="ui leaderboard ad"><ins class=" adsbygoogle" style="display:block" data-ad-client="ca-pub-8746515866560942" data-ad-slot="3546488844" data-ad-layout="" data-ad-format="auto" data-full-width-responsive="true"></ins></div><div><h2>前言</h2>
+<p>本文作者为 <a href="https://lucasfcosta.com">Lucas Fernandes da Costa</a>，文章源链接为 <a href="https://lucasfcosta.com/2019/02/10/terminal-guide-2019.html">How I&#x27;m still not using GUIs in 2019: A guide to the terminal</a>。</p>
+<div class="ui orange message">
+<p>这里是我的 <a href="https://github.com/lucasfcosta/dotfiles">dotfiles</a>。欢迎使用！</p>
+</div>
+<p>GUI 是臃肿的软件，我<a href="https://lucasfcosta.com/2018/08/05/In-Praise-of-Plaintext.html">之前已说过</a>。可是，我也不能光对 IDE 耍嘴炮，我得提供一个使用命令行做替代的可行指南。</p>
+<p>IDE 是 Integrated Development Environment 的缩写，这可能是个准确的术语，但是在现实中使用 IDE 的时候，会发现不如终端好用。</p>
+<p>在本文中，我们一起来看如何把完整的开发环境都放在终端里实现：</p>
+<ul>
+<li>如何有效编辑文本</li>
+<li>如何配置外观</li>
+<li>运行并组合大量程序</li>
+<li>动态创建、调整大小、关闭 Tab 和窗口</li>
+</ul>
+<p><img style="max-width:60%" src="https://maxiee.github.io/images/Linux2019NoGui01.png" class="ui centered image"/></p>
+<h1>La Raison D’Être（存在的原因）</h1>
+<p>在 IDE 中，你只能使用这个 IDE 下专门的插件，而在终端中，你可以使用任何程序。IDE 会把你限制在一个范围，这个范围是 IDE 的创建者认为你想要做什么。</p>
+<p>终端则不是这样，它允许你很容易地组合任何程序。由于管道的存在，你可以将一个程序的输出作为另一个程序的输入。</p>
+<p>这提供了很大的灵活性，允许你灵活地、有创造性地使用各种工具集，以实现原作者未曾想到的目的。</p>
+<p>这也使用 UNIX 哲学进行程序设计的最著名的特性：</p>
+<div class="ui orange message">
+<p>Word、Excel、PowerPoint 和其他的微软程序都对彼此内部原理了如指掌，有人会说他们是混杂的。</p>
+<p>在 Unix 中，人们设计的程序的操作是通用的，不是专门为彼此，而是针对尚未考虑的程序。</p>
+<p>—— <em>Doug McIlroy</em></p>
+</div>
+<p>GUI 的学习曲线没有命令行陡峭。但是，你对纯文本越熟悉，就越容易输入指令，而不是在界面中寻找选项和按钮。难得地方在于记忆需要输入的指令。</p>
+<p>IDE 还倾向于做过多的”魔术“。处于实用性考虑，他们对用于隐藏了基本细节，这回导致在遇到问题时找出真正原因变得更加困难。</p>
+<p>这有两个主要原因：</p>
+<ol>
+<li>这层抽象会使人们完全不知道计算机在干什么</li>
+<li>在 IDE 上点一个按钮就会执行大量操作，这使得分解过程和诊断其中有问题的过程变得困难</li>
+</ol>
+<p>现在你可能会争辩说，有些 ide 具有带控制台接口的小窗口，这些窗口与终端的输出是相同的，这没错。</p>
+<p>但这还不够。如果你仍然不知道如何使用计算机的术语跟计算机打交道，那么你将无法理解 IDE 显示的内容。</p>
+<p>习惯使用终端，这意味着你与计算机会用相同的“语言”进行沟通。</p>
+<p>终端程序的配置是非常便携的。大多数程序的配置都只需要把一个纯文本文件拷贝到指定地方就完事。</p>
+<p>这样，就算换了新机器，几秒至多几分钟时间就能在新机器中部署一个开发环境。</p>
+<p>终端程序的配置文件——通常叫 dotfiles——比 ide 的配置文件友好地多。</p>
+<p>dotfiles 是人可读的纯文本。与 IDE 相比，它与项目的耦合也比较少。</p>
+<p>当你使用 IDE 配置文件描述计算机应该如何构建代码的时候，你将强制团队中每个人使用相同的工具。</p>
+<p>换句话说，比如，当你使用 make（终端程序），这就给了人们自由，他们可以从 IDE 中构建，也可以从终端中构建。</p>
+<p>所有为熟练使用终端所付出的努力会很快获得回报。</p>
+<p>这个回报不是在时间节省上，因为实际中大多数时间是在思考，不是编码，因此几个快捷键省不了几秒钟。</p>
+<p>真正带来好处的是，使用终端让你对计算机是怎么工作的有更加深刻的认识，这会让你的工作流变得更可预测、更加灵活。</p>
+<p>最后，熟练使用终端是一种“一次学习到处使用”的技能。并不是每台机器都有 VSCode、Sublime 或者 Atom，但是每台机器都有终端。</p>
+<h2>终端新手包</h2>
+<p>我使用这些工具将我的终端打造成一个完整的开发环境：</p>
+<ul>
+<li>
+<p><a href="https://neovim.io/"><code style="background:#f5f7ff;padding:2px">neovim</code></a></p>
+</li>
+<li>
+<p><a href="https://github.com/tmux/tmux/wiki"><code style="background:#f5f7ff;padding:2px">tmux</code></a></p>
+</li>
+<li>
+<p><a href="https://www.iterm2.com/"><code style="background:#f5f7ff;padding:2px">iterm2</code></a></p>
+</li>
+<li>
+<p><a href="http://www.zsh.org/"><code style="background:#f5f7ff;padding:2px">zsh</code></a></p>
+</li>
+<li>
+<p><a href="https://github.com/robbyrussell/oh-my-zsh"><code style="background:#f5f7ff;padding:2px">oh-my-zsh</code></a></p>
+</li>
+</ul>
+<p>在本文的末尾，你会发现一些有用程序的清单。</p>
+<h2>neovim</h2>
+<p>vim 是的文本编辑器选择，它在我的心中和<a href="https://pbs.twimg.com/media/DY65vJAW0AEfF-h.jpg">脚踝</a>中都有特殊地位。</p>
+<p>译者注：之所以是脚踝，因为这位老哥在脚踝纹了一条 vim 指令：</p>
+<p><img style="max-width:60%" src="https://maxiee.github.io/images/Linux2019NoGui02.jpg" class="ui centered image"/></p>
+<p>neovim 是 vim 的另一个版本。它的快捷键跟  vim 一直，特性一样，与 vim 配置完全兼容。</p>
+<p>为了避免 vim 在执行语法检查之类的任务时冻结，neovim 允许你异步执行任务。</p>
+<p>他还支持多种脚本，有 VimL（这不是我最喜欢的语言），还支持 Lua 脚本。</p>
+<p>为了确保使用的是 nvim 而不是 vim，你可以使用下面语句 alias 一下。这个代码你可以放进 .zshrc 或者 .bashrc，或者你的 shell 所使用的配置中：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">alias vim=&quot;nvim&quot;
+alias vimdiff=&quot;nvim -d&quot;
+</code></pre></pre>
+<h2>学习 Vim</h2>
+<p>即使很多人害怕 vim，而且在 Stack Overflow 上还有一个老梗——<a href="https://stackoverflow.blog/2017/05/23/stack-overflow-helping-one-million-developers-exit-vim/">如何退出 vim 是 SO 上最受欢迎的问题</a>。vim 还是更好的，因为它与众不同。</p>
+<p><strong>为了学习有效使用 vim，我强烈建议从 <a href="https://superuser.com/questions/246487/how-to-use-vimtutor">vimtutor</a> 开始。</strong></p>
+<ul>
+<li>一开始可能会觉得枯燥，但这是正确学习 vim 最有效的方法。</li>
+</ul>
+<p><strong>硬着头皮别放弃。</strong></p>
+<ul>
+<li>如果你不知道怎么完成一个特定任务，去 duck-duck-go 搜一下。</li>
+<li>在开始的几天或者几周内，你会不得不记住哪个键对应哪个功能，但是随着时间的推移，他们会印在你脑子里，形成肌肉记忆。</li>
+</ul>
+<p><strong>从一开始就禁用方向键。</strong>通过在 <code style="background:#f5f7ff;padding:2px">~/.config/nvim/init.vim</code> （之前是 <code style="background:#f5f7ff;padding:2px"></code>~/.vimrc`）加入以下代码：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">&quot; don&#x27;t use arrowkeys
+noremap &lt;Up&gt; &lt;NOP&gt;
+noremap &lt;Down&gt; &lt;NOP&gt;
+noremap &lt;Left&gt; &lt;NOP&gt;
+noremap &lt;Right&gt; &lt;NOP&gt;
+
+&quot; really, just don&#x27;t
+inoremap &lt;Up&gt;    &lt;NOP&gt;
+inoremap &lt;Down&gt;  &lt;NOP&gt;
+inoremap &lt;Left&gt;  &lt;NOP&gt;
+inoremap &lt;Right&gt; &lt;NOP&gt;
+</code></pre></pre>
+<p><strong>我通常建议已经熟悉 vim 的用户不要在 init.vim 中放任何不理解的东西。</strong></p>
+<ul>
+<li>搜索命令的功能会让你对 vim 有更好的理解</li>
+<li>这会给你所需的知识来配置你的工具</li>
+<li>这样使他们匹配你的编辑风格和工作方式</li>
+</ul>
+<p>现在，如果你喜欢毛线，就去 duck-duck-go 上查查 noremap 和 inoremap 这俩命令是干嘛的。</p>
+<p>一旦你熟悉文本编辑，<a href="https://sanctum.geek.nz/arabesque/vim-anti-patterns/"><strong>开始关注反模式，比如多次重复相同的按键、重复命令，或者进入 inset 模式删除文本。</strong></a></p>
+<p><strong>你应当总是问问自己，是否有更好的方式来做这件事。</strong>大多数时候答案都是肯定的。</p>
+<p><strong>避免插件，除非你确定要使用它。</strong></p>
+<ul>
+<li>大多数时候，vim 已经有你所需要的特性了，这样最好就不要再依赖第三方</li>
+<li>用的插件越少，运行速度就越快</li>
+<li>避免臃肿让你的 vim 在任何机器上都更容易使用</li>
+</ul>
+<p>作为一个初学者，你不知道自己需要什么，因此下面我会加一些你会认为改进工作流的内容。</p>
+<p><strong>我通常推荐初学者使用 <a href="https://github.com/scrooloose/nerdtree"><code style="background:#f5f7ff;padding:2px">NERDTree</code></a> 和 <a href="https://github.com/junegunn/fzf.vim"><code style="background:#f5f7ff;padding:2px">fzf</code></a>。</strong></p>
+<p>将来会最终会想整理你的配置，保持整洁。</p>
+<p>最后，我能给任何人的 vim 的人的最好建议是采用增量学习法。</p>
+<ul>
+<li>试着每天提高一点点，避免在短时间内学习太多的技巧</li>
+<li>每天使用你所选择的编辑器（希望是 vim）</li>
+<li>每天花点时间来消化一个命令</li>
+<li>在余生中使用它</li>
+</ul>
+<p>这比快速学习许多技巧并只使用一次更好。</p>
+<p>深入发掘，并以适当的速度学习。对此，我强烈推荐 <a href="http://vim.wikia.com/"><code style="background:#f5f7ff;padding:2px">vim Wikia</code></a>。</p>
+<h2>我目前在使用的插件</h2>
+<p>要安装和使用插件，你可能需要使用 <a href="https://github.com/junegunn/vim-plug"><code style="background:#f5f7ff;padding:2px">vim-plug</code></a>。</p>
+<p>它是一个极简的，易于安装的，易于使用的插件管理器。</p>
+<p>同时它还有很多优秀特性，比如：</p>
+<ul>
+<li>
+<p>插件按需加载：<a href="https://github.com/junegunn/vim-plug#on-demand-loading-of-plugins">on-demand loading of plugins</a></p>
+</li>
+<li>
+<p>更新后钩子：<a href="https://github.com/junegunn/vim-plug#post-update-hooks">post-update hooks</a></p>
+</li>
+</ul>
+<p>这允许你配置额外的安装步骤。</p>
+<p><a href="https://github.com/neomake/neomake"><code style="background:#f5f7ff;padding:2px">neomake</code></a> 是 neovim 对我的主要卖点。它允许你异步地运行程序，避免阻塞主线程。</p>
+<p>这个特性在运行语法检查和其他 CPU 密集的操作时尤为有用。之前用 vim 的时候，经常会卡住几秒钟。</p>
+<p><a href="https://github.com/scrooloose/nerdtree"><code style="background:#f5f7ff;padding:2px">NERDTree</code></a> 是一种可视化和管理文件树的简单方式。尽管它的所有特性都有原生的替代方案，但是原生的都不够实用。</p>
+<p>我通过下面几行配置 Ctrl+n 来打开 NERDTree 并显示隐藏文件：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">&quot; NERDTree on ctrl+n
+let NERDTreeShowHidden=1
+map &lt;silent&gt; &lt;C-n&gt; :NERDTreeToggle&lt;CR&gt;
+
+&quot; close NERDTree after a file is opened
+let g:NERDTreeQuitOnOpen=1
+</code></pre></pre>
+<p><a href="https://github.com/junegunn/fzf.vim"><code style="background:#f5f7ff;padding:2px">fzf.vim</code></a> 用于模糊查找，允许你输入部分文件名就能快速查找并打开文件。</p>
+<p>安装 fzf 的过程要比其他插件麻烦一些。因为 fzf.vim 是一个 fzf 的封装，你需要使用下面几行来确保二进制文件已被安装：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">Plug &#x27;junegunn/fzf&#x27;, { &#x27;dir&#x27;: &#x27;~/.fzf&#x27;, &#x27;do&#x27;: &#x27;./install --bin&#x27; }
+Plug &#x27;junegunn/fzf.vim&#x27;
+</code></pre></pre>
+<p>fzf 可以使用其它程序寻找文件，比如 UNIX 的 find，以及 <a href="https://github.com/ggreer/the_silver_searcher">the silver searcher — also known as <code style="background:#f5f7ff;padding:2px">ag</code></a>。</p>
+<p>我喜欢使用 ag，因为我可以配置它来忽略 .gitignore 中的文件，这样不论我使用哪个仓库，都有合理的缺省值：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">&quot; make FZF respect gitignore if `ag` is installed
+&quot; you will obviously need to install `ag` for this to work
+if (executable(&#x27;ag&#x27;))
+    let $FZF_DEFAULT_COMMAND = &#x27;ag --hidden --ignore .git -g &quot;&quot;&#x27;
+endif
+</code></pre></pre>
+<p>最后，我使用 ctrl+p 快捷键绑定 fzf：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">nnoremap &lt;C-P&gt; :Files&lt;CR&gt;
+</code></pre></pre>
+<p><a href="https://github.com/editorconfig/editorconfig-vim"><code style="background:#f5f7ff;padding:2px">editorconfig-vim</code></a> 插件帮助我快速根据项目适配编辑器设置，只要项目中有 <a href="https://editorconfig.org/">.editorconfig 文件</a>。</p>
+<p>有了这个插件，我就不用担心 EOF 格式，缩进数量和字符集的问题了。</p>
+<p><a href="https://github.com/mattn/emmet-vim">emmet-vim</a> 能加快写 HTML 的速度。如果你 JSX 写得多——像我一样——需要通过下面配置来正确处理 .jsx 和 .tsx 文件：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">&quot; make emmet behave well with JSX in JS and TS files
+let g:user_emmet_settings = {
+\  &#x27;javascript&#x27; : {
+\      &#x27;extends&#x27; : &#x27;jsx&#x27;,
+\  },
+\  &#x27;typescript&#x27; : {
+\      &#x27;extends&#x27; : &#x27;tsx&#x27;,
+\  },
+\}
+</code></pre></pre>
+<p>我使用 <a href="https://github.com/w0rp/ale"><code style="background:#f5f7ff;padding:2px">ale</code></a> 作为语法检查引擎，因为他能与大多数语言的 linter 工作，并且开箱即用。</p>
+<p>使用一个支持所有语言的单个工具，避免了我之前配置多个插件以及维护所有配置的痛苦。</p>
+<p>有了 ale，如果你项目中有 eslint 和 .eslintrc 文件，它会以正确设置自动运行 eslint，并显示错误。</p>
+<p>我还通过配置让语法检查快一些，通过删除行尾和去掉多余空格：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">&quot; fix files on save
+let g:ale_fix_on_save = 1
+
+&quot; lint after 1000ms after changes are made both on insert mode and normal mode
+let g:ale_lint_on_text_changed = &#x27;always&#x27;
+let g:ale_lint_delay = 1000
+
+&quot; use nice symbols for errors and warnings
+let g:ale_sign_error = &#x27;✗\ &#x27;
+let g:ale_sign_warning = &#x27;⚠\ &#x27;
+
+&quot; fixer configurations
+let g:ale_fixers = {
+\   &#x27;*&#x27;: [&#x27;remove_trailing_lines&#x27;, &#x27;trim_whitespace&#x27;],
+\}
+</code></pre></pre>
+<p>插件中最突出的可能是 <a href="https://github.com/Valloric/YouCompleteMe"><code style="background:#f5f7ff;padding:2px">YouCompleteMe</code></a>，它提供了像 IDE 一样的基于语义的补全建议。</p>
+<p>YouCompleteMe 建议考虑代码的含义（它的语义），而不是只搜索相似的单词(标记)。</p>
+<p>YouCompleteMe 插件是一个连接到 YouCompleteMe Server 的 Client，Server 是真正产生建议的地方。</p>
+<p>Server 为每种语言运行不同的服务。例如对于 TypeScript，YouCompleteMe 运行微软的 TSServer。</p>
+<p>要安装这个插件，你还要安装 YouCompleteMe Server：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">&quot; semantic-based completion
+Plug &#x27;Valloric/YouCompleteMe&#x27;, { &#x27;do&#x27;: &#x27;./install.py&#x27; }
+</code></pre></pre>
+<p>如果上面命令出错，需要确认你的 neovim 是否支持<a href="https://github.com/deoplete-plugins/deoplete-jedi/wiki/Setting-up-Python-for-Neovim#simple-setup">基于 Python 的插件</a>。或者试着运行 <code style="background:#f5f7ff;padding:2px">~/.config/nvim/plugged/YouCompleteMe</code> 下的 install.py。</p>
+<p>不用说的是，它对强类型语言会更有用一些。我主要测试的语言是 rust 和 TypeScript，都很美妙。</p>
+<p>我还使用以下几行代码，将它的建议绑定到 vim 的默认快捷方式和弹出窗口中完成：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">&quot; disable auto_triggering ycm suggestions pane and instead
+&quot; use semantic completion only on Ctrl+n
+let ycm_trigger_key = &#x27;&lt;C-n&gt;&#x27;
+let g:ycm_auto_trigger = 0
+let g:ycm_key_invoke_completion = ycm_trigger_key
+
+&quot; this is some arcane magic to allow cycling through the YCM options
+&quot; with the same key that opened it.
+&quot; See http://vim.wikia.com/wiki/Improve_completion_popup_menu for more info.
+let g:ycm_key_list_select_completion = [&#x27;&lt;TAB&gt;&#x27;, &#x27;&lt;C-j&gt;&#x27;]
+inoremap &lt;expr&gt; ycm_trigger_key pumvisible() ? &quot;&lt;C-j&gt;&quot; : ycm_trigger_key;
+</code></pre></pre>
+<p>我的语言相关的插件有 <code style="background:#f5f7ff;padding:2px">rust.vim</code>、<code style="background:#f5f7ff;padding:2px">vim-javascript</code>、<code style="background:#f5f7ff;padding:2px">typescript-vim</code>，因为这些语言我经常写。</p>
+<p>我只在开始使用新语言时配置语言相关的插件。可能你已经注意到了，我是极简主义者。</p>
+<h2>tmux</h2>
+<p>tmux 是一个终端的多路复用器。本质上，这个花哨的名字的意思是说，<strong>允许你在一个终端窗口中拥有多个选项卡和窗格。</strong></p>
+<p>它利用了终端的多功能性，使其更加灵活。</p>
+<p>如果你年纪足够大，还记得 IE6 以及不得不使用一堆窗口浏览网页的可怕经历，你可能会记得浏览器引入选项卡时的巨大改进。这是 tmux 提供的相同的改变生活的改进。</p>
+<p>在 tmux 术语中，每个选项卡都是一个窗口，一个窗口可以包含一个或多个窗格（分割）。</p>
+<p>这些窗口包含在会话中，您可以将其附加或分离到当前 shell。</p>
+<p>当分离一个会话时，tmux 服务器将继续运行它，以便您可以在需要时重新连接它。</p>
+<p>在后台有会话对于在处理不同任务时保持程序运行非常有用。</p>
+<p>在一个窗口中有多个窗格对于编辑文本和需要关注测试非常有用，例如，当您更改文件时，测试就会运行。它对于在一个窗格中运行git命令和在另一个窗格中修复冲突也很方便。</p>
+<p>使用 tmux 最显著的优点是，你可以并行运行任意多的程序，查看它们的输出，而不必使用图形界面拖动面板或切换视图。</p>
+<p>如果您需要快速切换到不同的任务，但又不想放弃当前工作的上下文，那么使用许多不同的 Tab 也很有用。</p>
+<p>tmux 的快捷键绑定包含一个 prefix 和快捷键本身。要触发一个快捷键，按下 prefix 键，之后按下快捷键。</p>
+<p>如果你的快捷键是 Ctrl+a，横向切分键是 <code style="background:#f5f7ff;padding:2px">-</code>。这样先按下 Ctrl+a 在按 -。</p>
+<p>你可以将 prefix 理解为告诉终端说我要使用 tmux 快捷键的组合键。</p>
+<p>我发现 tmux 默认的快捷键不太好用，因此我做了一些调整。</p>
+<p>现在我实用 <code style="background:#f5f7ff;padding:2px">C-a</code> 作为 prefix，h、j、k、l 作为切换窗格的键，与 vim 相同。- 和 | 用于横向与纵向切分。</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687"># Free the original `Ctrl-b` prefix keybinding.
+unbind C-b
+
+# set prefix key to ctrl-a
+set -g prefix C-a
+
+# vi keys for switching panes
+bind-key h select-pane -L
+bind-key j select-pane -D
+bind-key k select-pane -U
+bind-key l select-pane -R
+
+# Splitting panes.
+bind - split-window -v
+bind | split-window -h
+</code></pre></pre>
+<p>使用 H、J、K 和 L 来调整窗格大小，所有都是大写：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687"># shift-movement keys will resize panes
+bind J resize-pane -D 5
+bind K resize-pane -U 5
+bind H resize-pane -L 5
+bind L resize-pane -R 5
+</code></pre></pre>
+<p>我经常使用 prefix + z 来出发窗口全屏模式，这样更方便看一些。</p>
+<p>过去，我不知道怎么按照 <code style="background:#f5f7ff;padding:2px">tmux</code> 方式复制文本，因此我做了些改动，得到无缝体验。</p>
+<p>首先，我允许 tmux 访问 OSX 的剪贴板：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687"># Workaround to allow accessing OSX pasteboard
+set-option -g default-command &quot;reattach-to-user-namespace -l zsh&quot;
+</code></pre></pre>
+<p>之后，我使用与 vim 相同的快捷键来选择和拷贝文本：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687"># Vi copypaste
+setw -g mode-keys vi
+unbind p
+bind p paste-buffer
+bind-key -T copy-mode-vi v send-keys -X begin-selection
+bind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel
+</code></pre></pre>
+<p>有了这些设置，当你在窗格中滚动拷贝文本的时候，只需要 preffix+[ 来开始滚动，h j k l 或者  Ctrl+u 和 Ctrl+d 移动光标，v 或者 shift+v 进行选择，y 来对所选内容进行拷贝。</p>
+<p>以下是其他一些自我解释的小改进：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687"># Start tabs at index 1
+# (they usually start at 0, which is too far from where my fingers usually are)
+set -g base-index 1
+
+# Make pane numbering consistent with windows
+setw -g pane-base-index 1
+
+# Renumber windows when a window is closed
+# This guarantees it will be easier for you to switch
+# between windows as you keep opening and closing them
+set -g renumber-windows on
+
+# Automatically set window title according to the running program
+set-window-option -g automatic-rename on
+set-option -g set-titles on
+</code></pre></pre>
+<h2>tmux 插件</h2>
+<p>安装管理 tmux 插件需要使用 <a href="https://github.com/tmux-plugins/tpm"><code style="background:#f5f7ff;padding:2px">tpm</code></a>。</p>
+<p>安装过程没什么好强调的，跟着 <a href="https://github.com/tmux-plugins/tpm#installation">README</a> 操作就行。</p>
+<p>我使用的主题是从 <a href="https://github.com/lucasfcosta/nord-tmux/"><code style="background:#f5f7ff;padding:2px">nord-tmux</code> 中自己 fork 的</a>。我绝对喜欢他们的配色方案，fork 是因为想自定义状态栏。</p>
+<p>一旦确定了要使用的主题，还可以添加新插件并自定义状态栏。</p>
+<p>例如，如果你想显示电池电量，需要使用 <a href="https://github.com/tmux-plugins/tmux-battery"><code style="background:#f5f7ff;padding:2px">tmux-battery</code></a>。在 <code style="background:#f5f7ff;padding:2px">.tmux.conf</code> 加入如下设置，并使用 prefix + I（I 大写的）来安装：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">set -g @plugin &#x27;tmux-plugins/tmux-battery&#x27;
+</code></pre></pre>
+<p>引用插件只需要在 <code style="background:#f5f7ff;padding:2px">status_bar</code> 设置中加入：</p>
+<pre><code style="background:#f5f7ff;padding:2px">set -g status-right &#x27;Battery: #{battery_icon} #{battery_percentage} #{battery_remain} | %a %h-%d %H:%M &#x27;
+</code></pre>
+<p>有一本书叫 tao-of-tmux，其中有<a href="https://github.com/git-pull/tao-of-tmux/blob/master/manuscript/09-status-bar.md">关于定制状态栏的完整指南</a>。</p>
+<p>下面是我现在在用的插件列表：</p>
+<ul>
+<li><a href="https://github.com/lucasfcosta/nord-tmux"><code style="background:#f5f7ff;padding:2px">lucasfcosta/nord-tmux</code></a> → 主题</li>
+<li><a href="https://github.com/tmux-plugins/tmux-cpu"><code style="background:#f5f7ff;padding:2px">tmux-plugins/tmux-cpu</code></a> → CPU 使用信息</li>
+<li><a href="https://github.com/tmux-plugins/tmux-battery"><code style="background:#f5f7ff;padding:2px">tmux-plugins/tmux-battery</code></a> → 电池状态</li>
+<li><a href="https://github.com/tmux-plugins/tmux-online-status"><code style="background:#f5f7ff;padding:2px">tmux-plugins/tmux-online-status</code></a> → 网络状态</li>
+<li><a href="https://github.com/tmux-plugins/tmux-ressurrect"><code style="background:#f5f7ff;padding:2px">tmux-plugins/tmux-resurrect</code></a> → 关机重启持久化会话</li>
+<li><a href="https://github.com/tmux-plugins/tmux-continuum"><code style="background:#f5f7ff;padding:2px">tmux-plugins/tmux-continuum</code></a> → 会话的持续保存与重新加载</li>
+<li><a href="https://github.com/robhurring/tmux-spotify"><code style="background:#f5f7ff;padding:2px">robhurring/tmux-spotify</code></a> → 显示正在播放的 spotify 歌曲</li>
+</ul>
+<h2>zsh</h2>
+<p>在 UNIX 中，shell 提供一个基于文本的接口，用于与底层操作系统通信。</p>
+<p>你可以把它看作是告诉你的机器它应该做什么的另一种方式，而不是像图形界面经常显示的那样，你键入命令，然后点击鼠标，让它显示所有杂乱的东西。</p>
+<p>通常默认的 shell 是 bash。</p>
+<p>zsh 是另一种 shell，提供方便的附加功能。</p>
+<p>设置 zsh 作为你的登录 shell，通过下面指令：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">chsh -s $(which zsh)
+</code></pre></pre>
+<p>zsh 自动补全比 bash 要好，不仅是文件目录，也包括像 git 这样的程序<a href="https://github.com/zsh-users/zsh-completions">以及其他</a>。</p>
+<p>只需要在输入命令的时候按 TAB，他就会帮你补全。</p>
+<p>zsh 具有高度扩展性，这也就是为啥 <a href="https://ohmyz.sh/"><code style="background:#f5f7ff;padding:2px">oh-my-zsh</code></a> 这么流行。oh-my-zsh 是一个框架，管理你的 zsh 设置，轻松添加插件，使用主题和定制其他相关设置。</p>
+<p>你可以从 <a href="https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH">oh-my-zsh 的 wiki 中找到安装方法</a>。</p>
+<p>zsh 的配置文件名为 .zshrc，位于家目录下。</p>
+<p>这个文件在打开新的 shell 实例时会被执行。通过运行它，你可以导出环境变量，运行指令。</p>
+<p>在当前的上下文运行脚本被称为 “sourcing it”。</p>
+<p>指定默认编辑器，在 <code style="background:#f5f7ff;padding:2px">.zshrc</code> 中加入：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687"># Use nvim as the default editor
+export EDITOR=nvim
+</code></pre></pre>
+<p>将 alias 分离到一个独立的 .aliases 文件下：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687"># Load aliases
+if [ -f ~/.aliases ]; then
+    . ~/.aliases
+fi
+</code></pre></pre>
+<p>你可以在 GitHub 上看到我的 <a href="https://github.com/lucasfcosta/dotfiles/blob/c01b73c6bd71b4888cae31440e14bf42297b3455/.aliases">.aliases 文件</a>。</p>
+<p>还可以使用 .zshrc 处理其他方便的任务，比如设置 nvm 来管理节点版本，或者设置 cargo 来处理 rust:</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687"># Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export NVM_DIR=&quot;$HOME/.nvm&quot;
+[ -s &quot;$NVM_DIR/nvm.sh&quot; ] &amp;&amp; \. &quot;$NVM_DIR/nvm.sh&quot;  # This loads nvm
+[ -s &quot;$NVM_DIR/bash_completion&quot; ] &amp;&amp; \. &quot;$NVM_DIR/bash_completion&quot;  # This loads nvm bash_completion
+
+# Add cargo to the PATH
+source $HOME/.cargo/env
+</code></pre></pre>
+<h2>zsh 插件</h2>
+<p>我现在的 zsh prompt 是 <a href="https://github.com/denysdovhan/spaceship-prompt">the <code style="background:#f5f7ff;padding:2px">spaceship-prompt</code></a>。它很漂亮，极简，还包括 emoji——千禧一代的一个必备特征。</p>
+<p>安装方式很简单，参见<a href="https://github.com/denysdovhan/spaceship-prompt#oh-my-zsh">这里</a>。</p>
+<p>我最喜欢的插件是 z。它允许你不用输入目录全称就能跳转过去。</p>
+<p>如果你在目录 <code style="background:#f5f7ff;padding:2px">/Users/Elon/tesla/new-york</code> 跳到了 <code style="background:#f5f7ff;padding:2px">/london</code>，想在跳回来，只需要输入 <code style="background:#f5f7ff;padding:2px">z new-york</code>。</p>
+<p>z 的工作原理是了解您更频繁地访问哪些目录，然后使用这些信息将您带到正确的位置。</p>
+<p>我还是用 <a href="https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/git">git</a> 插件，它是一些 git 的有用 alias。其中我最喜欢的是：</p>
+<ul>
+<li>g → git</li>
+<li>gcm → git checkout master</li>
+<li>gp → git push</li>
+<li>gst → git status</li>
+<li>grb → git rebase</li>
+<li>graba → git rebase --abort</li>
+<li>grbc → git rebase --continue</li>
+</ul>
+<p>如果你是在 20 世纪早期氛围，你可以安装 chucknorris 插件，并使用chuck命令来获取曾经有趣的笑话。</p>
+<p><img style="max-width:60%" src="https://maxiee.github.io/images/Linux2019NoGui03.png" class="ui centered image"/></p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687"># .zshrc plugins section
+plugins=(
+  z
+  git
+  chucknorris # ¯\_(ツ)_/¯
+)
+</code></pre></pre>
+<h2>iTerm2</h2>
+<p>iTerm2 是一个终端模拟器。不要与 shell 弄混，终端模拟器只不过是一个包含 shell 的窗口。</p>
+<p>终端模拟器负责 shell 的显示方式。iTerm2 很好，因为它允许我设置我想使用的字体和颜色。</p>
+<p>通过 <code style="background:#f5f7ff;padding:2px">Ctrl+,</code> 我能配置它的外观和一些有用的选项。</p>
+<p>我的 iTerm2 使用 <a href="https://github.com/arcticicestudio/nord-iterm2">the <code style="background:#f5f7ff;padding:2px">nord</code> iTerm colours</a> 来匹配我的主题，使用 DejaVu Sans Mono for Powerline 字体来展示文本。</p>
+<p><a href="https://github.com/powerline/fonts">Powerline Fonts</a> 是一个很值得拥有的插件。它包括了许多用于基于文本的布局的字符，比如你可以在我的 tmux 状态栏中看到的填充块和三角形。</p>
+<p><img style="max-width:60%" src="https://maxiee.github.io/images/Linux2019NoGui04.png" class="ui centered image"/></p>
+<p>我使用 iTerm2 原因是它比 macOS 默认的终端定制性更高。</p>
+<p>因为我有 tmux，因此不需要它的窗口管理功能。</p>
+<h2>其他有用的程序与工具</h2>
+<p>使用终端作为主交互界面的艺术在于时间与耐心。</p>
+<p>最难的地方在于添加新的工具到你的工作流，并习惯他们。</p>
+<p>有时候，你甚至不知道你想要做的事情有一个命令行替代方案。</p>
+<p>下面是其他有用的工具，可以结合到你的工作流中：</p>
+<ul>
+<li><a href="https://curl.haxx.se/"><code style="background:#f5f7ff;padding:2px">curl</code></a>, 通过 URL 搬运数据，我通常使用它做 HTTP 请求</li>
+<li><a href="https://stedolan.github.io/jq/"><code style="background:#f5f7ff;padding:2px">jq</code></a>, 处理 JSON.</li>
+<li><a href="http://www.grymoire.com/Unix/Sed.html"><code style="background:#f5f7ff;padding:2px">sed</code></a>, 处理文本，我很喜欢它</li>
+<li><a href="https://github.com/ggreer/the_silver_searcher"><code style="background:#f5f7ff;padding:2px">ag</code></a>, 搜索代码</li>
+<li><a href="https://www.gnu.org/software/gawk/manual/gawk.html"><code style="background:#f5f7ff;padding:2px">awk</code></a>, 用于转换和提取数据。我不经常使用它，但它对于编写脚本或有效地组合程序特别有用。</li>
+<li><a href="https://en.wikipedia.org/wiki/Cron"><code style="background:#f5f7ff;padding:2px">cron</code></a>, 定时任务</li>
+<li><a href="https://rsync.samba.org/"><code style="background:#f5f7ff;padding:2px">rsync</code></a>, 传输文件</li>
+<li><a href="https://www.gnu.org/software/make/"><code style="background:#f5f7ff;padding:2px">make</code></a>, 自动化任务</li>
+<li><a href="https://www.gzip.org/"><code style="background:#f5f7ff;padding:2px">gzip</code></a>, 处理压缩文件</li>
+</ul>
+<p>精通终端用户还需要了解基本管理命令、流、UNIX 权限和 shell 脚本。</p>
+<h2>其他有用的资源</h2>
+<ul>
+<li><a href="https://sanctum.geek.nz/arabesque/">arabesque</a>, a blog by <a href="https://sanctum.geek.nz/">Tom Ryder</a></li>
+<li><a href="https://leanpub.com/the-tao-of-tmux/read">The Tao of Tmux</a></li>
+<li><a href="http://learnvimscriptthehardway.stevelosh.com/">Learn VimScript The Hard Way</a></li>
+<li><a href="http://vim.wikia.com/">vim-wikia</a></li>
+</ul></div><div class="ui leaderboard ad"><ins class=" adsbygoogle" style="display:block" data-ad-client="ca-pub-8746515866560942" data-ad-slot="3546488844" data-ad-layout="" data-ad-format="auto" data-full-width-responsive="true"></ins></div></div></div></div></div></div></div><script type="text/javascript">
+    window.__routeInfo = {"template":"../src/pages/post","sharedHashesByProp":{},"data":{"post":{"name":"我是如何在 2019 年还不使用 GUI 的：终端指南（翻译）","desc":"在 GUI 泛滥的今天，我们能从命令行中学到什么呢？让我们重温 UNIX 哲学。如果你是 neovim、tmux、zsh 用户，也能在本文中找到有价值的使用经验。","type":"md","link":"Linux2019NoGuimd","create":"2019-03-16","filename":"Linux2019NoGui.md"},"content":"## 前言\n\n本文作者为 [Lucas Fernandes da Costa](https://lucasfcosta.com)，文章源链接为 [How I'm still not using GUIs in 2019: A guide to the terminal](https://lucasfcosta.com/2019/02/10/terminal-guide-2019.html)。\n\n> 这里是我的 [dotfiles](https://github.com/lucasfcosta/dotfiles)。欢迎使用！\n\nGUI 是臃肿的软件，我[之前已说过](https://lucasfcosta.com/2018/08/05/In-Praise-of-Plaintext.html)。可是，我也不能光对 IDE 耍嘴炮，我得提供一个使用命令行做替代的可行指南。\n\nIDE 是 Integrated Development Environment 的缩写，这可能是个准确的术语，但是在现实中使用 IDE 的时候，会发现不如终端好用。\n\n在本文中，我们一起来看如何把完整的开发环境都放在终端里实现：\n\n- 如何有效编辑文本\n- 如何配置外观\n- 运行并组合大量程序\n- 动态创建、调整大小、关闭 Tab 和窗口\n\n![](image/Linux2019NoGui01.png)\n\n# La Raison D’Être（存在的原因）\n\n在 IDE 中，你只能使用这个 IDE 下专门的插件，而在终端中，你可以使用任何程序。IDE 会把你限制在一个范围，这个范围是 IDE 的创建者认为你想要做什么。\n\n终端则不是这样，它允许你很容易地组合任何程序。由于管道的存在，你可以将一个程序的输出作为另一个程序的输入。\n\n这提供了很大的灵活性，允许你灵活地、有创造性地使用各种工具集，以实现原作者未曾想到的目的。\n\n这也使用 UNIX 哲学进行程序设计的最著名的特性：\n\n> Word、Excel、PowerPoint 和其他的微软程序都对彼此内部原理了如指掌，有人会说他们是混杂的。\n>\n> 在 Unix 中，人们设计的程序的操作是通用的，不是专门为彼此，而是针对尚未考虑的程序。\n>\n> —— *Doug McIlroy*\n\nGUI 的学习曲线没有命令行陡峭。但是，你对纯文本越熟悉，就越容易输入指令，而不是在界面中寻找选项和按钮。难得地方在于记忆需要输入的指令。\n\nIDE 还倾向于做过多的”魔术“。处于实用性考虑，他们对用于隐藏了基本细节，这回导致在遇到问题时找出真正原因变得更加困难。\n\n这有两个主要原因：\n\n1. 这层抽象会使人们完全不知道计算机在干什么\n2. 在 IDE 上点一个按钮就会执行大量操作，这使得分解过程和诊断其中有问题的过程变得困难\n\n现在你可能会争辩说，有些 ide 具有带控制台接口的小窗口，这些窗口与终端的输出是相同的，这没错。\n\n但这还不够。如果你仍然不知道如何使用计算机的术语跟计算机打交道，那么你将无法理解 IDE 显示的内容。\n\n习惯使用终端，这意味着你与计算机会用相同的“语言”进行沟通。\n\n终端程序的配置是非常便携的。大多数程序的配置都只需要把一个纯文本文件拷贝到指定地方就完事。\n\n这样，就算换了新机器，几秒至多几分钟时间就能在新机器中部署一个开发环境。\n\n终端程序的配置文件——通常叫 dotfiles——比 ide 的配置文件友好地多。\n\ndotfiles 是人可读的纯文本。与 IDE 相比，它与项目的耦合也比较少。\n\n当你使用 IDE 配置文件描述计算机应该如何构建代码的时候，你将强制团队中每个人使用相同的工具。\n\n换句话说，比如，当你使用 make（终端程序），这就给了人们自由，他们可以从 IDE 中构建，也可以从终端中构建。\n\n所有为熟练使用终端所付出的努力会很快获得回报。\n\n这个回报不是在时间节省上，因为实际中大多数时间是在思考，不是编码，因此几个快捷键省不了几秒钟。\n\n真正带来好处的是，使用终端让你对计算机是怎么工作的有更加深刻的认识，这会让你的工作流变得更可预测、更加灵活。\n\n最后，熟练使用终端是一种“一次学习到处使用”的技能。并不是每台机器都有 VSCode、Sublime 或者 Atom，但是每台机器都有终端。\n\n## 终端新手包\n\n我使用这些工具将我的终端打造成一个完整的开发环境：\n\n- [`neovim`](https://neovim.io/)\n- [`tmux`](https://github.com/tmux/tmux/wiki)\n- [`iterm2`](https://www.iterm2.com/)\n\n- [`zsh`](http://www.zsh.org/)\n- [`oh-my-zsh`](https://github.com/robbyrussell/oh-my-zsh)\n\n在本文的末尾，你会发现一些有用程序的清单。\n\n## neovim\n\nvim 是的文本编辑器选择，它在我的心中和[脚踝](https://pbs.twimg.com/media/DY65vJAW0AEfF-h.jpg)中都有特殊地位。\n\n译者注：之所以是脚踝，因为这位老哥在脚踝纹了一条 vim 指令：\n\n![](image/Linux2019NoGui02.jpg)\n\nneovim 是 vim 的另一个版本。它的快捷键跟  vim 一直，特性一样，与 vim 配置完全兼容。\n\n为了避免 vim 在执行语法检查之类的任务时冻结，neovim 允许你异步执行任务。\n\n他还支持多种脚本，有 VimL（这不是我最喜欢的语言），还支持 Lua 脚本。\n\n为了确保使用的是 nvim 而不是 vim，你可以使用下面语句 alias 一下。这个代码你可以放进 .zshrc 或者 .bashrc，或者你的 shell 所使用的配置中：\n\n```bash\nalias vim=\"nvim\"\nalias vimdiff=\"nvim -d\"\n```\n\n## 学习 Vim\n\n即使很多人害怕 vim，而且在 Stack Overflow 上还有一个老梗——[如何退出 vim 是 SO 上最受欢迎的问题](https://stackoverflow.blog/2017/05/23/stack-overflow-helping-one-million-developers-exit-vim/)。vim 还是更好的，因为它与众不同。\n\n**为了学习有效使用 vim，我强烈建议从 [vimtutor](https://superuser.com/questions/246487/how-to-use-vimtutor) 开始。**\n\n- 一开始可能会觉得枯燥，但这是正确学习 vim 最有效的方法。\n\n**硬着头皮别放弃。**\n\n- 如果你不知道怎么完成一个特定任务，去 duck-duck-go 搜一下。\n- 在开始的几天或者几周内，你会不得不记住哪个键对应哪个功能，但是随着时间的推移，他们会印在你脑子里，形成肌肉记忆。\n\n**从一开始就禁用方向键。**通过在 `~/.config/nvim/init.vim` （之前是 ``~/.vimrc`）加入以下代码：\n\n```bash\n\" don't use arrowkeys\nnoremap <Up> <NOP>\nnoremap <Down> <NOP>\nnoremap <Left> <NOP>\nnoremap <Right> <NOP>\n\n\" really, just don't\ninoremap <Up>    <NOP>\ninoremap <Down>  <NOP>\ninoremap <Left>  <NOP>\ninoremap <Right> <NOP>\n```\n\n**我通常建议已经熟悉 vim 的用户不要在 init.vim 中放任何不理解的东西。**\n\n- 搜索命令的功能会让你对 vim 有更好的理解\n- 这会给你所需的知识来配置你的工具\n- 这样使他们匹配你的编辑风格和工作方式\n\n现在，如果你喜欢毛线，就去 duck-duck-go 上查查 noremap 和 inoremap 这俩命令是干嘛的。\n\n一旦你熟悉文本编辑，[**开始关注反模式，比如多次重复相同的按键、重复命令，或者进入 inset 模式删除文本。**](https://sanctum.geek.nz/arabesque/vim-anti-patterns/)\n\n**你应当总是问问自己，是否有更好的方式来做这件事。**大多数时候答案都是肯定的。\n\n**避免插件，除非你确定要使用它。**\n\n- 大多数时候，vim 已经有你所需要的特性了，这样最好就不要再依赖第三方\n- 用的插件越少，运行速度就越快\n- 避免臃肿让你的 vim 在任何机器上都更容易使用\n\n作为一个初学者，你不知道自己需要什么，因此下面我会加一些你会认为改进工作流的内容。\n\n**我通常推荐初学者使用 [`NERDTree`](https://github.com/scrooloose/nerdtree) 和 [`fzf`](https://github.com/junegunn/fzf.vim)。**\n\n将来会最终会想整理你的配置，保持整洁。\n\n最后，我能给任何人的 vim 的人的最好建议是采用增量学习法。\n\n- 试着每天提高一点点，避免在短时间内学习太多的技巧\n- 每天使用你所选择的编辑器（希望是 vim）\n- 每天花点时间来消化一个命令\n- 在余生中使用它\n\n这比快速学习许多技巧并只使用一次更好。\n\n深入发掘，并以适当的速度学习。对此，我强烈推荐 [`vim Wikia`](http://vim.wikia.com/)。\n\n## 我目前在使用的插件\n\n要安装和使用插件，你可能需要使用 [`vim-plug`](https://github.com/junegunn/vim-plug)。\n\n它是一个极简的，易于安装的，易于使用的插件管理器。\n\n同时它还有很多优秀特性，比如：\n\n- 插件按需加载：[on-demand loading of plugins](https://github.com/junegunn/vim-plug#on-demand-loading-of-plugins)\n\n- 更新后钩子：[post-update hooks](https://github.com/junegunn/vim-plug#post-update-hooks)\n\n这允许你配置额外的安装步骤。\n\n[`neomake`](https://github.com/neomake/neomake) 是 neovim 对我的主要卖点。它允许你异步地运行程序，避免阻塞主线程。\n\n这个特性在运行语法检查和其他 CPU 密集的操作时尤为有用。之前用 vim 的时候，经常会卡住几秒钟。\n\n[`NERDTree`](https://github.com/scrooloose/nerdtree) 是一种可视化和管理文件树的简单方式。尽管它的所有特性都有原生的替代方案，但是原生的都不够实用。\n\n我通过下面几行配置 Ctrl+n 来打开 NERDTree 并显示隐藏文件：\n\n```bash\n\" NERDTree on ctrl+n\nlet NERDTreeShowHidden=1\nmap <silent> <C-n> :NERDTreeToggle<CR>\n\n\" close NERDTree after a file is opened\nlet g:NERDTreeQuitOnOpen=1\n```\n\n[`fzf.vim`](https://github.com/junegunn/fzf.vim) 用于模糊查找，允许你输入部分文件名就能快速查找并打开文件。\n\n安装 fzf 的过程要比其他插件麻烦一些。因为 fzf.vim 是一个 fzf 的封装，你需要使用下面几行来确保二进制文件已被安装：\n\n```bash\nPlug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }\nPlug 'junegunn/fzf.vim'\n```\n\nfzf 可以使用其它程序寻找文件，比如 UNIX 的 find，以及 [the silver searcher — also known as `ag`](https://github.com/ggreer/the_silver_searcher)。\n\n我喜欢使用 ag，因为我可以配置它来忽略 .gitignore 中的文件，这样不论我使用哪个仓库，都有合理的缺省值：\n\n```bash\n\" make FZF respect gitignore if `ag` is installed\n\" you will obviously need to install `ag` for this to work\nif (executable('ag'))\n    let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g \"\"'\nendif\n```\n\n最后，我使用 ctrl+p 快捷键绑定 fzf：\n\n```bash\nnnoremap <C-P> :Files<CR>\n```\n\n[`editorconfig-vim`](https://github.com/editorconfig/editorconfig-vim) 插件帮助我快速根据项目适配编辑器设置，只要项目中有 [.editorconfig 文件](https://editorconfig.org/)。\n\n有了这个插件，我就不用担心 EOF 格式，缩进数量和字符集的问题了。\n\n[emmet-vim](https://github.com/mattn/emmet-vim) 能加快写 HTML 的速度。如果你 JSX 写得多——像我一样——需要通过下面配置来正确处理 .jsx 和 .tsx 文件：\n\n```bash\n\" make emmet behave well with JSX in JS and TS files\nlet g:user_emmet_settings = {\n\\  'javascript' : {\n\\      'extends' : 'jsx',\n\\  },\n\\  'typescript' : {\n\\      'extends' : 'tsx',\n\\  },\n\\}\n```\n\n我使用 [`ale`](https://github.com/w0rp/ale) 作为语法检查引擎，因为他能与大多数语言的 linter 工作，并且开箱即用。\n\n使用一个支持所有语言的单个工具，避免了我之前配置多个插件以及维护所有配置的痛苦。\n\n有了 ale，如果你项目中有 eslint 和 .eslintrc 文件，它会以正确设置自动运行 eslint，并显示错误。\n\n我还通过配置让语法检查快一些，通过删除行尾和去掉多余空格：\n\n```bash\n\" fix files on save\nlet g:ale_fix_on_save = 1\n\n\" lint after 1000ms after changes are made both on insert mode and normal mode\nlet g:ale_lint_on_text_changed = 'always'\nlet g:ale_lint_delay = 1000\n\n\" use nice symbols for errors and warnings\nlet g:ale_sign_error = '✗\\ '\nlet g:ale_sign_warning = '⚠\\ '\n\n\" fixer configurations\nlet g:ale_fixers = {\n\\   '*': ['remove_trailing_lines', 'trim_whitespace'],\n\\}\n\n```\n\n插件中最突出的可能是 [`YouCompleteMe`](https://github.com/Valloric/YouCompleteMe)，它提供了像 IDE 一样的基于语义的补全建议。\n\nYouCompleteMe 建议考虑代码的含义（它的语义），而不是只搜索相似的单词(标记)。\n\nYouCompleteMe 插件是一个连接到 YouCompleteMe Server 的 Client，Server 是真正产生建议的地方。\n\nServer 为每种语言运行不同的服务。例如对于 TypeScript，YouCompleteMe 运行微软的 TSServer。\n\n要安装这个插件，你还要安装 YouCompleteMe Server：\n\n```bash\n\" semantic-based completion\nPlug 'Valloric/YouCompleteMe', { 'do': './install.py' }\n```\n\n如果上面命令出错，需要确认你的 neovim 是否支持[基于 Python 的插件](https://github.com/deoplete-plugins/deoplete-jedi/wiki/Setting-up-Python-for-Neovim#simple-setup)。或者试着运行 `~/.config/nvim/plugged/YouCompleteMe` 下的 install.py。\n\n不用说的是，它对强类型语言会更有用一些。我主要测试的语言是 rust 和 TypeScript，都很美妙。\n\n我还使用以下几行代码，将它的建议绑定到 vim 的默认快捷方式和弹出窗口中完成：\n\n```bash\n\" disable auto_triggering ycm suggestions pane and instead\n\" use semantic completion only on Ctrl+n\nlet ycm_trigger_key = '<C-n>'\nlet g:ycm_auto_trigger = 0\nlet g:ycm_key_invoke_completion = ycm_trigger_key\n\n\" this is some arcane magic to allow cycling through the YCM options\n\" with the same key that opened it.\n\" See http://vim.wikia.com/wiki/Improve_completion_popup_menu for more info.\nlet g:ycm_key_list_select_completion = ['<TAB>', '<C-j>']\ninoremap <expr> ycm_trigger_key pumvisible() ? \"<C-j>\" : ycm_trigger_key;\n```\n\n我的语言相关的插件有 `rust.vim`、`vim-javascript`、`typescript-vim`，因为这些语言我经常写。\n\n我只在开始使用新语言时配置语言相关的插件。可能你已经注意到了，我是极简主义者。\n\n## tmux\n\ntmux 是一个终端的多路复用器。本质上，这个花哨的名字的意思是说，**允许你在一个终端窗口中拥有多个选项卡和窗格。**\n\n它利用了终端的多功能性，使其更加灵活。\n\n如果你年纪足够大，还记得 IE6 以及不得不使用一堆窗口浏览网页的可怕经历，你可能会记得浏览器引入选项卡时的巨大改进。这是 tmux 提供的相同的改变生活的改进。\n\n在 tmux 术语中，每个选项卡都是一个窗口，一个窗口可以包含一个或多个窗格（分割）。\n\n这些窗口包含在会话中，您可以将其附加或分离到当前 shell。\n\n当分离一个会话时，tmux 服务器将继续运行它，以便您可以在需要时重新连接它。\n\n在后台有会话对于在处理不同任务时保持程序运行非常有用。\n\n在一个窗口中有多个窗格对于编辑文本和需要关注测试非常有用，例如，当您更改文件时，测试就会运行。它对于在一个窗格中运行git命令和在另一个窗格中修复冲突也很方便。\n\n使用 tmux 最显著的优点是，你可以并行运行任意多的程序，查看它们的输出，而不必使用图形界面拖动面板或切换视图。\n\n如果您需要快速切换到不同的任务，但又不想放弃当前工作的上下文，那么使用许多不同的 Tab 也很有用。\n\ntmux 的快捷键绑定包含一个 prefix 和快捷键本身。要触发一个快捷键，按下 prefix 键，之后按下快捷键。\n\n如果你的快捷键是 Ctrl+a，横向切分键是 `-`。这样先按下 Ctrl+a 在按 -。\n\n你可以将 prefix 理解为告诉终端说我要使用 tmux 快捷键的组合键。\n\n我发现 tmux 默认的快捷键不太好用，因此我做了一些调整。\n\n现在我实用 `C-a` 作为 prefix，h、j、k、l 作为切换窗格的键，与 vim 相同。- 和 | 用于横向与纵向切分。\n\n```basic\n# Free the original `Ctrl-b` prefix keybinding.\nunbind C-b\n\n# set prefix key to ctrl-a\nset -g prefix C-a\n\n# vi keys for switching panes\nbind-key h select-pane -L\nbind-key j select-pane -D\nbind-key k select-pane -U\nbind-key l select-pane -R\n\n# Splitting panes.\nbind - split-window -v\nbind | split-window -h\n```\n\n使用 H、J、K 和 L 来调整窗格大小，所有都是大写：\n\n```bash\n# shift-movement keys will resize panes\nbind J resize-pane -D 5\nbind K resize-pane -U 5\nbind H resize-pane -L 5\nbind L resize-pane -R 5\n```\n\n我经常使用 prefix + z 来出发窗口全屏模式，这样更方便看一些。\n\n过去，我不知道怎么按照 `tmux` 方式复制文本，因此我做了些改动，得到无缝体验。\n\n首先，我允许 tmux 访问 OSX 的剪贴板：\n\n```bash\n# Workaround to allow accessing OSX pasteboard\nset-option -g default-command \"reattach-to-user-namespace -l zsh\"\n```\n\n之后，我使用与 vim 相同的快捷键来选择和拷贝文本：\n\n```bash\n# Vi copypaste\nsetw -g mode-keys vi\nunbind p\nbind p paste-buffer\nbind-key -T copy-mode-vi v send-keys -X begin-selection\nbind-key -T copy-mode-vi y send-keys -X copy-selection-and-cancel\n```\n\n有了这些设置，当你在窗格中滚动拷贝文本的时候，只需要 preffix+[ 来开始滚动，h j k l 或者  Ctrl+u 和 Ctrl+d 移动光标，v 或者 shift+v 进行选择，y 来对所选内容进行拷贝。\n\n以下是其他一些自我解释的小改进：\n\n```bash\n# Start tabs at index 1\n# (they usually start at 0, which is too far from where my fingers usually are)\nset -g base-index 1\n\n# Make pane numbering consistent with windows\nsetw -g pane-base-index 1\n\n# Renumber windows when a window is closed\n# This guarantees it will be easier for you to switch\n# between windows as you keep opening and closing them\nset -g renumber-windows on\n\n# Automatically set window title according to the running program\nset-window-option -g automatic-rename on\nset-option -g set-titles on\n```\n\n## tmux 插件\n\n安装管理 tmux 插件需要使用 [`tpm`](https://github.com/tmux-plugins/tpm)。\n\n安装过程没什么好强调的，跟着 [README](https://github.com/tmux-plugins/tpm#installation) 操作就行。\n\n我使用的主题是从 [`nord-tmux` 中自己 fork 的](https://github.com/lucasfcosta/nord-tmux/)。我绝对喜欢他们的配色方案，fork 是因为想自定义状态栏。\n\n一旦确定了要使用的主题，还可以添加新插件并自定义状态栏。\n\n例如，如果你想显示电池电量，需要使用 [`tmux-battery`](https://github.com/tmux-plugins/tmux-battery)。在 `.tmux.conf` 加入如下设置，并使用 prefix + I（I 大写的）来安装：\n\n```bash\nset -g @plugin 'tmux-plugins/tmux-battery'\n```\n\n引用插件只需要在 `status_bar` 设置中加入：\n\n```\nset -g status-right 'Battery: #{battery_icon} #{battery_percentage} #{battery_remain} | %a %h-%d %H:%M '\n```\n\n有一本书叫 tao-of-tmux，其中有[关于定制状态栏的完整指南](https://github.com/git-pull/tao-of-tmux/blob/master/manuscript/09-status-bar.md)。\n\n下面是我现在在用的插件列表：\n\n- [`lucasfcosta/nord-tmux`](https://github.com/lucasfcosta/nord-tmux) → 主题\n- [`tmux-plugins/tmux-cpu`](https://github.com/tmux-plugins/tmux-cpu) → CPU 使用信息\n- [`tmux-plugins/tmux-battery`](https://github.com/tmux-plugins/tmux-battery) → 电池状态\n- [`tmux-plugins/tmux-online-status`](https://github.com/tmux-plugins/tmux-online-status) → 网络状态\n- [`tmux-plugins/tmux-resurrect`](https://github.com/tmux-plugins/tmux-ressurrect) → 关机重启持久化会话\n- [`tmux-plugins/tmux-continuum`](https://github.com/tmux-plugins/tmux-continuum) → 会话的持续保存与重新加载\n- [`robhurring/tmux-spotify`](https://github.com/robhurring/tmux-spotify) → 显示正在播放的 spotify 歌曲\n\n## zsh\n\n在 UNIX 中，shell 提供一个基于文本的接口，用于与底层操作系统通信。\n\n你可以把它看作是告诉你的机器它应该做什么的另一种方式，而不是像图形界面经常显示的那样，你键入命令，然后点击鼠标，让它显示所有杂乱的东西。\n\n通常默认的 shell 是 bash。\n\nzsh 是另一种 shell，提供方便的附加功能。\n\n设置 zsh 作为你的登录 shell，通过下面指令：\n\n```bash\nchsh -s $(which zsh)\n```\n\nzsh 自动补全比 bash 要好，不仅是文件目录，也包括像 git 这样的程序[以及其他](https://github.com/zsh-users/zsh-completions)。\n\n只需要在输入命令的时候按 TAB，他就会帮你补全。\n\nzsh 具有高度扩展性，这也就是为啥 [`oh-my-zsh`](https://ohmyz.sh/) 这么流行。oh-my-zsh 是一个框架，管理你的 zsh 设置，轻松添加插件，使用主题和定制其他相关设置。\n\n你可以从 [oh-my-zsh 的 wiki 中找到安装方法](https://github.com/robbyrussell/oh-my-zsh/wiki/Installing-ZSH)。\n\nzsh 的配置文件名为 .zshrc，位于家目录下。\n\n这个文件在打开新的 shell 实例时会被执行。通过运行它，你可以导出环境变量，运行指令。\n\n在当前的上下文运行脚本被称为 “sourcing it”。\n\n指定默认编辑器，在 `.zshrc` 中加入：\n\n```bash\n# Use nvim as the default editor\nexport EDITOR=nvim\n```\n\n将 alias 分离到一个独立的 .aliases 文件下：\n\n```bash\n# Load aliases\nif [ -f ~/.aliases ]; then\n    . ~/.aliases\nfi\n```\n\n你可以在 GitHub 上看到我的 [.aliases 文件](https://github.com/lucasfcosta/dotfiles/blob/c01b73c6bd71b4888cae31440e14bf42297b3455/.aliases)。\n\n还可以使用 .zshrc 处理其他方便的任务，比如设置 nvm 来管理节点版本，或者设置 cargo 来处理 rust:\n\n```bash\n# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.\nexport NVM_DIR=\"$HOME/.nvm\"\n[ -s \"$NVM_DIR/nvm.sh\" ] && \\. \"$NVM_DIR/nvm.sh\"  # This loads nvm\n[ -s \"$NVM_DIR/bash_completion\" ] && \\. \"$NVM_DIR/bash_completion\"  # This loads nvm bash_completion\n\n# Add cargo to the PATH\nsource $HOME/.cargo/env\n```\n\n## zsh 插件\n\n我现在的 zsh prompt 是 [the `spaceship-prompt`](https://github.com/denysdovhan/spaceship-prompt)。它很漂亮，极简，还包括 emoji——千禧一代的一个必备特征。\n\n安装方式很简单，参见[这里](https://github.com/denysdovhan/spaceship-prompt#oh-my-zsh)。\n\n我最喜欢的插件是 z。它允许你不用输入目录全称就能跳转过去。\n\n如果你在目录 `/Users/Elon/tesla/new-york` 跳到了 `/london`，想在跳回来，只需要输入 `z new-york`。\n\nz 的工作原理是了解您更频繁地访问哪些目录，然后使用这些信息将您带到正确的位置。\n\n我还是用 [git](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/git) 插件，它是一些 git 的有用 alias。其中我最喜欢的是：\n\n- g → git\n- gcm → git checkout master\n- gp → git push\n- gst → git status\n- grb → git rebase\n- graba → git rebase --abort\n- grbc → git rebase --continue\n\n如果你是在 20 世纪早期氛围，你可以安装 chucknorris 插件，并使用chuck命令来获取曾经有趣的笑话。\n\n![](image/Linux2019NoGui03.png)\n\n```bash\n# .zshrc plugins section\nplugins=(\n  z\n  git\n  chucknorris # ¯\\_(ツ)_/¯\n)\n```\n\n## iTerm2\n\niTerm2 是一个终端模拟器。不要与 shell 弄混，终端模拟器只不过是一个包含 shell 的窗口。\n\n终端模拟器负责 shell 的显示方式。iTerm2 很好，因为它允许我设置我想使用的字体和颜色。\n\n通过 `Ctrl+,` 我能配置它的外观和一些有用的选项。\n\n我的 iTerm2 使用 [the `nord` iTerm colours](https://github.com/arcticicestudio/nord-iterm2) 来匹配我的主题，使用 DejaVu Sans Mono for Powerline 字体来展示文本。\n\n[Powerline Fonts](https://github.com/powerline/fonts) 是一个很值得拥有的插件。它包括了许多用于基于文本的布局的字符，比如你可以在我的 tmux 状态栏中看到的填充块和三角形。\n\n![](image/Linux2019NoGui04.png)\n\n我使用 iTerm2 原因是它比 macOS 默认的终端定制性更高。\n\n因为我有 tmux，因此不需要它的窗口管理功能。\n\n## 其他有用的程序与工具\n\n使用终端作为主交互界面的艺术在于时间与耐心。\n\n最难的地方在于添加新的工具到你的工作流，并习惯他们。\n\n有时候，你甚至不知道你想要做的事情有一个命令行替代方案。\n\n下面是其他有用的工具，可以结合到你的工作流中：\n\n- [`curl`](https://curl.haxx.se/), 通过 URL 搬运数据，我通常使用它做 HTTP 请求\n- [`jq`](https://stedolan.github.io/jq/), 处理 JSON.\n- [`sed`](http://www.grymoire.com/Unix/Sed.html), 处理文本，我很喜欢它\n- [`ag`](https://github.com/ggreer/the_silver_searcher), 搜索代码\n- [`awk`](https://www.gnu.org/software/gawk/manual/gawk.html), 用于转换和提取数据。我不经常使用它，但它对于编写脚本或有效地组合程序特别有用。\n- [`cron`](https://en.wikipedia.org/wiki/Cron), 定时任务\n- [`rsync`](https://rsync.samba.org/), 传输文件\n- [`make`](https://www.gnu.org/software/make/), 自动化任务\n- [`gzip`](https://www.gzip.org/), 处理压缩文件\n\n精通终端用户还需要了解基本管理命令、流、UNIX 权限和 shell 脚本。\n\n## 其他有用的资源\n\n- [arabesque](https://sanctum.geek.nz/arabesque/), a blog by [Tom Ryder](https://sanctum.geek.nz/)\n- [The Tao of Tmux](https://leanpub.com/the-tao-of-tmux/read)\n- [Learn VimScript The Hard Way](http://learnvimscriptthehardway.stevelosh.com/)\n- [vim-wikia](http://vim.wikia.com/)"},"path":"post/Linux2019NoGuimd","sharedData":{},"siteData":{"title":"Maxiee Blog"}};</script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/vendors~src/pages/about~src/pages/post~src/pages/services.9ebe3a93.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/vendors~src/pages/bookmarks~src/pages/gallery~src/pages/post.0f2bae8a.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/vendors~src/pages/gallery~src/pages/post.bf181f2d.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/vendors~src/pages/post.3413cc1f.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/src/pages/post.083217cc.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/styles.ec85b004.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/vendors~main.fc8eff89.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/main.d5516191.js"></script></body></html>

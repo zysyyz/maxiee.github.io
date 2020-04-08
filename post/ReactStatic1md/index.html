@@ -1,0 +1,198 @@
+<!DOCTYPE html><html lang="en"><head><meta name="generator" content="React Static"/><title data-react-helmet="true">react-static 静态网站搭建（一）：什么是 React 静态网站？ | Maxiee Blog</title><meta data-react-helmet="true" charSet="UTF-8"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/vendors~src/pages/about~src/pages/post~src/pages/services.9ebe3a93.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/vendors~src/pages/bookmarks~src/pages/gallery~src/pages/post.0f2bae8a.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/vendors~src/pages/gallery~src/pages/post.bf181f2d.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/vendors~src/pages/post.3413cc1f.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/src/pages/post.083217cc.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/styles.ec85b004.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/vendors~main.fc8eff89.js"/><link rel="preload" as="script" href="https://maxiee.github.io/main.d5516191.js"/><link rel="preload" as="style" href="https://maxiee.github.io/styles.ec85b004.css"/><link rel="stylesheet" href="https://maxiee.github.io/styles.ec85b004.css"/><script data-react-helmet="true" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><meta charSet="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, shrink-to-fit=no"/></head><body><div id="root"><div style="outline:none" tabindex="-1" role="group"><div><div style="display:flex;flex-direction:row;justify-content:space-between;margin-left:26px;margin-right:26px;height:72px"><div style="display:flex;flex-direction:row;justify-content:center;align-items:center"><img src="data:image/jpeg;base64,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" class="ui mini circular centered image"/><div style="margin-left:12px;font-size:18px"><a href="https://maxiee.github.io/">Maxiee Blog</a></div></div><div style="display:flex;flex-direction:row;align-items:center"><div style="color:#666666;margin-left:26px"><a href="https://maxiee.github.io/post">博客</a></div><div style="margin-left:26px" role="listbox" aria-expanded="false" class="ui dropdown" tabindex="0"><div class="text" role="alert" aria-live="polite">作品</div><i aria-hidden="true" class="dropdown icon"></i><div class="menu transition"><div role="option" class="item"><div style="margin:10px" class="text"><a href="https://maxiee.github.io/post/RayInfomd">RayInfo</a><div style="color:#CCCCCC">资讯阅读 App</div></div></div><div role="option" class="item"><div style="margin:10px" class="text"><a href="https://maxiee.github.io/post/MaxieeRNLabmd">MaxieeRNLab</a><div style="color:#CCCCCC">React Native 综合示例 APP</div></div></div><div role="option" class="item"><div style="margin:10px" class="text"><a href="https://maxiee.github.io/post/JiuShengmd">韭生</a><div style="color:#CCCCCC">roguelike 人生模拟器游戏</div></div></div></div></div><div style="color:#666666;margin-left:26px"><a href="https://maxiee.github.io/daily">Daily</a></div><div style="color:#666666;margin-left:26px"><a href="https://maxiee.github.io/gallery">设计</a></div><div style="color:#666666;margin-left:26px"><a href="https://maxiee.github.io/about">关于</a></div></div></div><div class="ui grid"><div class="row"><div style="margin-left:20px;margin-right:20px" class="column"><h1 class="ui header">react-static 静态网站搭建（一）：什么是 React 静态网站？</h1><p style="margin-bottom:20px;color:gray">2019-03-12</p><div class="ui leaderboard ad"><ins class=" adsbygoogle" style="display:block" data-ad-client="ca-pub-8746515866560942" data-ad-slot="3546488844" data-ad-layout="" data-ad-format="auto" data-full-width-responsive="true"></ins></div><div><h2>前言</h2>
+<p>maxiee.github.io 是一个基于 react-static 的 React 静态网站。它与传统的静态博客有很多异同。在这个系列中，我准备介绍 react-static，它是一个非常优秀的 React 静态网站生成器。本文是第一篇，我们先来看看 React 静态网站。</p>
+<p>React 静态网站与传统的静态博客相比，有很多相同之处，也有很多异同之处。在本文中，我试图将这些异同讲清楚，希望能展示出 React 静态网站对静态网站开发带来的巨大提升。</p>
+<p>首先，我们先从最简单的 HTML 网页说起。</p>
+<h2>静态 HTML 网页</h2>
+<p>让我们回到互联网的原始时代，没有数据库、没有 PHP、没有 API。</p>
+<p>那时的主页真的就只是一个 HTML 文件，比如上面写着：</p>
+<div class="ui orange message">
+<p>“欢迎来到 Maxiee 的主页！我是一个 Linux 爱好者，如果你想与我交朋友，请给我发邮件或者打电话，我的联系方式如下：……”</p>
+</div>
+<p>这就是最简单的网页，它的结构如下：</p>
+<p><img style="max-width:60%" src="https://maxiee.github.io/images/ReactStatic101.png" class="ui centered image"/></p>
+<p>其中：</p>
+<ul>
+<li>CSS 是主页的样式</li>
+<li>body 部分是我们的网页内容</li>
+<li>js 在早期往往是一些小特效，比如背景雪花、跟随鼠标的粒子效果这种</li>
+</ul>
+<p>这种网页我们将之成为静态网页（没有 API 请求、没有数据库查询，只需要文件服务器托管即可展示）。</p>
+<h2>动态网页</h2>
+<p>为了更好地理解静态 HTML 网页，我们再来说说他的反义词，动态网页。</p>
+<p>动态网页往往是跟 Web 框架相关联，比如 Django、Flask、Laravel、Wordpress。</p>
+<p>对于一个传统的 MVC 网站，当用户访问 url 时，Web 框架会经历这些过程：</p>
+<ul>
+<li>收到 HTTP 请求，解析 url 路径</li>
+<li>根据路径（文章页面）进行数据库检索，获取数据</li>
+<li>加载网页模板（文章页），将数据填充到模板当中，<strong>动态生成 HTML</strong></li>
+<li>将生成好的 HTML 通过 HTTP 响应返回给用户</li>
+</ul>
+<p>从中可以看出，动态网页是在用户请求时现学现卖，匆匆忙忙拼凑出页面返回。</p>
+<p>而静态网页则是一开始就把数据填充进去了，什么时候要就直接把文件扔过去，更潇洒一些。</p>
+<h2>静态博客</h2>
+<p>静态博客（Hexo、Jekyll、Hugo……）同样也是基于上节中古老的静态网页技术。如果你搭建并使用过静态博客，对其应该再熟悉不过了。</p>
+<p><a href="https://pages.github.com/">GitHub Pages</a> 就是著名的静态网站托管服务。我的 maxiee.github.io 就是托管在上面。任何人写一个静态的 HTML 页面，都可以部署到 GitHub Pages，作为静态网站供人访问。</p>
+<p>使用静态博客进行写作时，我们并不是直接徒手写 HTML（那样效率太低了），而是使用 Markdown 语法进行写作。比如按照如下的目录结构：</p>
+<pre><code style="background:#f5f7ff;padding:2px">.
+└── content
+    └── about
+    |   └── _index.md  // &lt;- https://example.com/about/
+    ├── posts
+    |   ├── firstpost.md   // &lt;- https://example.com/posts/firstpost/
+    |   ├── happy
+    |   |   └── ness.md  // &lt;- https://example.com/posts/happy/ness/
+    |   └── secondpost.md  // &lt;- https://example.com/posts/secondpost/
+    └── quote
+        ├── first.md       // &lt;- https://example.com/quote/first/
+        └── second.md      // &lt;- https://example.com/quote/second/
+</code></pre>
+<p>来源：<a href="https://gohugo.io/content-management/organization/">HUGO Content Organization</a>。</p>
+<p>静态博客又称为静态博客生成器，是因为它通过一个命令行，将这些 Markdown 文件经过模板套用，渲染为文章 HTML，又将这些文章网页连同首页、归档页、关于页等等，共同组装成为一个网站，即静态博客。</p>
+<p>当生成器构建完成的时候，这个网站的内容变固定下来了，部署到远端后（如 GitHub Pages），用户每次打开都展示同样的内容。</p>
+<p>直到下一次需要重新生成（比如写作了新文章），再次执行生成器，经过一番渲染与组装，网站产生了新的快照。</p>
+<p>下面我们再用图像来展示这个过程：</p>
+<p>① Markdown 文章转换为 HTML 的过程：</p>
+<p><img style="max-width:60%" src="https://maxiee.github.io/images/ReactStatic103.png" class="ui centered image"/></p>
+<p>② 整个网站，所有 Markdown 转换组装为整个静态博客站点的过程：</p>
+<p><img style="max-width:60%" src="https://maxiee.github.io/images/ReactStatic102.png" class="ui centered image"/></p>
+<h2>React SPA 应用</h2>
+<p>很多人也许会奇怪，React 怎么会跟静态网站建立起联系来呢？因为说到 React，往往就会提到 <a href="https://en.wikipedia.org/wiki/Single-page_application">SPA（Single Page Application，单页应用）</a>。</p>
+<p>单页应用是什么呢？在上面的维基百科链接中有详细的定义。在这里我直接给出直观上的认识：</p>
+<ul>
+<li>
+<p>在线的 Photoshop-like 网站，打开网址就是一个图片编辑程序</p>
+</li>
+<li>
+<p>在线的 Rogue-like 游戏网站，<a href="https://react-rpg.com/">react-rpg</a></p>
+</li>
+<li>
+<p>著名的 Gmail</p>
+</li>
+<li>
+<p>Office 365 网页版</p>
+</li>
+</ul>
+<p>提到这些网站我们会发现，他们与传统的新闻网站不同，他们都是应用（Application）软件。</p>
+<p>对于传统的新闻网站或者论坛，主要作用是展示内容，同时处理部分表单提交需求。而对于 SPA 来说，交互性大大提高。</p>
+<p>React 就是一个现在最流行的 SPA 开发技术。</p>
+<p>使用功能 React 开发的 SPA Web 网站有一个特点，它一般由两部分组成：</p>
+<ul>
+<li>
+<p>一个 index.html，里面几乎是空的，除了导入一个 JavaScript 脚本</p>
+</li>
+<li>
+<p>一堆 JavaScript 脚本，我们把他们整体看待，他们是 Webpack 打包出的 Bundle</p>
+</li>
+<li>
+<p>这有点像 Android APK。</p>
+</li>
+</ul>
+<p>既然网站的逻辑全在 JavaScript Bundle 中，就会带来一个问题——包体积、启动时间。</p>
+<p>针对这个问题的解法是<strong>分包、懒加载</strong>，这也是前端领域的一个热门话题。</p>
+<p>分包、懒加载值得就是把 Bundle 碎片化，在每个页面都只加载其所必要的数据即可。这样既加快了首次打开速度，有不影响用户体验，通过<strong>预加载</strong>技术，更能将体验达到用户无感知。</p>
+<h2>SPA 也是静态网站</h2>
+<p>说到这里不知你发现没有，SPA 也是由纯的 HTML、CSS、Java 所组成的，这与前面的静态 HTML 网页是一样的！</p>
+<p>事实也是的确如此。我们用 React 开发的应用，也可以托管在 GitHub Page 上。</p>
+<p>注：尽管 GitHub Page 本身没有完全支持，但是通过一点小 hack 即可实现，详情参见<a href="https://itnext.io/so-you-want-to-host-your-single-age-react-app-on-github-pages-a826ab01e48">一</a>、<a href="https://github.com/rafrex/spa-github-pages">二</a>。</p>
+<p>但是也有不同之处，以博客为例，在启动起来之后博客只有一个框架，与 APP 相似，它需要再发起网络请求来拉取数据，比如拉取文章列表。</p>
+<p>这个列表既可以有一个 PHP API 返回，也可以是 GitHub Pages 某个路径上的 json 文件。</p>
+<p>博客中运行的 React 代码会解析返回的数据，并展示到页面上。</p>
+<p>前阵子比较流行的<strong>前后端分离</strong>，就是指这个事情。这样就把动态网页中网络框架（后端）跟前端页面（前端）解耦了，各玩各的。</p>
+<p>SPA 也是静态网站，与静态 HTML 相比，静态 HTML 是所有数据完全包含在内了，而 SPA 只包含了一个壳子，数据需要等壳子加载好后，在通过请求拉取。</p>
+<h2>SPA 静态化</h2>
+<p>这一节最让人懵逼了……怎么说呢？看看这一句：<strong>在上一节中，我们说 SPA 也是一个静态网站；在本节中，我们来看如何将 SPA 静态化。</strong></p>
+<p>你懵了吗？不管你信不信，我反正是懵了。哈哈哈，言归正传。</p>
+<p>我们在上一节中说到：</p>
+<div class="ui orange message">
+<p>SPA 也是静态网站，与静态 HTML 相比，静态 HTML 是所有数据完全包含在内了，而 SPA 只包含了一个壳子，数据需要等壳子加载好后，在通过请求拉取。</p>
+</div>
+<p>SPA 静态的东西只有一层壳，数据是网页加载好后再去加载的。这里面会有几个问题：</p>
+<ol>
+<li>SPA 这层壳的加载也要耗费时间<ul>
+<li>首先要把 React 框架加载起来（印象里是数十 KB）</li>
+<li>之后再把我们基于 React 开发的网站框架（壳）加载起来<ul>
+<li>这个大小就不好说了，分包懒加载做得好的话小一些，做的不好的话大一些，没经验的话就会很大</li>
+<li>最小也要数十 KB</li>
+</ul></li>
+</ul></li>
+<li>壳加载好后，需要再发一个请求去拉数据<ul>
+<li>如果是一篇文章，数据本身可能要几 KB</li>
+<li>虽然流量开销不大，但是建立新的 HTTP 请求有时间开销</li>
+<li>在网络情况一般的时候可能要几十毫秒</li>
+</ul></li>
+</ol>
+<p>从中可以看出，这种网站是很受网络情况影响的，如果网速不佳，体验会大大下降。</p>
+<p>让我们换一个角度来想：</p>
+<div class="ui orange message">
+<p>SPA 把壳加载起来，再把数据拉取完成，DOM 在经过一顿折腾后终于固定下来。我们能否用一个照相机，将这个固定下来的 DOM 照下来（Snapshot），这样不就得到了一个普通的静态 HTML 网页吗？</p>
+<p>这个网页的大小可能一共就几 KB，直接把他拉下来速度不是更快吗？</p>
+</div>
+<p>这个思路就是 SPA 静态化，换做一个比较流行的说法，叫 SSR（Server-Side Rendering，服务端渲染）。参考文献<a href="https://flaviocopes.com/react-server-side-rendering/">一</a>、<a href="https://medium.freecodecamp.org/demystifying-reacts-server-side-render-de335d408fe4">二</a>、<a href="https://juejin.im/entry/5ac197caf265da2377198fb6">三</a>。</p>
+<h2>两种 SSR</h2>
+<p>SSR 指的是在服务端就将 React 应用渲染为最终的静态 HTML，返回给用户。</p>
+<p>在具体实施时，有两种不同的做法，分别发生在不同的阶段。</p>
+<h3>网络框架阶段</h3>
+<p>比较常用的是在网络框架阶段进行渲染。</p>
+<p>具体来说，当用户请求 url 的时候，网络框架获取数据，同时在 Server 侧执行 React 应用的代码，跑出最终的 DOM 结果，返回给用户。</p>
+<p>这样既加快了速度，又减少了流量的开销。</p>
+<p>不知你有没有发现，前面讲了<strong>前后端分离</strong>，这种做法看起来是不是又<strong>前后端结合</strong>了呢？</p>
+<p>其实并没有，SSR 对于后端而言，应该做成一个无感知的框架，相当于为前端提供了一种 Cache 服务。</p>
+<p>后端还是后端，前端还是前端，两者并没有发生业务上的耦合。</p>
+<h3>构建阶段</h3>
+<p>还有一种更加纯粹的 SSR 方法，其实称之为 BSR（Builder-Side Rendering） 更合适。</p>
+<p>具体说来，是在 Webpack 工程构建完成的时候，跑起一个无头浏览器（如 Puppeteer），按照 Router 把每一个网页都跑一遍，对每个网页，都将浏览器执行的最终结果保存为静态 HTML 页面。</p>
+<p>这样，一个 React 应用就完全变成了跟 Hexo、Jekyll 一样的静态博客了。</p>
+<p>react-static 就是基于这种方法进行的。许多流行的 React Static Site Generator 都是基于这种方法进行的（如 Gatsby）。</p>
+<h2>react-static 介绍</h2>
+<p>说了一大堆，终于说到我们系列的主角——<a href="https://github.com/nozzle/react-static">react-static</a>。</p>
+<p>它是一个渐进式的 React 静态网站生成器。怎么理解呢？</p>
+<p>React SPA 静态网站生成器，这个我们已经在前几节中讲明白了。</p>
+<p>至于渐进式是什么意思，我们先不管它。</p>
+<p>有了 react-static，不是说任何 React 网站通过它都能变静态。react-static 是一个框架，它定义了一些规则。React 应用必须按照他定义的概念、规则来编写，才能工作。</p>
+<p>如果是一个既有的 React 应用，则必须按照 react-static 的概念、规则进行改造，才能工作。</p>
+<p>react-static 所定义的概念、规则，我打算放在下一篇中详细介绍。</p>
+<p>在本文中，我们只要理解为：</p>
+<ul>
+<li>这些规则定义了如何提供数据，如何将数据关联到对应的 React 组件，如何定义模板</li>
+<li>而 react-static 是一个命令，它会加载数据、绑定模板、Webpack 构建应用</li>
+<li>最后调用 Puppeteer 进行统一拍照，生成纯静态网站。</li>
+</ul>
+<h2>One more thing</h2>
+<p>如果认为 SPA 静态化打出了纯静态 HTML 站就完了，那就太天真了。</p>
+<p>在每个纯静态 HTML 的末尾，<strong>依旧会有对 Bundle 的引用链接！</strong></p>
+<p>这是什么意思呢？</p>
+<ul>
+<li>还记得经过 SSR 渲染后的网页缩减到几 KB 吗？</li>
+<li>通过快速加载，它会立刻展示到用户的屏幕上</li>
+<li>之后浏览器会默默地下载 Bundle</li>
+<li>下载好后会默默地执行 React、我们的业务框架</li>
+<li>直到把这个页面重新再跑出来（与 SSR 渲染是一致的）</li>
+<li>由于 React 的 Virtual DOM 机制，网页没有任何的更新</li>
+</ul>
+<p>因此，这一切的发生在背后，而用户毫无感知。</p>
+<p>那这有什么用呢？这样做的用处是：</p>
+<ul>
+<li>用户看到的第一个网页是纯静态的，加载速度飞快。</li>
+<li>在不知不觉中，由静态页升级为交互丰富的 React SPA</li>
+<li>用户在后续的操作中将体验到这些交互<ul>
+<li>比如微博提醒</li>
+<li>消息推送</li>
+<li>……</li>
+</ul></li>
+</ul>
+<p>费了这么大的劲，<strong>就是让用户用访问静态网站的速度，得到 SPA 的丰富体验。</strong></p>
+<p>在 maxiee.github.io 上有一个今年过了多少天的进度条。如果你仔细看会发现：</p>
+<ul>
+<li>首次打开 url 时进度条的进度是过时的</li>
+<li>过了一会儿它会更新到正确的值</li>
+</ul>
+<p>知道这是为什么了吧！那个过时的时间正是我构建（Snapshot）的时间，哈哈。</p>
+<h2>结论</h2>
+<p>没想到写了这么多，这个概念想说清楚的确不容易。</p>
+<p>由于我不是专门的前端工程师，在术语和理解上会有错误和理解不对的地方。欢迎批评指正，可以通过微博或者邮件与我联系。</p>
+<p>我会在学习理解正确后改正错误，多谢！</p>
+<p>react-static 是一个很好的框架，通过它很多网站都能静态化，这会节省很多服务器开销。</p>
+<p>像我就直接关闭了之前的 Wordpress 虚拟主机，改在 GitHub Pages 上托管博客。</p>
+<p>免费省钱到不是我刻意追求的，主要是省时省力，好维护，折腾起来也更有意思。</p>
+<p>在后续的文章中，我将会介绍 react-static 的各种使用方法。欢迎关注！</p></div><div class="ui leaderboard ad"><ins class=" adsbygoogle" style="display:block" data-ad-client="ca-pub-8746515866560942" data-ad-slot="3546488844" data-ad-layout="" data-ad-format="auto" data-full-width-responsive="true"></ins></div></div></div></div></div></div></div><script type="text/javascript">
+    window.__routeInfo = {"template":"../src/pages/post","sharedHashesByProp":{},"data":{"post":{"name":"react-static 静态网站搭建（一）：什么是 React 静态网站？","desc":"maxiee.github.io 是一个基于 react-static 的 React 静态网站。它与传统的静态博客有很多异同。在这个系列中，我准备介绍 react-static，它是一个非常优秀的 React 静态网站生成器。本文是第一篇，我们先来看看 React 静态网站。","type":"md","link":"ReactStatic1md","create":"2019-03-12","filename":"ReactStatic1.md"},"content":"## 前言\n\nmaxiee.github.io 是一个基于 react-static 的 React 静态网站。它与传统的静态博客有很多异同。在这个系列中，我准备介绍 react-static，它是一个非常优秀的 React 静态网站生成器。本文是第一篇，我们先来看看 React 静态网站。\n\nReact 静态网站与传统的静态博客相比，有很多相同之处，也有很多异同之处。在本文中，我试图将这些异同讲清楚，希望能展示出 React 静态网站对静态网站开发带来的巨大提升。\n\n首先，我们先从最简单的 HTML 网页说起。\n\n## 静态 HTML 网页\n\n让我们回到互联网的原始时代，没有数据库、没有 PHP、没有 API。\n\n那时的主页真的就只是一个 HTML 文件，比如上面写着：\n\n> “欢迎来到 Maxiee 的主页！我是一个 Linux 爱好者，如果你想与我交朋友，请给我发邮件或者打电话，我的联系方式如下：……”\n\n这就是最简单的网页，它的结构如下：\n\n![](image/ReactStatic101.png)\n\n其中：\n\n- CSS 是主页的样式\n- body 部分是我们的网页内容\n- js 在早期往往是一些小特效，比如背景雪花、跟随鼠标的粒子效果这种\n\n这种网页我们将之成为静态网页（没有 API 请求、没有数据库查询，只需要文件服务器托管即可展示）。\n\n## 动态网页\n\n为了更好地理解静态 HTML 网页，我们再来说说他的反义词，动态网页。\n\n动态网页往往是跟 Web 框架相关联，比如 Django、Flask、Laravel、Wordpress。\n\n对于一个传统的 MVC 网站，当用户访问 url 时，Web 框架会经历这些过程：\n\n- 收到 HTTP 请求，解析 url 路径\n- 根据路径（文章页面）进行数据库检索，获取数据\n- 加载网页模板（文章页），将数据填充到模板当中，**动态生成 HTML**\n- 将生成好的 HTML 通过 HTTP 响应返回给用户\n\n从中可以看出，动态网页是在用户请求时现学现卖，匆匆忙忙拼凑出页面返回。\n\n而静态网页则是一开始就把数据填充进去了，什么时候要就直接把文件扔过去，更潇洒一些。\n\n## 静态博客\n\n静态博客（Hexo、Jekyll、Hugo……）同样也是基于上节中古老的静态网页技术。如果你搭建并使用过静态博客，对其应该再熟悉不过了。\n\n[GitHub Pages](https://pages.github.com/) 就是著名的静态网站托管服务。我的 maxiee.github.io 就是托管在上面。任何人写一个静态的 HTML 页面，都可以部署到 GitHub Pages，作为静态网站供人访问。\n\n使用静态博客进行写作时，我们并不是直接徒手写 HTML（那样效率太低了），而是使用 Markdown 语法进行写作。比如按照如下的目录结构：\n\n```\n.\n└── content\n    └── about\n    |   └── _index.md  // <- https://example.com/about/\n    ├── posts\n    |   ├── firstpost.md   // <- https://example.com/posts/firstpost/\n    |   ├── happy\n    |   |   └── ness.md  // <- https://example.com/posts/happy/ness/\n    |   └── secondpost.md  // <- https://example.com/posts/secondpost/\n    └── quote\n        ├── first.md       // <- https://example.com/quote/first/\n        └── second.md      // <- https://example.com/quote/second/\n```\n\n来源：[HUGO Content Organization](https://gohugo.io/content-management/organization/)。\n\n静态博客又称为静态博客生成器，是因为它通过一个命令行，将这些 Markdown 文件经过模板套用，渲染为文章 HTML，又将这些文章网页连同首页、归档页、关于页等等，共同组装成为一个网站，即静态博客。\n\n当生成器构建完成的时候，这个网站的内容变固定下来了，部署到远端后（如 GitHub Pages），用户每次打开都展示同样的内容。\n\n直到下一次需要重新生成（比如写作了新文章），再次执行生成器，经过一番渲染与组装，网站产生了新的快照。\n\n下面我们再用图像来展示这个过程：\n\n① Markdown 文章转换为 HTML 的过程：\n\n![](image/ReactStatic103.png)\n\n② 整个网站，所有 Markdown 转换组装为整个静态博客站点的过程：\n\n![](image/ReactStatic102.png)\n\n## React SPA 应用\n\n很多人也许会奇怪，React 怎么会跟静态网站建立起联系来呢？因为说到 React，往往就会提到 [SPA（Single Page Application，单页应用）](https://en.wikipedia.org/wiki/Single-page_application)。\n\n单页应用是什么呢？在上面的维基百科链接中有详细的定义。在这里我直接给出直观上的认识：\n\n- 在线的 Photoshop-like 网站，打开网址就是一个图片编辑程序\n- 在线的 Rogue-like 游戏网站，[react-rpg](https://react-rpg.com/)\n\n- 著名的 Gmail\n- Office 365 网页版\n\n提到这些网站我们会发现，他们与传统的新闻网站不同，他们都是应用（Application）软件。\n\n对于传统的新闻网站或者论坛，主要作用是展示内容，同时处理部分表单提交需求。而对于 SPA 来说，交互性大大提高。\n\nReact 就是一个现在最流行的 SPA 开发技术。\n\n使用功能 React 开发的 SPA Web 网站有一个特点，它一般由两部分组成：\n\n- 一个 index.html，里面几乎是空的，除了导入一个 JavaScript 脚本\n- 一堆 JavaScript 脚本，我们把他们整体看待，他们是 Webpack 打包出的 Bundle\n\n- 这有点像 Android APK。\n\n既然网站的逻辑全在 JavaScript Bundle 中，就会带来一个问题——包体积、启动时间。\n\n针对这个问题的解法是**分包、懒加载**，这也是前端领域的一个热门话题。\n\n分包、懒加载值得就是把 Bundle 碎片化，在每个页面都只加载其所必要的数据即可。这样既加快了首次打开速度，有不影响用户体验，通过**预加载**技术，更能将体验达到用户无感知。\n\n## SPA 也是静态网站\n\n说到这里不知你发现没有，SPA 也是由纯的 HTML、CSS、Java 所组成的，这与前面的静态 HTML 网页是一样的！\n\n事实也是的确如此。我们用 React 开发的应用，也可以托管在 GitHub Page 上。\n\n注：尽管 GitHub Page 本身没有完全支持，但是通过一点小 hack 即可实现，详情参见[一](https://itnext.io/so-you-want-to-host-your-single-age-react-app-on-github-pages-a826ab01e48)、[二](https://github.com/rafrex/spa-github-pages)。\n\n但是也有不同之处，以博客为例，在启动起来之后博客只有一个框架，与 APP 相似，它需要再发起网络请求来拉取数据，比如拉取文章列表。\n\n这个列表既可以有一个 PHP API 返回，也可以是 GitHub Pages 某个路径上的 json 文件。\n\n博客中运行的 React 代码会解析返回的数据，并展示到页面上。\n\n前阵子比较流行的**前后端分离**，就是指这个事情。这样就把动态网页中网络框架（后端）跟前端页面（前端）解耦了，各玩各的。\n\nSPA 也是静态网站，与静态 HTML 相比，静态 HTML 是所有数据完全包含在内了，而 SPA 只包含了一个壳子，数据需要等壳子加载好后，在通过请求拉取。\n\n## SPA 静态化\n\n这一节最让人懵逼了……怎么说呢？看看这一句：**在上一节中，我们说 SPA 也是一个静态网站；在本节中，我们来看如何将 SPA 静态化。**\n\n你懵了吗？不管你信不信，我反正是懵了。哈哈哈，言归正传。\n\n我们在上一节中说到：\n\n>SPA 也是静态网站，与静态 HTML 相比，静态 HTML 是所有数据完全包含在内了，而 SPA 只包含了一个壳子，数据需要等壳子加载好后，在通过请求拉取。\n\nSPA 静态的东西只有一层壳，数据是网页加载好后再去加载的。这里面会有几个问题：\n\n1. SPA 这层壳的加载也要耗费时间\n    - 首先要把 React 框架加载起来（印象里是数十 KB）\n    - 之后再把我们基于 React 开发的网站框架（壳）加载起来\n        - 这个大小就不好说了，分包懒加载做得好的话小一些，做的不好的话大一些，没经验的话就会很大\n        - 最小也要数十 KB\n2. 壳加载好后，需要再发一个请求去拉数据\n    - 如果是一篇文章，数据本身可能要几 KB\n    - 虽然流量开销不大，但是建立新的 HTTP 请求有时间开销\n    - 在网络情况一般的时候可能要几十毫秒\n\n从中可以看出，这种网站是很受网络情况影响的，如果网速不佳，体验会大大下降。\n\n让我们换一个角度来想：\n\n> SPA 把壳加载起来，再把数据拉取完成，DOM 在经过一顿折腾后终于固定下来。我们能否用一个照相机，将这个固定下来的 DOM 照下来（Snapshot），这样不就得到了一个普通的静态 HTML 网页吗？\n>\n> 这个网页的大小可能一共就几 KB，直接把他拉下来速度不是更快吗？\n\n这个思路就是 SPA 静态化，换做一个比较流行的说法，叫 SSR（Server-Side Rendering，服务端渲染）。参考文献[一](https://flaviocopes.com/react-server-side-rendering/)、[二](https://medium.freecodecamp.org/demystifying-reacts-server-side-render-de335d408fe4)、[三](https://juejin.im/entry/5ac197caf265da2377198fb6)。\n\n## 两种 SSR\n\nSSR 指的是在服务端就将 React 应用渲染为最终的静态 HTML，返回给用户。\n\n在具体实施时，有两种不同的做法，分别发生在不同的阶段。\n\n### 网络框架阶段\n\n比较常用的是在网络框架阶段进行渲染。\n\n具体来说，当用户请求 url 的时候，网络框架获取数据，同时在 Server 侧执行 React 应用的代码，跑出最终的 DOM 结果，返回给用户。\n\n这样既加快了速度，又减少了流量的开销。\n\n不知你有没有发现，前面讲了**前后端分离**，这种做法看起来是不是又**前后端结合**了呢？\n\n其实并没有，SSR 对于后端而言，应该做成一个无感知的框架，相当于为前端提供了一种 Cache 服务。\n\n后端还是后端，前端还是前端，两者并没有发生业务上的耦合。\n\n### 构建阶段\n\n还有一种更加纯粹的 SSR 方法，其实称之为 BSR（Builder-Side Rendering） 更合适。\n\n具体说来，是在 Webpack 工程构建完成的时候，跑起一个无头浏览器（如 Puppeteer），按照 Router 把每一个网页都跑一遍，对每个网页，都将浏览器执行的最终结果保存为静态 HTML 页面。\n\n这样，一个 React 应用就完全变成了跟 Hexo、Jekyll 一样的静态博客了。\n\nreact-static 就是基于这种方法进行的。许多流行的 React Static Site Generator 都是基于这种方法进行的（如 Gatsby）。\n\n## react-static 介绍\n\n说了一大堆，终于说到我们系列的主角——[react-static](https://github.com/nozzle/react-static)。\n\n它是一个渐进式的 React 静态网站生成器。怎么理解呢？\n\nReact SPA 静态网站生成器，这个我们已经在前几节中讲明白了。\n\n至于渐进式是什么意思，我们先不管它。\n\n有了 react-static，不是说任何 React 网站通过它都能变静态。react-static 是一个框架，它定义了一些规则。React 应用必须按照他定义的概念、规则来编写，才能工作。\n\n如果是一个既有的 React 应用，则必须按照 react-static 的概念、规则进行改造，才能工作。\n\nreact-static 所定义的概念、规则，我打算放在下一篇中详细介绍。\n\n在本文中，我们只要理解为：\n\n- 这些规则定义了如何提供数据，如何将数据关联到对应的 React 组件，如何定义模板\n- 而 react-static 是一个命令，它会加载数据、绑定模板、Webpack 构建应用\n- 最后调用 Puppeteer 进行统一拍照，生成纯静态网站。\n\n## One more thing\n\n如果认为 SPA 静态化打出了纯静态 HTML 站就完了，那就太天真了。\n\n在每个纯静态 HTML 的末尾，**依旧会有对 Bundle 的引用链接！**\n\n这是什么意思呢？\n\n- 还记得经过 SSR 渲染后的网页缩减到几 KB 吗？\n- 通过快速加载，它会立刻展示到用户的屏幕上\n- 之后浏览器会默默地下载 Bundle\n- 下载好后会默默地执行 React、我们的业务框架\n- 直到把这个页面重新再跑出来（与 SSR 渲染是一致的）\n- 由于 React 的 Virtual DOM 机制，网页没有任何的更新\n\n因此，这一切的发生在背后，而用户毫无感知。\n\n那这有什么用呢？这样做的用处是：\n\n- 用户看到的第一个网页是纯静态的，加载速度飞快。\n- 在不知不觉中，由静态页升级为交互丰富的 React SPA\n- 用户在后续的操作中将体验到这些交互\n    - 比如微博提醒\n    - 消息推送\n    - ……\n\n费了这么大的劲，**就是让用户用访问静态网站的速度，得到 SPA 的丰富体验。**\n\n在 maxiee.github.io 上有一个今年过了多少天的进度条。如果你仔细看会发现：\n\n- 首次打开 url 时进度条的进度是过时的\n- 过了一会儿它会更新到正确的值\n\n知道这是为什么了吧！那个过时的时间正是我构建（Snapshot）的时间，哈哈。\n\n## 结论\n\n没想到写了这么多，这个概念想说清楚的确不容易。\n\n由于我不是专门的前端工程师，在术语和理解上会有错误和理解不对的地方。欢迎批评指正，可以通过微博或者邮件与我联系。\n\n我会在学习理解正确后改正错误，多谢！\n\nreact-static 是一个很好的框架，通过它很多网站都能静态化，这会节省很多服务器开销。\n\n像我就直接关闭了之前的 Wordpress 虚拟主机，改在 GitHub Pages 上托管博客。\n\n免费省钱到不是我刻意追求的，主要是省时省力，好维护，折腾起来也更有意思。\n\n在后续的文章中，我将会介绍 react-static 的各种使用方法。欢迎关注！"},"path":"post/ReactStatic1md","sharedData":{},"siteData":{"title":"Maxiee Blog"}};</script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/vendors~src/pages/about~src/pages/post~src/pages/services.9ebe3a93.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/vendors~src/pages/bookmarks~src/pages/gallery~src/pages/post.0f2bae8a.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/vendors~src/pages/gallery~src/pages/post.bf181f2d.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/vendors~src/pages/post.3413cc1f.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/src/pages/post.083217cc.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/styles.ec85b004.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/vendors~main.fc8eff89.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/main.d5516191.js"></script></body></html>

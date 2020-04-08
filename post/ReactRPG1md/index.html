@@ -1,0 +1,429 @@
+<!DOCTYPE html><html lang="en"><head><meta name="generator" content="React Static"/><title data-react-helmet="true">ReactRPG 代码阅读之 Redux 数据层设计 | Maxiee Blog</title><meta data-react-helmet="true" charSet="UTF-8"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/vendors~src/pages/about~src/pages/post~src/pages/services.9ebe3a93.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/vendors~src/pages/bookmarks~src/pages/gallery~src/pages/post.0f2bae8a.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/vendors~src/pages/gallery~src/pages/post.bf181f2d.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/vendors~src/pages/post.3413cc1f.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/src/pages/post.083217cc.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/styles.ec85b004.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/vendors~main.fc8eff89.js"/><link rel="preload" as="script" href="https://maxiee.github.io/main.d5516191.js"/><link rel="preload" as="style" href="https://maxiee.github.io/styles.ec85b004.css"/><link rel="stylesheet" href="https://maxiee.github.io/styles.ec85b004.css"/><script data-react-helmet="true" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><meta charSet="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, shrink-to-fit=no"/></head><body><div id="root"><div style="outline:none" tabindex="-1" role="group"><div><div style="display:flex;flex-direction:row;justify-content:space-between;margin-left:26px;margin-right:26px;height:72px"><div style="display:flex;flex-direction:row;justify-content:center;align-items:center"><img src="data:image/jpeg;base64,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" class="ui mini circular centered image"/><div style="margin-left:12px;font-size:18px"><a href="https://maxiee.github.io/">Maxiee Blog</a></div></div><div style="display:flex;flex-direction:row;align-items:center"><div style="color:#666666;margin-left:26px"><a href="https://maxiee.github.io/post">博客</a></div><div style="margin-left:26px" role="listbox" aria-expanded="false" class="ui dropdown" tabindex="0"><div class="text" role="alert" aria-live="polite">作品</div><i aria-hidden="true" class="dropdown icon"></i><div class="menu transition"><div role="option" class="item"><div style="margin:10px" class="text"><a href="https://maxiee.github.io/post/RayInfomd">RayInfo</a><div style="color:#CCCCCC">资讯阅读 App</div></div></div><div role="option" class="item"><div style="margin:10px" class="text"><a href="https://maxiee.github.io/post/MaxieeRNLabmd">MaxieeRNLab</a><div style="color:#CCCCCC">React Native 综合示例 APP</div></div></div><div role="option" class="item"><div style="margin:10px" class="text"><a href="https://maxiee.github.io/post/JiuShengmd">韭生</a><div style="color:#CCCCCC">roguelike 人生模拟器游戏</div></div></div></div></div><div style="color:#666666;margin-left:26px"><a href="https://maxiee.github.io/daily">Daily</a></div><div style="color:#666666;margin-left:26px"><a href="https://maxiee.github.io/gallery">设计</a></div><div style="color:#666666;margin-left:26px"><a href="https://maxiee.github.io/about">关于</a></div></div></div><div class="ui grid"><div class="row"><div style="margin-left:20px;margin-right:20px" class="column"><h1 class="ui header">ReactRPG 代码阅读之 Redux 数据层设计</h1><p style="margin-bottom:20px;color:gray">2019-03-19</p><div class="ui leaderboard ad"><ins class=" adsbygoogle" style="display:block" data-ad-client="ca-pub-8746515866560942" data-ad-slot="3546488844" data-ad-layout="" data-ad-format="auto" data-full-width-responsive="true"></ins></div><div><h2>前言</h2>
+<p>ReactRPG 是一个用 React 开发的地牢探险游戏，这是一份很好的 React、Redux 学习资源。在本文中我们学习它的 Redux 数据结构实现。通过游戏学习 Redux，是很好玩的体验。</p>
+<p>如果你不知道 ReactRPG 是什么，可以先参见之前的文章<a href="https://maxiee.github.io/post/ReactRPG.md/">使用 React+Redux 编写 RPG 游戏（翻译）</a>。</p>
+<p>需要注意的是，读者最好具备一定的 Redux 基础。</p>
+<h2>项目概览</h2>
+<p>代码位于工程的 src 目录下，我们先看下这个目录下的构成：</p>
+<pre><code style="background:#f5f7ff;padding:2px">src
+├── App.js                      // 主应用
+├── __tests__                   // 测试文件
+├── components                  // React 组件
+├── config
+│   ├── constants.js            // 常量定义
+│   └── store.js                // store 定义，这是我们本篇分析的关键
+├── data                        // 游戏数据
+├── features                    // 游戏行为定义(actions，reducers)
+├── index.js                    // 应用入口
+├── index.scss
+└── utils                       // 工具类
+</code></pre>
+<p>其中：</p>
+<ul>
+<li>
+<p>项目的模块划分比较清晰，值得学习</p>
+</li>
+<li>
+<p>在本系列中，我们先看数据层，后看 UI 层，因此 config、data、features 这三个目录是我们感兴趣的</p>
+</li>
+</ul>
+<h2>src/config/store.js</h2>
+<p>在这个类中定义了 Redux Store。</p>
+<p>各个 reducer 按照功能被拆分到不同的模块当中去：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">import appState  from &#x27;../features/app-state/reducer&#x27;;
+import player    from &#x27;../features/player/reducer&#x27;;
+import dialog    from &#x27;../features/dialog-manager/reducer&#x27;;
+import map       from &#x27;../features/map/reducer&#x27;;
+import gameMenu  from &#x27;../features/game-menus/reducer&#x27;;
+import world     from &#x27;../features/world/reducer&#x27;;
+import stats     from &#x27;../features/stats/reducer&#x27;;
+import inventory from &#x27;../features/inventory/reducer&#x27;;
+import monsters  from &#x27;../features/monsters/reducer&#x27;;
+import snackbar  from &#x27;../features/snackbar/reducer&#x27;;
+</code></pre></pre>
+<p>通过 combineReducers 将它们组装起来：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">const rootReducer = combineReducers({
+  appState,
+  player,
+  dialog,
+  gameMenu,
+  map,
+  world,
+  stats,
+  inventory,
+  monsters,
+  snackbar
+});
+</code></pre></pre>
+<p>作者使用 <a href="https://github.com/rt2zz/redux-persist">redux-persist</a> 来做状态持久化。它不在文章的主题中，我们将它略过。</p>
+<p>最后是创建 store，并将它导出：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">const store = createStore(
+  persistedReducer,
+  compose(
+    applyMiddleware(thunk),
+    // this mixed operated is needed, otherwise you get a weird error from redux about applying funcs
+    // eslint-disable-next-line
+    process.env.NODE_ENV === &#x27;development&#x27; &amp;&amp; window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ &amp;&amp; window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__() || compose
+  )
+);
+
+export default store;
+</code></pre></pre>
+<p>其中：</p>
+<ul>
+<li>作者还添加了一个中间件 redux-thunk</li>
+</ul>
+<h2>Reducers</h2>
+<p>作者对 Reducers 的拆分非常清晰，值得借鉴：</p>
+<pre><code style="background:#f5f7ff;padding:2px">features
+├── app-state
+│   ├── actions
+│   └── reducer.js
+├── dialog-manager
+│   ├── actions
+│   ├── dialogs
+│   ├── index.js
+│   └── reducer.js
+├── game-menus
+│   ├── actions
+│   ├── game-music
+│   ├── game-settings
+│   ├── index.js
+│   ├── reducer.js
+│   └── styles.scss
+├── inventory
+│   ├── actions
+│   ├── index.js
+│   ├── reducer.js
+│   └── styles.scss
+├── map
+│   ├── index.js
+│   ├── map-padding.js
+│   ├── map-tile.js
+│   ├── random-map-gen
+│   ├── reducer.js
+│   └── styles.scss
+……
+</code></pre>
+<p>其中：</p>
+<ul>
+<li>features 下按照功能进行拆分：比如物品栏(inventory)、地图(map)</li>
+<li>在每个子模块下：<ul>
+<li>reducer.js 盛放 Redux redux</li>
+<li>actions 是一个目录，定义了相关的 Redux actions</li>
+</ul></li>
+</ul>
+<p>actions 目录下，每个 action 单独一个文件：</p>
+<pre><code style="background:#f5f7ff;padding:2px">inventory
+├── actions
+│   ├── buy-item.js
+│   ├── consume-potion.js
+│   ├── drop-item.js
+│   ├── equip-item.js
+│   ├── load-starting-items.js
+│   ├── pickup-item.js
+│   ├── sell-item.js
+│   └── unequip-item.js
+├── index.js
+├── reducer.js
+└── styles.scss
+</code></pre>
+<h2>features/inventory</h2>
+<p>了解数据结构就是了解 Redux Reducer，也就是 features 下的这些模块。</p>
+<p>我从中选择了一个比较好入手的，即 inventory。</p>
+<h3>初始状态</h3>
+<p>我们先来看下 inventory 的初始状态（位于 reducer.js）：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">const initialState = {
+  items: [],
+  maxItems: MAX_ITEMS
+};
+</code></pre></pre>
+<p>其中：</p>
+<ul>
+<li>items 是一个数组，表示玩家所持有的物品</li>
+<li>maxItems：表示玩家持有物品数量的上限，这个值是 8</li>
+</ul>
+<p>通过初始状态，我们可以得知物品栏的数据结构是什么样。</p>
+<h3>捡装备</h3>
+<p>玩 Rogue-like 游戏，捡装备是最爽的事情了。我们来看如何用 Redux 实现捡装备。</p>
+<p>它的代码如下：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">export default function pickupItem() {
+  return (dispatch, getState) =&gt; {
+
+    const { inventory, dialog } = getState();   // 获取老的状态树中对应子状态
+
+    const { item } = dialog.chestOpen;          // 是否打开宝箱
+
+    if(!item) return;                           // 如果宝箱没打开，则退出
+
+    const { items, maxItems } = inventory;      // 获取物品列表与上限
+
+    if(items.length &lt; maxItems) {               // 能装得下
+    dispatch({                                  // 发送一个获取物品的 action
+        type: &#x27;GET_ITEM&#x27;,
+        payload: item
+      });
+    }
+    else {                                      // 装不下了
+      dispatch({                                // 发送一个物品过多的 action
+        type: &#x27;TOO_MANY_ITEMS&#x27;,
+        payload: item
+      });
+    }
+  };
+}
+</code></pre></pre>
+<p>其中：</p>
+<ul>
+<li><code style="background:#f5f7ff;padding:2px">GET_ITEM</code> 这个 action type 都是嵌套在别的 Actions 内部使用的</li>
+<li>也就是说它是一个内部使用的 action</li>
+</ul>
+<h3>处理 GET ITEM</h3>
+<p><code style="background:#f5f7ff;padding:2px">GET_ITEM</code> 在物品栏的 reducer.js 的内部进行处理，对应代码为：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">const inventoryReducer = (state = initialState, { type, payload }) =&gt; {
+    let newState;
+    switch(type) {
+        ……
+        case &#x27;GET_ITEM&#x27;:
+            newState = _cloneDeep(state); // 对原状态进行深拷贝 lodash.clonedeep
+            // 将物品加入物品栏，其中为物品添加一个 uuid 标识
+            newState.items.push({ ...payload, id: uuidv4() });
+            return newState; // 返回新状态
+</code></pre></pre>
+<h2>装备装备</h2>
+<p>当我们见到一把剑后，想装备到玩家身上，是走的 src/features/inventory/actions/equip-item.js Action：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">export default function equipItem(item) {
+  return dispatch =&gt; {
+
+    dispatch({
+      type: &#x27;EQUIP_ITEM&#x27;,
+      payload: item
+    });
+  };
+}
+</code></pre></pre>
+<p>这个 Actions 的处理者不是物品栏模块，而是 stats 模块(它表示玩家属性)，位于 src/features/stats/reducer.js：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">const statsReducer = (state = initialState, { type, payload }) =&gt; {
+    let newState;
+    switch(type) {
+        case &#x27;EQUIP_ITEM&#x27;:
+            newState = _cloneDeep(state);
+            const item = payload;
+            switch(item.type) {
+                case &#x27;weapon&#x27;:  // 这里只以武器为例，省略其它类型的装备
+                    // 如果已经装备有武器
+                    if (newState.equippedItems.weapon) {
+                        // 扣掉它的武器伤害，表示把它的属性加成下掉了
+                        newState.damage -= newState.equippedItems.weapon.damage;
+                    }
+                    // 在加上新武器的属性加成
+                    newState.damage += item.damage;
+                    // 将已装备的武器指向当前武器
+                    newState.equippedItems.weapon = item;
+                    break;
+                default:
+            }
+            return newState;
+</code></pre></pre>
+<h2>打怪赚钱</h2>
+<p>在游戏中打怪是可以赚钱的，我们来详细探究下这一过程。</p>
+<p>我们采用自底向上的方法，先找到金钱存储在哪里，答案是在 stats 模块中，它的状态数据结构如下：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">const initialState = {
+  hp: 10,
+  maxHp: 10,
+  damage: 3,
+  defence: 0,
+  level: 1,
+  exp: 0,
+  expToLevel: 20,
+  gold: 0,
+  equippedItems: {}
+};
+</code></pre></pre>
+<p>其中：</p>
+<ul>
+<li>gold 就表示金钱(金币💰)</li>
+</ul>
+<p>赚钱的 Action 处理的代码为：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">const statsReducer = (state = initialState, { type, payload }) =&gt; {
+    let newState;
+    switch(type) {
+        case &#x27;GET_GOLD&#x27;:
+            return { ...state, gold: state.gold + payload };
+</code></pre></pre>
+<p>这段代码是非常简单的，要是现实中赚钱也这么简单就好了。</p>
+<p>底层分析好了，我们向上看：谁发送 <code style="background:#f5f7ff;padding:2px">GET_GOLD</code> 事件了？</p>
+<p>找到两处：</p>
+<ol>
+<li>打开箱子事件</li>
+<li>卖出物品事件</li>
+</ol>
+<p>我们选择第一个来看，开箱子，这个 Action 位于 src/features/dialog-manager/actions/open-chest.js：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">import randomItem from &#x27;../dialogs/chest-loot/random-item&#x27;;
+
+export default function openChest() {
+  return (dispatch, getState) =&gt; {
+
+    const { level } = getState().stats;     // 获取当前地牢层数
+    // 这个 boolean 表示是否会 roll 得一键装备
+    let itemDrop = false;
+    const chance = Math.floor(Math.random() * 100) + 1;
+    if(chance &lt;= 25) {              // 有 25% 的几率会得到一键装备
+      itemDrop = randomItem(level); // 得到什么装备呢？在 randomItem 中自动生成
+    }
+    // 开箱子除了得物品，还能捡到金币，这里有一个算法
+    // 获得金币 = (1~8) + 3 * 地牢层数
+    const gold = (Math.floor(Math.random() * 8) + 1) + (level * 3);
+    // 开箱子还会得经验，经验值是固定的
+    const exp = (level * 5) + 5;
+
+    // 下面开始分发事件
+    dispatch({                      // 赚钱了
+      type: &#x27;GET_GOLD&#x27;,
+      payload: gold
+    });
+    dispatch({                      // 赚经验了
+      type: &#x27;GET_EXP&#x27;,
+      payload: exp
+    });
+    dispatch({                      // 设置箱子内物品
+      type: &#x27;SET_CHEST_DATA&#x27;,
+      payload: {
+        exp,
+        gold,
+        item: itemDrop              // （这个物品会通过其他 actions 取走放进物品栏中）
+      }
+    });
+  };
+}
+</code></pre></pre>
+<p>其中：</p>
+<ul>
+<li>我们看到了 <code style="background:#f5f7ff;padding:2px">GET_GOLD</code> 事件分发，完整了整个过程的分析</li>
+</ul>
+<p>我们可以更进一步，openChest 由谁发出呢？这里就是从数据层向 UI 层进发了。</p>
+<p>找到触发的代码为 src/features/dialog-manager/dialogs/chest-loot/index.js，它是开箱子或者打怪后弹出的对话框。</p>
+<p>这部分代码我们将在下一篇中进行详细介绍。</p>
+<h2>总结模式</h2>
+<p>前面看了这么多 Reducer、Actions 的实现，也感受到这个项目整体的整洁性。作为学习成功，我们将这种整洁的架构方式梳理下来。这样在未来的新项目中，我们也能进行迁移，写出同样优雅的代码。</p>
+<p>首先，我们也将代码放在 src 目录下。在 src 下创建以下目录：</p>
+<pre><code style="background:#f5f7ff;padding:2px">src
+├── App.js                      // 主应用
+├── __tests__                   // 测试文件
+├── components                  // React 组件
+├── config
+│   ├── constants.js            // 常量定义
+│   └── store.js                // store 定义，这是我们本篇分析的关键
+├── reducers                    // 数据结构处理(Redux Reducers)
+├── index.js                    // 应用入口
+├── index.scss
+└── utils                       // 工具类
+</code></pre>
+<p>其中：</p>
+<ul>
+<li>我将 features 改名为 reducers，跟 Redux 的命名方式相对应</li>
+</ul>
+<p>在 reducers 目录下，将 APP 拆分为解耦的模块，比如：</p>
+<pre><code style="background:#f5f7ff;padding:2px">reducers
+├── Account
+│   ├── actions
+│       ├── action1.js
+│       ├── action2.js
+│       ├── action3.js
+│   ├── reducer.js
+</code></pre>
+<p>其中 action 的写法为：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">export default function action1(params) {
+  return (dispatch, getState) =&gt; {
+      ……
+      let data = ……
+      dispatch({
+          type: &quot;MY_ACTION_NAME&quot;,
+          payload: data
+      })
+}
+</code></pre></pre>
+<p>reducer.js 的写法为：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">const initialState = {
+  ……
+};
+
+const inventoryReducer = (state = initialState, { type, payload }) =&gt; {
+    switch(type) {
+        case &quot;MY_ACTION_TYPE&quot;:
+            ……
+            return newState
+        default:
+            return state
+    }
+}
+
+export default inventoryReducer;
+</code></pre></pre>
+<p>其中：</p>
+<ul>
+<li>需要注意的是 newState 是需要深拷贝的</li>
+</ul>
+<p>reducers 写好后，来到 config/store.js 下：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">// 导入各个 reducers
+import appState  from &#x27;../features/app-state/reducer&#x27;;
+import player    from &#x27;../features/player/reducer&#x27;;
+import dialog    from &#x27;../features/dialog-manager/reducer&#x27;;
+
+// 组装到一起
+const rootReducer = combineReducers({
+  appState,
+  player,
+  dialog,
+  gameMenu,
+  map,
+  world,
+  stats,
+  inventory,
+  monsters,
+  snackbar
+});
+
+// 创建全局 store
+const store = createStore(
+  rootReducer
+);
+
+// 返回
+export default store;
+</code></pre></pre>
+<p>其中:</p>
+<ul>
+<li>以 appState 为例，它在 reducer.js 中 export default 名称为 appStateReducer，而我们在导入时将其命名为 appState，这个 appState 就是状态树中这一自状态树的名称</li>
+</ul>
+<p>在应用入口中（src/App.js）将 Redux 与 React 相结合：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">import { Provider }         from &#x27;react-redux&#x27;;
+import store, { persistor } from &#x27;./config/store&#x27;;
+
+class ConnectedApp extends Component {
+
+  // refresh the local storage in case the redux store structure is old
+  componentDidCatch() {
+    localStorage.clear();
+    window.location.reload();
+  }
+
+  render() {
+    return(
+      &lt;Provider store={store}&gt;
+        &lt;PersistGate
+          loading={&lt;Spinner /&gt;}
+          persistor={persistor}&gt;
+
+          &lt;App /&gt;
+
+        &lt;/PersistGate&gt;
+      &lt;/Provider&gt;
+    );
+  }
+}
+
+ReactDOM.render(&lt;ConnectedApp /&gt;, document.getElementById(&#x27;react-rpg&#x27;));
+</code></pre></pre>
+<h2>结论</h2>
+<p>在本文中，我们完成了对 ReactRPG 数据层的学习。我从中收获很大！😆</p></div><div class="ui leaderboard ad"><ins class=" adsbygoogle" style="display:block" data-ad-client="ca-pub-8746515866560942" data-ad-slot="3546488844" data-ad-layout="" data-ad-format="auto" data-full-width-responsive="true"></ins></div></div></div></div></div></div></div><script type="text/javascript">
+    window.__routeInfo = {"template":"../src/pages/post","sharedHashesByProp":{},"data":{"post":{"name":"ReactRPG 代码阅读之 Redux 数据层设计","desc":"ReactRPG 是一个用 React 开发的地牢探险游戏，这是一份很好的 React、Redux 学习资源。在本我中我们学习它的 Redux 数据结构实现。通过游戏学习 Redux，是很好玩的体验。","type":"md","link":"ReactRPG1md","create":"2019-03-19","filename":"ReactRPG1.md"},"content":"## 前言\n\nReactRPG 是一个用 React 开发的地牢探险游戏，这是一份很好的 React、Redux 学习资源。在本文中我们学习它的 Redux 数据结构实现。通过游戏学习 Redux，是很好玩的体验。\n\n如果你不知道 ReactRPG 是什么，可以先参见之前的文章[使用 React+Redux 编写 RPG 游戏（翻译）](https://maxiee.github.io/post/ReactRPG.md/)。\n\n需要注意的是，读者最好具备一定的 Redux 基础。\n\n## 项目概览\n\n代码位于工程的 src 目录下，我们先看下这个目录下的构成：\n\n```\nsrc\n├── App.js\t\t\t\t\t\t// 主应用\n├── __tests__\t\t\t\t\t// 测试文件\n├── components\t\t\t\t\t// React 组件\n├── config\n│   ├── constants.js\t\t\t// 常量定义\n│   └── store.js\t\t\t\t// store 定义，这是我们本篇分析的关键\n├── data\t\t\t\t\t\t// 游戏数据\n├── features\t\t\t\t\t// 游戏行为定义(actions，reducers)\n├── index.js\t\t\t\t\t// 应用入口\n├── index.scss\n└── utils\t\t\t\t\t\t// 工具类\n```\n\n其中：\n\n- 项目的模块划分比较清晰，值得学习\n\n- 在本系列中，我们先看数据层，后看 UI 层，因此 config、data、features 这三个目录是我们感兴趣的\n\n## src/config/store.js\n\n在这个类中定义了 Redux Store。\n\n各个 reducer 按照功能被拆分到不同的模块当中去：\n\n```js\nimport appState  from '../features/app-state/reducer';\nimport player    from '../features/player/reducer';\nimport dialog    from '../features/dialog-manager/reducer';\nimport map       from '../features/map/reducer';\nimport gameMenu  from '../features/game-menus/reducer';\nimport world     from '../features/world/reducer';\nimport stats     from '../features/stats/reducer';\nimport inventory from '../features/inventory/reducer';\nimport monsters  from '../features/monsters/reducer';\nimport snackbar  from '../features/snackbar/reducer';\n```\n\n通过 combineReducers 将它们组装起来：\n\n```js\nconst rootReducer = combineReducers({\n  appState,\n  player,\n  dialog,\n  gameMenu,\n  map,\n  world,\n  stats,\n  inventory,\n  monsters,\n  snackbar\n});\n```\n\n作者使用 [redux-persist](https://github.com/rt2zz/redux-persist) 来做状态持久化。它不在文章的主题中，我们将它略过。\n\n最后是创建 store，并将它导出：\n\n```js\nconst store = createStore(\n  persistedReducer,\n  compose(\n    applyMiddleware(thunk),\n    // this mixed operated is needed, otherwise you get a weird error from redux about applying funcs\n    // eslint-disable-next-line\n    process.env.NODE_ENV === 'development' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__() || compose\n  )\n);\n\nexport default store;\n```\n\n其中：\n\n- 作者还添加了一个中间件 redux-thunk\n\n## Reducers\n\n作者对 Reducers 的拆分非常清晰，值得借鉴：\n\n```\nfeatures\n├── app-state\n│   ├── actions\n│   └── reducer.js\n├── dialog-manager\n│   ├── actions\n│   ├── dialogs\n│   ├── index.js\n│   └── reducer.js\n├── game-menus\n│   ├── actions\n│   ├── game-music\n│   ├── game-settings\n│   ├── index.js\n│   ├── reducer.js\n│   └── styles.scss\n├── inventory\n│   ├── actions\n│   ├── index.js\n│   ├── reducer.js\n│   └── styles.scss\n├── map\n│   ├── index.js\n│   ├── map-padding.js\n│   ├── map-tile.js\n│   ├── random-map-gen\n│   ├── reducer.js\n│   └── styles.scss\n……\n```\n\n其中：\n\n- features 下按照功能进行拆分：比如物品栏(inventory)、地图(map)\n- 在每个子模块下：\n    - reducer.js 盛放 Redux redux\n    - actions 是一个目录，定义了相关的 Redux actions\n\nactions 目录下，每个 action 单独一个文件：\n\n```\ninventory\n├── actions\n│   ├── buy-item.js\n│   ├── consume-potion.js\n│   ├── drop-item.js\n│   ├── equip-item.js\n│   ├── load-starting-items.js\n│   ├── pickup-item.js\n│   ├── sell-item.js\n│   └── unequip-item.js\n├── index.js\n├── reducer.js\n└── styles.scss\n```\n\n## features/inventory\n\n了解数据结构就是了解 Redux Reducer，也就是 features 下的这些模块。\n\n我从中选择了一个比较好入手的，即 inventory。\n\n### 初始状态\n\n我们先来看下 inventory 的初始状态（位于 reducer.js）：\n\n```js\nconst initialState = {\n  items: [],\n  maxItems: MAX_ITEMS\n};\n```\n\n其中：\n\n- items 是一个数组，表示玩家所持有的物品\n- maxItems：表示玩家持有物品数量的上限，这个值是 8\n\n通过初始状态，我们可以得知物品栏的数据结构是什么样。\n\n### 捡装备\n\n玩 Rogue-like 游戏，捡装备是最爽的事情了。我们来看如何用 Redux 实现捡装备。\n\n它的代码如下：\n\n```js\n\nexport default function pickupItem() {\n  return (dispatch, getState) => {\n\n    const { inventory, dialog } = getState();\t// 获取老的状态树中对应子状态\n\n    const { item } = dialog.chestOpen;\t\t\t// 是否打开宝箱\n\n    if(!item) return;\t\t\t\t\t\t\t// 如果宝箱没打开，则退出\n\n    const { items, maxItems } = inventory;\t\t// 获取物品列表与上限\n\n    if(items.length < maxItems) {\t\t\t\t// 能装得下\n    dispatch({\t\t\t\t\t\t\t\t\t// 发送一个获取物品的 action\n        type: 'GET_ITEM',\n        payload: item\n      });\n    }\n    else {\t\t\t\t\t\t\t\t\t\t// 装不下了\n      dispatch({\t\t\t\t\t\t\t\t// 发送一个物品过多的 action\n        type: 'TOO_MANY_ITEMS',\n        payload: item\n      });\n    }\n  };\n}\n```\n\n其中：\n\n- `GET_ITEM` 这个 action type 都是嵌套在别的 Actions 内部使用的\n- 也就是说它是一个内部使用的 action\n\n### 处理 GET ITEM\n\n`GET_ITEM` 在物品栏的 reducer.js 的内部进行处理，对应代码为：\n\n```js\nconst inventoryReducer = (state = initialState, { type, payload }) => {\n\tlet newState;\n    switch(type) {\n    \t……\n        case 'GET_ITEM':\n            newState = _cloneDeep(state); // 对原状态进行深拷贝 lodash.clonedeep\n            // 将物品加入物品栏，其中为物品添加一个 uuid 标识\n            newState.items.push({ ...payload, id: uuidv4() });\n            return newState; // 返回新状态\n```\n\n## 装备装备\n\n当我们见到一把剑后，想装备到玩家身上，是走的 src/features/inventory/actions/equip-item.js Action：\n\n```js\nexport default function equipItem(item) {\n  return dispatch => {\n\n    dispatch({\n      type: 'EQUIP_ITEM',\n      payload: item\n    });\n  };\n}\n```\n\n这个 Actions 的处理者不是物品栏模块，而是 stats 模块(它表示玩家属性)，位于 src/features/stats/reducer.js：\n\n```js\nconst statsReducer = (state = initialState, { type, payload }) => {\n\tlet newState;\n\tswitch(type) {\n\t\tcase 'EQUIP_ITEM':\n\t\t\tnewState = _cloneDeep(state);\n\t\t\tconst item = payload;\n            switch(item.type) {\n                case 'weapon':\t// 这里只以武器为例，省略其它类型的装备\n                    // 如果已经装备有武器\n                    if (newState.equippedItems.weapon) {\n                        // 扣掉它的武器伤害，表示把它的属性加成下掉了\n                        newState.damage -= newState.equippedItems.weapon.damage;\n                    }\n                    // 在加上新武器的属性加成\n                    newState.damage += item.damage;\n                    // 将已装备的武器指向当前武器\n                    newState.equippedItems.weapon = item;\n                    break;\n            \tdefault:\n      \t\t}\n            return newState;\n```\n\n## 打怪赚钱\n\n在游戏中打怪是可以赚钱的，我们来详细探究下这一过程。\n\n我们采用自底向上的方法，先找到金钱存储在哪里，答案是在 stats 模块中，它的状态数据结构如下：\n\n```js\nconst initialState = {\n  hp: 10,\n  maxHp: 10,\n  damage: 3,\n  defence: 0,\n  level: 1,\n  exp: 0,\n  expToLevel: 20,\n  gold: 0,\n  equippedItems: {}\n};\n```\n\n其中：\n\n- gold 就表示金钱(金币💰)\n\n赚钱的 Action 处理的代码为：\n\n```js\nconst statsReducer = (state = initialState, { type, payload }) => {\n\tlet newState;\n    switch(type) {\n    \tcase 'GET_GOLD':\n            return { ...state, gold: state.gold + payload };\n```\n\n这段代码是非常简单的，要是现实中赚钱也这么简单就好了。\n\n底层分析好了，我们向上看：谁发送 `GET_GOLD` 事件了？\n\n找到两处：\n\n1. 打开箱子事件\n2. 卖出物品事件\n\n我们选择第一个来看，开箱子，这个 Action 位于 src/features/dialog-manager/actions/open-chest.js：\n\n```js\nimport randomItem from '../dialogs/chest-loot/random-item';\n\nexport default function openChest() {\n  return (dispatch, getState) => {\n\n    const { level } = getState().stats;\t\t// 获取当前地牢层数\n    // 这个 boolean 表示是否会 roll 得一键装备\n    let itemDrop = false;\n    const chance = Math.floor(Math.random() * 100) + 1;\n    if(chance <= 25) {\t\t\t\t// 有 25% 的几率会得到一键装备\n      itemDrop = randomItem(level); // 得到什么装备呢？在 randomItem 中自动生成\n    }\n    // 开箱子除了得物品，还能捡到金币，这里有一个算法\n    // 获得金币 = (1~8) + 3 * 地牢层数\n    const gold = (Math.floor(Math.random() * 8) + 1) + (level * 3);\n    // 开箱子还会得经验，经验值是固定的\n    const exp = (level * 5) + 5;\n\n    // 下面开始分发事件\n    dispatch({\t\t\t\t\t\t// 赚钱了\n      type: 'GET_GOLD',\n      payload: gold\n    });\n    dispatch({\t\t\t\t\t\t// 赚经验了\n      type: 'GET_EXP',\n      payload: exp\n    });\n    dispatch({\t\t\t\t\t\t// 设置箱子内物品\n      type: 'SET_CHEST_DATA',\n      payload: {\n        exp,\n        gold,\n        item: itemDrop\t\t\t\t// （这个物品会通过其他 actions 取走放进物品栏中）\n      }\n    });\n  };\n}\n```\n\n其中：\n\n- 我们看到了 `GET_GOLD` 事件分发，完整了整个过程的分析\n\n我们可以更进一步，openChest 由谁发出呢？这里就是从数据层向 UI 层进发了。\n\n找到触发的代码为 src/features/dialog-manager/dialogs/chest-loot/index.js，它是开箱子或者打怪后弹出的对话框。\n\n这部分代码我们将在下一篇中进行详细介绍。\n\n## 总结模式\n\n前面看了这么多 Reducer、Actions 的实现，也感受到这个项目整体的整洁性。作为学习成功，我们将这种整洁的架构方式梳理下来。这样在未来的新项目中，我们也能进行迁移，写出同样优雅的代码。\n\n首先，我们也将代码放在 src 目录下。在 src 下创建以下目录：\n\n```\nsrc\n├── App.js\t\t\t\t\t\t// 主应用\n├── __tests__\t\t\t\t\t// 测试文件\n├── components\t\t\t\t\t// React 组件\n├── config\n│   ├── constants.js\t\t\t// 常量定义\n│   └── store.js\t\t\t\t// store 定义，这是我们本篇分析的关键\n├── reducers\t\t\t\t\t// 数据结构处理(Redux Reducers)\n├── index.js\t\t\t\t\t// 应用入口\n├── index.scss\n└── utils\t\t\t\t\t\t// 工具类\n```\n\n其中：\n\n- 我将 features 改名为 reducers，跟 Redux 的命名方式相对应\n\n在 reducers 目录下，将 APP 拆分为解耦的模块，比如：\n\n```\nreducers\n├── Account\n│   ├── actions\n│       ├── action1.js\n│       ├── action2.js\n│       ├── action3.js\n│   ├── reducer.js\n```\n\n其中 action 的写法为：\n\n```js\nexport default function action1(params) {\n  return (dispatch, getState) => {\n      ……\n      let data = ……\n      dispatch({\n          type: \"MY_ACTION_NAME\",\n          payload: data\n      })\n}\n```\n\nreducer.js 的写法为：\n\n```js\nconst initialState = {\n  ……\n};\n\nconst inventoryReducer = (state = initialState, { type, payload }) => {\n\tswitch(type) {\n        case \"MY_ACTION_TYPE\":\n            ……\n            return newState\n        default:\n            return state\n    }\n}\n\nexport default inventoryReducer;\n```\n\n其中：\n\n- 需要注意的是 newState 是需要深拷贝的\n\nreducers 写好后，来到 config/store.js 下：\n\n```js\n// 导入各个 reducers\nimport appState  from '../features/app-state/reducer';\nimport player    from '../features/player/reducer';\nimport dialog    from '../features/dialog-manager/reducer';\n\n// 组装到一起\nconst rootReducer = combineReducers({\n  appState,\n  player,\n  dialog,\n  gameMenu,\n  map,\n  world,\n  stats,\n  inventory,\n  monsters,\n  snackbar\n});\n\n// 创建全局 store\nconst store = createStore(\n  rootReducer\n);\n\n// 返回\nexport default store;\n```\n\n其中:\n\n- 以 appState 为例，它在 reducer.js 中 export default 名称为 appStateReducer，而我们在导入时将其命名为 appState，这个 appState 就是状态树中这一自状态树的名称\n\n在应用入口中（src/App.js）将 Redux 与 React 相结合：\n\n```jsx\nimport { Provider }         from 'react-redux';\nimport store, { persistor } from './config/store';\n\nclass ConnectedApp extends Component {\n\n  // refresh the local storage in case the redux store structure is old\n  componentDidCatch() {\n    localStorage.clear();\n    window.location.reload();\n  }\n\n  render() {\n    return(\n      <Provider store={store}>\n        <PersistGate\n          loading={<Spinner />}\n          persistor={persistor}>\n\n          <App />\n\n        </PersistGate>\n      </Provider>\n    );\n  }\n}\n\nReactDOM.render(<ConnectedApp />, document.getElementById('react-rpg'));\n```\n\n## 结论\n\n在本文中，我们完成了对 ReactRPG 数据层的学习。我从中收获很大！😆\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"},"path":"post/ReactRPG1md","sharedData":{},"siteData":{"title":"Maxiee Blog"}};</script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/vendors~src/pages/about~src/pages/post~src/pages/services.9ebe3a93.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/vendors~src/pages/bookmarks~src/pages/gallery~src/pages/post.0f2bae8a.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/vendors~src/pages/gallery~src/pages/post.bf181f2d.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/vendors~src/pages/post.3413cc1f.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/src/pages/post.083217cc.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/styles.ec85b004.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/vendors~main.fc8eff89.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/main.d5516191.js"></script></body></html>

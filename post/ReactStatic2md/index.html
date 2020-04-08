@@ -1,0 +1,284 @@
+<!DOCTYPE html><html lang="en"><head><meta name="generator" content="React Static"/><title data-react-helmet="true">react-static 静态网站搭建（二）：react-static 介绍 | Maxiee Blog</title><meta data-react-helmet="true" charSet="UTF-8"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/vendors~src/pages/about~src/pages/post~src/pages/services.9ebe3a93.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/vendors~src/pages/bookmarks~src/pages/gallery~src/pages/post.0f2bae8a.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/vendors~src/pages/gallery~src/pages/post.bf181f2d.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/vendors~src/pages/post.3413cc1f.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/src/pages/post.083217cc.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/styles.ec85b004.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/vendors~main.fc8eff89.js"/><link rel="preload" as="script" href="https://maxiee.github.io/main.d5516191.js"/><link rel="preload" as="style" href="https://maxiee.github.io/styles.ec85b004.css"/><link rel="stylesheet" href="https://maxiee.github.io/styles.ec85b004.css"/><script data-react-helmet="true" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><meta charSet="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, shrink-to-fit=no"/></head><body><div id="root"><div style="outline:none" tabindex="-1" role="group"><div><div style="display:flex;flex-direction:row;justify-content:space-between;margin-left:26px;margin-right:26px;height:72px"><div style="display:flex;flex-direction:row;justify-content:center;align-items:center"><img src="data:image/jpeg;base64,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" class="ui mini circular centered image"/><div style="margin-left:12px;font-size:18px"><a href="https://maxiee.github.io/">Maxiee Blog</a></div></div><div style="display:flex;flex-direction:row;align-items:center"><div style="color:#666666;margin-left:26px"><a href="https://maxiee.github.io/post">博客</a></div><div style="margin-left:26px" role="listbox" aria-expanded="false" class="ui dropdown" tabindex="0"><div class="text" role="alert" aria-live="polite">作品</div><i aria-hidden="true" class="dropdown icon"></i><div class="menu transition"><div role="option" class="item"><div style="margin:10px" class="text"><a href="https://maxiee.github.io/post/RayInfomd">RayInfo</a><div style="color:#CCCCCC">资讯阅读 App</div></div></div><div role="option" class="item"><div style="margin:10px" class="text"><a href="https://maxiee.github.io/post/MaxieeRNLabmd">MaxieeRNLab</a><div style="color:#CCCCCC">React Native 综合示例 APP</div></div></div><div role="option" class="item"><div style="margin:10px" class="text"><a href="https://maxiee.github.io/post/JiuShengmd">韭生</a><div style="color:#CCCCCC">roguelike 人生模拟器游戏</div></div></div></div></div><div style="color:#666666;margin-left:26px"><a href="https://maxiee.github.io/daily">Daily</a></div><div style="color:#666666;margin-left:26px"><a href="https://maxiee.github.io/gallery">设计</a></div><div style="color:#666666;margin-left:26px"><a href="https://maxiee.github.io/about">关于</a></div></div></div><div class="ui grid"><div class="row"><div style="margin-left:20px;margin-right:20px" class="column"><h1 class="ui header">react-static 静态网站搭建（二）：react-static 介绍</h1><p style="margin-bottom:20px;color:gray">2019-03-17</p><div class="ui leaderboard ad"><ins class=" adsbygoogle" style="display:block" data-ad-client="ca-pub-8746515866560942" data-ad-slot="3546488844" data-ad-layout="" data-ad-format="auto" data-full-width-responsive="true"></ins></div><div><h2>前言</h2>
+<p><a href="https://maxiee.github.io/post/ReactStatic1.md/">上一篇介绍了静态网站</a>，在本篇中我们来看系列的主角——react-static 静态网站生成器。在本文中，我们将对它进行一个全面的介绍。</p>
+<p><a href="https://github.com/nozzle/react-static">react-static</a> 是一个 React 的静态网站生成器。</p>
+<p>通俗来说就是：</p>
+<ul>
+<li>我们用 React 来编写网站（比如博客），这个过程与普通编写 React 网站一样</li>
+<li>区别在于网页数据的提供（如博文内容）<ul>
+<li>对于普通 React 网站，可能需要运行时通过一个接口获取文章</li>
+<li>在 react-static 中，这个过程发生在构建时，Webpack 构建的时候就会把博文传入 React 文章页</li>
+</ul></li>
+<li>这样，react-static 构建出的博客，每篇文章都对应一个预渲染的网页，也就是静态化了</li>
+</ul>
+<p>当然，不是说任何 React 网站通过它都能变静态。react-static 是一个框架，它定义了一些规则。React 应用必须按照他定义的概念、规则来编写，才能工作。</p>
+<p>如果你对上面的过程有困惑，可以先看下<a href="https://maxiee.github.io/post/ReactStatic1.md/">上一篇</a>。</p>
+<p>在本文中我们就来详细介绍这些规则。</p>
+<h2>特性</h2>
+<p>我们先来看下 react-static 所提供的特性：</p>
+<table class="ui celled table">
+<thead>
+<tr>
+<th>特性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100% React</td>
+<td>原汁原味 React 开发，不会额外添加奇奇怪怪的约束</td>
+</tr>
+<tr>
+<td>超快的构建速度</td>
+<td>构建速度是真的快，还十分可靠</td>
+</tr>
+<tr>
+<td>超快的性能</td>
+<td>预加载功能开箱即用，网页秒跳</td>
+</tr>
+<tr>
+<td>多样的数据来源</td>
+<td>向页面传入的数据来源由自己决定(自己写 JS 脚本)，API，数据库，json……</td>
+</tr>
+<tr>
+<td>自动代码和数据分离</td>
+<td>代码是代码，数据是数据，相互隔离，架构十分清晰</td>
+</tr>
+<tr>
+<td>通过 <a href="https://developers.google.com/web/fundamentals/performance/prpl-pattern/">PRPL</a> 预加载秒跳转</td>
+<td>比较新的一种 PWA 页面预加载模式，我还没有研究过，不过开箱即用，已经先用上了 🤣</td>
+</tr>
+<tr>
+<td>Progressive Enhancement + Graceful Fallbacks</td>
+<td>框架作者本行就是搞 SPA 的 SEO 的。构建出的静态站的 SEO 完全正常</td>
+</tr>
+<tr>
+<td>React-first</td>
+<td>React 优先，类似 Python 的 Pythonic 概念，这里推崇的是 Reactic 😆</td>
+</tr>
+<tr>
+<td>无痛项目设置与迁移</td>
+<td>亲身经历，我将本站从一个自己写的框架迁移到 react-static，迁移成本真的很低</td>
+</tr>
+<tr>
+<td>100% 支持 React 生态</td>
+<td>CSS-in-JS、GraphQL，连 Redux 都支持</td>
+</tr>
+<tr>
+<td>开箱即用热加载</td>
+<td>代码写完一保存，界面就立刻更新了，所见即所得，开发效率高</td>
+</tr>
+<tr>
+<td>扩展性</td>
+<td>静态生成器一个很重要的指标是网站生成时间与数据规模的关系。我之前写过一个框架放弃了，原因就是生成时间与数据规模成正比……react-static 则完全感受不到生成变慢</td>
+</tr>
+</tbody>
+</table>
+<h2>数据与模板</h2>
+<p>静态网站主要分为两部分：<strong>数据与模板</strong>。</p>
+<p>以博客文章页为例：</p>
+<ul>
+<li>模板负责文章页的框架，除了文章部分没有填充外，它的样子就是文章页的样子</li>
+<li>数据就是博客文章的数据，每篇博客文章都对应一份数据</li>
+<li>将任意一份数据与模板进行结合，就得到了最终的博客数据，它就是最终访客看到的样子</li>
+</ul>
+<p>在 react-static 中这两部分如下图：</p>
+<p><img style="max-width:60%" src="https://maxiee.github.io/images/ReactStatic201.png" class="ui centered image"/></p>
+<p>其中：</p>
+<ul>
+<li>数据在构建时提供<ul>
+<li>可以有多种来源</li>
+<li>通过 static.config.js 中的一个 js 方法实现</li>
+<li>这个方法是我们自己写的，因此想怎么拿数据就怎么拿数据</li>
+</ul></li>
+<li>模板对应于图中的右侧<ul>
+<li>是一个普通的 React 应用</li>
+<li>模板页是 React HOC，页面数据通过参数传入，我们 return 出对应的 React 组件 </li>
+<li>模板填充数据的过程也是遵循 React 的函数式思想</li>
+</ul></li>
+</ul>
+<p>前面说过，不是说任何 React 网站通过它都能变静态。react-static 是一个框架，它定义了一些规则。React 应用必须按照他定义的概念、规则来编写，才能工作。</p>
+<p>下面是时候深入水下啦！</p>
+<h2>static.config.js</h2>
+<p><a href="https://github.com/nozzle/react-static/blob/master/docs/config.md">static.config.js</a> 是基于 react-static 的静态网站的核心配置文件，各种规则大部分都在这里定义。</p>
+<p>它位于项目的根目录。我们以 maxiee.github.io 的配置文件实例来看下它的主要内容（完整选项可参见文档）：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">// 博客画作板块的数据提供方法
+// 画作位于 maxieePaintPath 变量对应的目录下，里面是一系列图片文件
+// getMaxieePaints 方法获取这些图片的路径
+const getMaxieePaints = () =&gt; {
+    return getAllFiles(maxieePaintPath)
+        .map(v =&gt; getFileName(v))
+}
+
+export default {
+    plugins: [&#x27;react-static-plugin-typescript&#x27;],    // 开启 TypeScript 支持
+    entry: path.join(__dirname, &#x27;src&#x27;, &#x27;index.tsx&#x27;),// 指定入口文件
+    siteRoot: &quot;https://maxiee.github.io&quot;,           // 网站域名
+    getSiteData: () =&gt; ({                           // 网站全局数据
+        title: &#x27;Maxiee Blog&#x27;                        // getSiteData 提供的数据
+    }),                                             // 在模板中通过特定 HOC 能获取到
+    // getRoutes 方法最为重要，它定义了你的网站中都有哪些路径
+    // 这些路径使用什么组件（模板）进行展示
+    // 也定义了如何向模板提供数据
+    // 这里以博客的画作板块为例
+    getRoutes: async ({dev}) =&gt; {
+        let maxieePaints = getMaxieePaints()        // 获取所有画作路径
+        
+        return [                                    // 数组，内部包含多个路径模板
+            {
+                path: &#x27;/&#x27;,                          // 定义首页
+                getData: () =&gt; ({                   // 首页模板所传入的数据
+                    blogList: posts                 // 这里传入的是所有帖子的列表
+                }),
+                children: posts                     // children 表示首页子页面，这里是文章页
+                    .sort((a, b) =&gt; { ... }         // 按照发布时间排序
+                    .map(post =&gt; {                  // 读取 markdown 
+                        let content = fs.readFileSync(  // 读取 markdown 文件内容
+                            &quot;./content/blog/posts/&quot; + post.link, &#x27;utf8&#x27;)
+                        let retData = Object.assign(// 将文章内容放入 retData 结构
+                            {},
+                            post,
+                            {article: content}
+                        )
+                        
+                        return {                    // 返回路由结构
+                            path: `/post/${post.link}/`,        // 路径
+                            component: &#x27;src/containers/Post&#x27;,   // 指定渲染模板组件
+                            getData: () =&gt; ({                   // 向模板提供数据
+                                post: retData,
+                                dev: dev
+                            })
+                        }
+                    })  
+            }，
+            {
+                path: &#x27;/gallery/&#x27;,                  // 定义路径
+                getData: () =&gt; ({                   // getData 中定义的数据结构就是
+                    paints: maxieePaints,           // 传入模板的数据结构
+                    dev: dev                        // 这里把所有画作的路径传入
+                })
+            },
+            ...
+        ]
+    }
+}
+</code></pre></pre>
+<p>上面就是 react-static 核心配置文件 static.config.js 的一个实例，其中：</p>
+<ul>
+<li>它是一个 js 文件，我们可以在其中定义方法</li>
+<li>实际中，除了 getMaxieePaints 外，我还定义了很多函数，用来获取博客文章、书签数据</li>
+<li>getSiteData 提供的是网站全局数据</li>
+<li>getRoutes 提供的是路由数据</li>
+<li><code style="background:#f5f7ff;padding:2px">/</code> 对应于网站首页，传入的数据是博客的列表，会被框架与 <code style="background:#f5f7ff;padding:2px">src/pages/index.tsx</code> 自动关联</li>
+<li><code style="background:#f5f7ff;padding:2px">/</code>  下有一个子路由，即 <code style="background:#f5f7ff;padding:2px">/post/${post.link}/</code> 这是博客文章，它的渲染组件是我们指定的，为 <code style="background:#f5f7ff;padding:2px">src/containers/Post</code></li>
+<li>gallery  是画作板块，<code style="background:#f5f7ff;padding:2px">&#x27;/gallery/&#x27;</code> 会被框架与 <code style="background:#f5f7ff;padding:2px">src/pages/gallery.tsx</code> 自动关联</li>
+<li>路由这块可能会感觉有些复杂，框架文档中对这块有更加详细的介绍，可以参见文档进行深入了解。同时这个项目也提供了许多官方示例，可以将实例 clone 下来研究一下，就一目了然了</li>
+</ul>
+<h2>首页</h2>
+<p>接下来我们就进入网站的视图(模板)部分。所有视图、模板都是 React 高阶组件，下面我们以首页（ <code style="background:#f5f7ff;padding:2px">src/pages/index.tsx</code> ）为例：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">import { withRouteData } from &#x27;react-static&#x27;
+
+// 首页
+export default withRouteData(({blogList} : {blogList : any[]}) =&gt; (
+    &lt;Fragment&gt;
+        &lt;Helmet&gt;
+                &lt;meta charSet=&quot;UTF-8&quot; /&gt;
+                &lt;title&gt;{BLOG_NAME} | Maxiee 的知识积累&lt;/title&gt;
+        &lt;/Helmet&gt;
+        &lt;PostListView posts={blogList}/&gt;
+    &lt;/Fragment&gt;
+))
+</code></pre></pre>
+<p>其中：</p>
+<ul>
+<li>withRouteData 是 react-static 中定义的一个高阶组件</li>
+<li>高阶组件参数中的 blogList 眼熟吗？这就是我们在 static.config.js 中用 getData 提供的数据</li>
+<li>这里接收到博客列表，传入 PostListView 组件进行展示</li>
+</ul>
+<h2>画作板块</h2>
+<p>下面我们再来看博客的画作（<code style="background:#f5f7ff;padding:2px">/gallery/</code>）板块：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">import { withRouteData } from &#x27;react-static&#x27;
+
+export default withRouteData(({paints, dev} : {paints : [string], dev : boolean}) =&gt; {
+    return &lt;GalleryComponent paints={paints.reverse()} dev={dev}/&gt;
+})
+</code></pre></pre>
+<p>其中：</p>
+<ul>
+<li>同样也是使用 withRouteData，获取到两个参数 paints 和 dev</li>
+<li>paints 为所有画作的路径</li>
+<li>GalleryComponent 是实际进行展示的 React 组件</li>
+</ul>
+<p>通过这两个页面我们能够感觉到，这的确是原汁原味的 React 开发体验。</p>
+<h2>侧边栏、导航栏</h2>
+<p>也许你会有疑问，上面两个模板都只有正文部分的内容，侧边栏、顶部导航栏是在哪里定义的呢？</p>
+<p>他们位于 <code style="background:#f5f7ff;padding:2px">src/App.tsx</code> 下：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">import React from &#x27;react&#x27;
+import {Root, Routes} from &#x27;react-static&#x27;
+import &#x27;semantic-ui-css/semantic.min.css&#x27;
+import { Grid } from &#x27;semantic-ui-react&#x27;;
+import SideBar from &#x27;./components/sidebar/SideBar&#x27;
+import NavBar from &#x27;@components/NavBar&#x27;;
+function App() {
+    
+    return (
+        &lt;Root&gt;
+            &lt;Grid stackable stretched relaxed&gt;
+                &lt;Grid.Column width={3} style={{paddingRight: 0}}&gt;
+                    &lt;SideBar /&gt;
+                &lt;/Grid.Column&gt;
+                &lt;Grid.Column width={13} style={{paddingLeft: 0}}&gt;
+                    &lt;NavBar selected=&#x27;&#x27;/&gt;
+                    &lt;Routes /&gt;
+                &lt;/Grid.Column&gt;
+            &lt;/Grid&gt;
+        &lt;/Root&gt;
+    )
+}
+
+export default App
+</code></pre></pre>
+<p>其中：</p>
+<ul>
+<li>Root 与 Routes 来自于 react-static</li>
+<li>Routes 部分就是网站的正文部分</li>
+<li>我们前面的两个页面都被填充进正文部分</li>
+</ul>
+<h2>官方示例</h2>
+<p>也许看了上面这些，还是会觉得认识不够透彻。这很正常，因为 react-static 这种开发方式比较新颖。</p>
+<p>彻底认识透彻的方法也很简单，react-static 官方提供了大量示例，只需要把他们 clone 下来跑一跑看一看，getting hands dirty。</p>
+<p>具体包括如下：</p>
+<ul>
+<li><a href="https://github.com/nozzle/react-static/blob/master/archives/old-examples/typescript/README.md">React-Static - TypeScript Enabled Example</a>：使用 TypeScript</li>
+<li><a href="https://github.com/nozzle/react-static/blob/master/archives/old-examples/styled-jsx/README.md">React-Static - Styled-JSX Example</a></li>
+<li><a href="https://github.com/nozzle/react-static/blob/master/archives/old-examples/styled-components/README.md">React-Static - Styled-Components Example</a></li>
+<li><a href="https://github.com/nozzle/react-static/blob/master/archives/old-examples/redux/README.md">React-Static - Redux Example</a></li>
+<li><a href="https://github.com/nozzle/react-static/blob/master/archives/old-examples/markdown/README.md">React-Static - Markdown Example</a></li>
+<li><a href="https://github.com/nozzle/react-static/blob/master/archives/old-examples/dynamic-imports/README.md">React-Static - Dynamic Imports with SSR Example</a></li>
+<li>……</li>
+</ul>
+<p>其中，在 react-static 项目首页的 <a href="https://github.com/nozzle/react-static#sites-built-with-react-static">Sites Built with React-Static</a> 一节中，还有很多使用 react-static 构建的网站是提供源码的，这也是很好的学习资源。</p>
+<h2>Getting Start</h2>
+<p>我将 Getting Start 放在最后，因为自己当时在初学的时候，因为对理论的不熟悉，怎么都 Getting Start 不起来。</p>
+<p>最终当我将 react-static 的概念理解透彻后(也就是前文的内容)，自然而然就上手了。</p>
+<p>react-static 自身是一个命令行工具，安装方法：</p>
+<pre><code style="background:#f5f7ff;padding:2px">$ yarn global add react-static
+# or
+$ npm install -g react-static
+</code></pre>
+<p>创建项目：</p>
+<pre><code style="background:#f5f7ff;padding:2px">$ react-static create
+</code></pre>
+<p>运行开发服务器：</p>
+<pre><code style="background:#f5f7ff;padding:2px">$ yarn start # or react-static start
+</code></pre>
+<p>构建项目：</p>
+<pre><code style="background:#f5f7ff;padding:2px">$ yarn build # or react-static build
+</code></pre>
+<p>本地托管：</p>
+<pre><code style="background:#f5f7ff;padding:2px">$ yarn serve
+</code></pre>
+<h2>小结</h2>
+<p><a href="https://github.com/nozzle/react-static">react-static</a> 首页中有大量的学习资源，包括框架作者的 YouTube 演讲，强烈建议观看。</p>
+<p>如果你想搭建一个静态网站，想要自己从头搭建，同时又使用 React，那么 <a href="https://github.com/nozzle/react-static">react-static</a> 绝对是首选之一。</p>
+<p>在后续的文章中，我会继续更新 react-static 更多的使用技巧。欢迎关注~</p></div><div class="ui leaderboard ad"><ins class=" adsbygoogle" style="display:block" data-ad-client="ca-pub-8746515866560942" data-ad-slot="3546488844" data-ad-layout="" data-ad-format="auto" data-full-width-responsive="true"></ins></div></div></div></div></div></div></div><script type="text/javascript">
+    window.__routeInfo = {"template":"../src/pages/post","sharedHashesByProp":{},"data":{"post":{"name":"react-static 静态网站搭建（二）：react-static 介绍","desc":"在本篇中我们来看系列的主角——react-static 静态网站生成器。在本文中，我们将对它进行一个全面的介绍。","type":"md","link":"ReactStatic2md","create":"2019-03-17","filename":"ReactStatic2.md"},"content":"## 前言\n\n[上一篇介绍了静态网站](https://maxiee.github.io/post/ReactStatic1.md/)，在本篇中我们来看系列的主角——react-static 静态网站生成器。在本文中，我们将对它进行一个全面的介绍。\n\n[react-static](https://github.com/nozzle/react-static) 是一个 React 的静态网站生成器。\n\n通俗来说就是：\n\n- 我们用 React 来编写网站（比如博客），这个过程与普通编写 React 网站一样\n- 区别在于网页数据的提供（如博文内容）\n    - 对于普通 React 网站，可能需要运行时通过一个接口获取文章\n    - 在 react-static 中，这个过程发生在构建时，Webpack 构建的时候就会把博文传入 React 文章页\n- 这样，react-static 构建出的博客，每篇文章都对应一个预渲染的网页，也就是静态化了\n\n当然，不是说任何 React 网站通过它都能变静态。react-static 是一个框架，它定义了一些规则。React 应用必须按照他定义的概念、规则来编写，才能工作。\n\n如果你对上面的过程有困惑，可以先看下[上一篇](https://maxiee.github.io/post/ReactStatic1.md/)。\n\n在本文中我们就来详细介绍这些规则。\n\n## 特性\n\n我们先来看下 react-static 所提供的特性：\n\n| 特性                                                         | 说明                                                         |\n| ------------------------------------------------------------ | ------------------------------------------------------------ |\n| 100% React                                                   | 原汁原味 React 开发，不会额外添加奇奇怪怪的约束              |\n| 超快的构建速度                                               | 构建速度是真的快，还十分可靠                                 |\n| 超快的性能                                                   | 预加载功能开箱即用，网页秒跳                                 |\n| 多样的数据来源                                               | 向页面传入的数据来源由自己决定(自己写 JS 脚本)，API，数据库，json…… |\n| 自动代码和数据分离                                           | 代码是代码，数据是数据，相互隔离，架构十分清晰               |\n| 通过 [PRPL](https://developers.google.com/web/fundamentals/performance/prpl-pattern/) 预加载秒跳转 | 比较新的一种 PWA 页面预加载模式，我还没有研究过，不过开箱即用，已经先用上了 🤣 |\n| Progressive Enhancement + Graceful Fallbacks                 | 框架作者本行就是搞 SPA 的 SEO 的。构建出的静态站的 SEO 完全正常 |\n| React-first                                                  | React 优先，类似 Python 的 Pythonic 概念，这里推崇的是 Reactic 😆 |\n| 无痛项目设置与迁移                                           | 亲身经历，我将本站从一个自己写的框架迁移到 react-static，迁移成本真的很低 |\n| 100% 支持 React 生态                                         | CSS-in-JS、GraphQL，连 Redux 都支持                          |\n| 开箱即用热加载                                               | 代码写完一保存，界面就立刻更新了，所见即所得，开发效率高     |\n| 扩展性                                                       | 静态生成器一个很重要的指标是网站生成时间与数据规模的关系。我之前写过一个框架放弃了，原因就是生成时间与数据规模成正比……react-static 则完全感受不到生成变慢 |\n\n## 数据与模板\n\n静态网站主要分为两部分：**数据与模板**。\n\n以博客文章页为例：\n\n- 模板负责文章页的框架，除了文章部分没有填充外，它的样子就是文章页的样子\n- 数据就是博客文章的数据，每篇博客文章都对应一份数据\n- 将任意一份数据与模板进行结合，就得到了最终的博客数据，它就是最终访客看到的样子\n\n在 react-static 中这两部分如下图：\n\n![](image/ReactStatic201.png)\n\n其中：\n\n- 数据在构建时提供\n    - 可以有多种来源\n    - 通过 static.config.js 中的一个 js 方法实现\n    - 这个方法是我们自己写的，因此想怎么拿数据就怎么拿数据\n- 模板对应于图中的右侧\n    - 是一个普通的 React 应用\n    - 模板页是 React HOC，页面数据通过参数传入，我们 return 出对应的 React 组件 \n    - 模板填充数据的过程也是遵循 React 的函数式思想\n\n前面说过，不是说任何 React 网站通过它都能变静态。react-static 是一个框架，它定义了一些规则。React 应用必须按照他定义的概念、规则来编写，才能工作。\n\n下面是时候深入水下啦！\n\n## static.config.js\n\n[static.config.js](https://github.com/nozzle/react-static/blob/master/docs/config.md) 是基于 react-static 的静态网站的核心配置文件，各种规则大部分都在这里定义。\n\n它位于项目的根目录。我们以 maxiee.github.io 的配置文件实例来看下它的主要内容（完整选项可参见文档）：\n\n```js\n// 博客画作板块的数据提供方法\n// 画作位于 maxieePaintPath 变量对应的目录下，里面是一系列图片文件\n// getMaxieePaints 方法获取这些图片的路径\nconst getMaxieePaints = () => {\n    return getAllFiles(maxieePaintPath)\n        .map(v => getFileName(v))\n}\n\nexport default {\n    plugins: ['react-static-plugin-typescript'],\t// 开启 TypeScript 支持\n    entry: path.join(__dirname, 'src', 'index.tsx'),// 指定入口文件\n    siteRoot: \"https://maxiee.github.io\",\t\t\t// 网站域名\n    getSiteData: () => ({\t\t\t\t\t\t\t// 网站全局数据\n        title: 'Maxiee Blog'\t\t\t\t\t\t// getSiteData 提供的数据\n    }),\t\t\t\t\t\t\t\t\t\t\t\t// 在模板中通过特定 HOC 能获取到\n    // getRoutes 方法最为重要，它定义了你的网站中都有哪些路径\n    // 这些路径使用什么组件（模板）进行展示\n    // 也定义了如何向模板提供数据\n    // 这里以博客的画作板块为例\n    getRoutes: async ({dev}) => {\n        let maxieePaints = getMaxieePaints()\t\t// 获取所有画作路径\n        \n        return [\t\t\t\t\t\t\t\t\t// 数组，内部包含多个路径模板\n            {\n                path: '/',\t\t\t\t\t\t\t// 定义首页\n                getData: () => ({\t\t\t\t\t// 首页模板所传入的数据\n                    blogList: posts\t\t\t\t\t// 这里传入的是所有帖子的列表\n                }),\n                children: posts\t\t\t\t\t\t// children 表示首页子页面，这里是文章页\n                \t.sort((a, b) => { ... }\t\t\t// 按照发布时间排序\n                    .map(post => {\t\t\t\t    // 读取 markdown \n                        let content = fs.readFileSync(  // 读取 markdown 文件内容\n                            \"./content/blog/posts/\" + post.link, 'utf8')\n                        let retData = Object.assign(// 将文章内容放入 retData 结构\n                            {},\n                            post,\n                            {article: content}\n                        )\n                        \n                        return {\t\t\t\t\t// 返回路由结构\n                            path: `/post/${post.link}/`,\t\t// 路径\n                            component: 'src/containers/Post',\t// 指定渲染模板组件\n                            getData: () => ({\t\t\t\t\t// 向模板提供数据\n                                post: retData,\n                                dev: dev\n                            })\n                        }\n                \t})\t\n            }，\n            {\n                path: '/gallery/',\t\t\t\t\t// 定义路径\n                getData: () => ({\t\t\t\t\t// getData 中定义的数据结构就是\n                    paints: maxieePaints,\t\t\t// 传入模板的数据结构\n                    dev: dev\t\t\t\t\t\t// 这里把所有画作的路径传入\n                })\n            },\n            ...\n        ]\n    }\n}\n```\n\n上面就是 react-static 核心配置文件 static.config.js 的一个实例，其中：\n\n- 它是一个 js 文件，我们可以在其中定义方法\n- 实际中，除了 getMaxieePaints 外，我还定义了很多函数，用来获取博客文章、书签数据\n- getSiteData 提供的是网站全局数据\n- getRoutes 提供的是路由数据\n- `/` 对应于网站首页，传入的数据是博客的列表，会被框架与 `src/pages/index.tsx` 自动关联\n- `/`  下有一个子路由，即 `/post/${post.link}/` 这是博客文章，它的渲染组件是我们指定的，为 `src/containers/Post`\n- gallery  是画作板块，`'/gallery/'` 会被框架与 `src/pages/gallery.tsx` 自动关联\n- 路由这块可能会感觉有些复杂，框架文档中对这块有更加详细的介绍，可以参见文档进行深入了解。同时这个项目也提供了许多官方示例，可以将实例 clone 下来研究一下，就一目了然了\n\n## 首页\n\n接下来我们就进入网站的视图(模板)部分。所有视图、模板都是 React 高阶组件，下面我们以首页（ `src/pages/index.tsx` ）为例：\n\n```tsx\nimport { withRouteData } from 'react-static'\n\n// 首页\nexport default withRouteData(({blogList} : {blogList : any[]}) => (\n    <Fragment>\n        <Helmet>\n                <meta charSet=\"UTF-8\" />\n                <title>{BLOG_NAME} | Maxiee 的知识积累</title>\n        </Helmet>\n        <PostListView posts={blogList}/>\n    </Fragment>\n))\n```\n\n其中：\n\n- withRouteData 是 react-static 中定义的一个高阶组件\n- 高阶组件参数中的 blogList 眼熟吗？这就是我们在 static.config.js 中用 getData 提供的数据\n- 这里接收到博客列表，传入 PostListView 组件进行展示\n\n## 画作板块\n\n下面我们再来看博客的画作（`/gallery/`）板块：\n\n```tsx\nimport { withRouteData } from 'react-static'\n\nexport default withRouteData(({paints, dev} : {paints : [string], dev : boolean}) => {\n    return <GalleryComponent paints={paints.reverse()} dev={dev}/>\n})\n```\n\n其中：\n\n- 同样也是使用 withRouteData，获取到两个参数 paints 和 dev\n- paints 为所有画作的路径\n- GalleryComponent 是实际进行展示的 React 组件\n\n通过这两个页面我们能够感觉到，这的确是原汁原味的 React 开发体验。\n\n## 侧边栏、导航栏\n\n也许你会有疑问，上面两个模板都只有正文部分的内容，侧边栏、顶部导航栏是在哪里定义的呢？\n\n他们位于 `src/App.tsx` 下：\n\n```tsx\nimport React from 'react'\nimport {Root, Routes} from 'react-static'\nimport 'semantic-ui-css/semantic.min.css'\nimport { Grid } from 'semantic-ui-react';\nimport SideBar from './components/sidebar/SideBar'\nimport NavBar from '@components/NavBar';\nfunction App() {\n    \n    return (\n        <Root>\n            <Grid stackable stretched relaxed>\n                <Grid.Column width={3} style={{paddingRight: 0}}>\n                    <SideBar />\n                </Grid.Column>\n                <Grid.Column width={13} style={{paddingLeft: 0}}>\n                    <NavBar selected=''/>\n                    <Routes />\n                </Grid.Column>\n            </Grid>\n        </Root>\n    )\n}\n\nexport default App\n```\n\n其中：\n\n- Root 与 Routes 来自于 react-static\n- Routes 部分就是网站的正文部分\n- 我们前面的两个页面都被填充进正文部分\n\n## 官方示例\n\n也许看了上面这些，还是会觉得认识不够透彻。这很正常，因为 react-static 这种开发方式比较新颖。\n\n彻底认识透彻的方法也很简单，react-static 官方提供了大量示例，只需要把他们 clone 下来跑一跑看一看，getting hands dirty。\n\n具体包括如下：\n\n- [React-Static - TypeScript Enabled Example](https://github.com/nozzle/react-static/blob/master/archives/old-examples/typescript/README.md)：使用 TypeScript\n- [React-Static - Styled-JSX Example](https://github.com/nozzle/react-static/blob/master/archives/old-examples/styled-jsx/README.md)\n- [React-Static - Styled-Components Example](https://github.com/nozzle/react-static/blob/master/archives/old-examples/styled-components/README.md)\n- [React-Static - Redux Example](https://github.com/nozzle/react-static/blob/master/archives/old-examples/redux/README.md)\n- [React-Static - Markdown Example](https://github.com/nozzle/react-static/blob/master/archives/old-examples/markdown/README.md)\n- [React-Static - Dynamic Imports with SSR Example](https://github.com/nozzle/react-static/blob/master/archives/old-examples/dynamic-imports/README.md)\n- ……\n\n其中，在 react-static 项目首页的 [Sites Built with React-Static](https://github.com/nozzle/react-static#sites-built-with-react-static) 一节中，还有很多使用 react-static 构建的网站是提供源码的，这也是很好的学习资源。\n\n## Getting Start\n\n我将 Getting Start 放在最后，因为自己当时在初学的时候，因为对理论的不熟悉，怎么都 Getting Start 不起来。\n\n最终当我将 react-static 的概念理解透彻后(也就是前文的内容)，自然而然就上手了。\n\nreact-static 自身是一个命令行工具，安装方法：\n\n```\n$ yarn global add react-static\n# or\n$ npm install -g react-static\n```\n\n创建项目：\n\n```\n$ react-static create\n```\n\n运行开发服务器：\n\n```\n$ yarn start # or react-static start\n```\n\n构建项目：\n\n```\n$ yarn build # or react-static build\n```\n\n本地托管：\n\n```\n$ yarn serve\n```\n\n## 小结\n\n[react-static](https://github.com/nozzle/react-static) 首页中有大量的学习资源，包括框架作者的 YouTube 演讲，强烈建议观看。\n\n如果你想搭建一个静态网站，想要自己从头搭建，同时又使用 React，那么 [react-static](https://github.com/nozzle/react-static) 绝对是首选之一。\n\n在后续的文章中，我会继续更新 react-static 更多的使用技巧。欢迎关注~"},"path":"post/ReactStatic2md","sharedData":{},"siteData":{"title":"Maxiee Blog"}};</script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/vendors~src/pages/about~src/pages/post~src/pages/services.9ebe3a93.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/vendors~src/pages/bookmarks~src/pages/gallery~src/pages/post.0f2bae8a.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/vendors~src/pages/gallery~src/pages/post.bf181f2d.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/vendors~src/pages/post.3413cc1f.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/src/pages/post.083217cc.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/styles.ec85b004.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/vendors~main.fc8eff89.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/main.d5516191.js"></script></body></html>

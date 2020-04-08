@@ -1,0 +1,383 @@
+<!DOCTYPE html><html lang="en"><head><meta name="generator" content="React Static"/><title data-react-helmet="true">React Native 代码阅读（十）：Image 组件代码实现详解（Android） | Maxiee Blog</title><meta data-react-helmet="true" charSet="UTF-8"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/vendors~src/pages/about~src/pages/post~src/pages/services.9ebe3a93.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/vendors~src/pages/bookmarks~src/pages/gallery~src/pages/post.0f2bae8a.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/vendors~src/pages/gallery~src/pages/post.bf181f2d.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/vendors~src/pages/post.3413cc1f.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/src/pages/post.083217cc.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/styles.ec85b004.js"/><link rel="preload" as="script" href="https://maxiee.github.io/templates/vendors~main.fc8eff89.js"/><link rel="preload" as="script" href="https://maxiee.github.io/main.d5516191.js"/><link rel="preload" as="style" href="https://maxiee.github.io/styles.ec85b004.css"/><link rel="stylesheet" href="https://maxiee.github.io/styles.ec85b004.css"/><script data-react-helmet="true" src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><meta charSet="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, shrink-to-fit=no"/></head><body><div id="root"><div style="outline:none" tabindex="-1" role="group"><div><div style="display:flex;flex-direction:row;justify-content:space-between;margin-left:26px;margin-right:26px;height:72px"><div style="display:flex;flex-direction:row;justify-content:center;align-items:center"><img src="data:image/jpeg;base64,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" class="ui mini circular centered image"/><div style="margin-left:12px;font-size:18px"><a href="https://maxiee.github.io/">Maxiee Blog</a></div></div><div style="display:flex;flex-direction:row;align-items:center"><div style="color:#666666;margin-left:26px"><a href="https://maxiee.github.io/post">博客</a></div><div style="margin-left:26px" role="listbox" aria-expanded="false" class="ui dropdown" tabindex="0"><div class="text" role="alert" aria-live="polite">作品</div><i aria-hidden="true" class="dropdown icon"></i><div class="menu transition"><div role="option" class="item"><div style="margin:10px" class="text"><a href="https://maxiee.github.io/post/RayInfomd">RayInfo</a><div style="color:#CCCCCC">资讯阅读 App</div></div></div><div role="option" class="item"><div style="margin:10px" class="text"><a href="https://maxiee.github.io/post/MaxieeRNLabmd">MaxieeRNLab</a><div style="color:#CCCCCC">React Native 综合示例 APP</div></div></div><div role="option" class="item"><div style="margin:10px" class="text"><a href="https://maxiee.github.io/post/JiuShengmd">韭生</a><div style="color:#CCCCCC">roguelike 人生模拟器游戏</div></div></div></div></div><div style="color:#666666;margin-left:26px"><a href="https://maxiee.github.io/daily">Daily</a></div><div style="color:#666666;margin-left:26px"><a href="https://maxiee.github.io/gallery">设计</a></div><div style="color:#666666;margin-left:26px"><a href="https://maxiee.github.io/about">关于</a></div></div></div><div class="ui grid"><div class="row"><div style="margin-left:20px;margin-right:20px" class="column"><h1 class="ui header">React Native 代码阅读（十）：Image 组件代码实现详解（Android）</h1><p style="margin-bottom:20px;color:gray">2019-03-11</p><div class="ui leaderboard ad"><ins class=" adsbygoogle" style="display:block" data-ad-client="ca-pub-8746515866560942" data-ad-slot="3546488844" data-ad-layout="" data-ad-format="auto" data-full-width-responsive="true"></ins></div><div><h2>前言</h2>
+<p>Image 组件是 React Native 中的最常用组件之一，在本文中我们来看它在 Android 下的实现原理。</p>
+<p>对于 Image 的使用，可以参考<a href="https://facebook.github.io/react-native/docs/images">官方文档</a>。</p>
+<p>在 React Native 中使用方式很简单：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">&lt;Image source={require(&#x27;./my-icon.png&#x27;)} /&gt;
+</code></pre></pre>
+<p>这是如何实现的呢？它是如何映射到 Android 的 ImageView 呢？</p>
+<h2>image.android.js</h2>
+<p>Image 组件定义在 image.android.js（Libraries/Image/Image.android.js）中。</p>
+<p>在这个文件中定义了：</p>
+<ul>
+<li>Image 组件</li>
+<li>getSize() 获取图片大小</li>
+<li>prefetch() 预获取图片，存入磁盘缓存供后续使用</li>
+<li>queryCache() 传入 URL 获取缓存状态（磁盘、内存、没有缓存）</li>
+</ul>
+<p>其中：</p>
+<ul>
+<li>Image 组件对应于 Java 类 com.facebook.react.views.image.ReactImageManager</li>
+<li>几个方法对应于 Java 类 com/facebook/react/modules/image/ImageLoaderModule.java</li>
+</ul>
+<p>下面我们来详细看 Image 组件，它是一个函数式组件，一开始对 Props 进行一系列的校验。我们着重看它的 return 逻辑：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">return (
+  &lt;TextAncestor.Consumer&gt;
+    {hasTextAncestor =&gt;
+      hasTextAncestor ? (
+        &lt;TextInlineImageNativeComponent {...nativeProps} /&gt;
+      ) : (
+        &lt;ImageViewNativeComponent {...nativeProps} /&gt;
+      )
+    }
+  &lt;/TextAncestor.Consumer&gt;
+);
+</code></pre></pre>
+<p>其中：包含一个判断逻辑，这里我们直接看 ImageViewNativeComponent。它位于：Libraries/Image/TextInlineImageNativeComponent.js：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">&#x27;use strict&#x27;;
+
+const requireNativeComponent = require(&#x27;requireNativeComponent&#x27;);
+
+const ImageViewNativeComponent = requireNativeComponent(&#x27;RCTImageView&#x27;);
+
+module.exports = ImageViewNativeComponent;
+</code></pre></pre>
+<h2>ReactImageManager</h2>
+<p>上面代码中的 RCTImageView 对应于 Android Native 侧的 com.facebook.react.views.image.ReactImageManager。</p>
+<p>ReactImageManager 有一个 createViewInstance，React Native 通过这个方法创建 ReactImageView 实例。</p>
+<p>同时 ReactImageManager 还有一系列 setter 方法：</p>
+<ul>
+<li>setSource</li>
+<li>setBlurRadius</li>
+<li>setLoadingIndicatorSource</li>
+<li>setBorderColor</li>
+<li>setOverlayColor</li>
+<li>setBorderWidth</li>
+<li>setBorderRadius</li>
+<li>setResizeMode</li>
+<li>……</li>
+</ul>
+<p>这些方法的参数都满足一定的模式：第一个参数为 ReactImageView 实例，第二个参数为属性的值。比如：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">// In JS this is Image.props.source
+@ReactProp(name = &quot;src&quot;)
+public void setSource(ReactImageView view, @Nullable ReadableArray sources) {
+  view.setSource(sources);
+}
+</code></pre></pre>
+<p>每个 setter 方法都调用了 ReactImageView 的对应 setter 方法。</p>
+<p>需要注意的一点是，ReactImageView 每次被 set 属性后，不会立刻更新。它内部有一个 mIsDirty 状态，ReactImageView 会将这个状态先置为 true，之后统一根据是否 dirty 统一更新。</p>
+<h2>ReactImageView 图片的展示</h2>
+<p>现在我们知道，React Native JS 侧的 Image 组件对应于 Android 的 ReactImageView。那么 ReactImageView 是如何把图片展示出来的呢？</p>
+<p>前面我们说到 ReactImageView 采用 dirty-update 的机制。update 方法为 com.facebook.react.views.image.ReactImageView#maybeUpdateView。</p>
+<p>它会首先判断是否 dirty，如果不 dirty 就直接退出方法：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">if (!mIsDirty) {
+  return;
+}
+</code></pre></pre>
+<p>经过一系列的参数设置，最终创建出 Fresco 的图片加载请求：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">ImageRequestBuilder imageRequestBuilder = ImageRequestBuilder.newBuilderWithSource(mImageSource.getUri())
+  .setPostprocessor(postprocessor)
+  .setResizeOptions(resizeOptions)
+  .setAutoRotateEnabled(true)
+  .setProgressiveRenderingEnabled(mProgressiveRenderingEnabled);
+
+ImageRequest imageRequest = ReactNetworkImageRequest.fromBuilderWithHeaders(imageRequestBuilder, mHeaders);
+
+// This builder is reused
+mDraweeControllerBuilder.reset();
+
+mDraweeControllerBuilder
+  .setAutoPlayAnimations(true)
+  .setCallerContext(mCallerContext)
+  .setOldController(getController())
+  .setImageRequest(imageRequest);
+
+setController(mDraweeControllerBuilder.build());
+mIsDirty = false;
+
+mDraweeControllerBuilder.reset();
+</code></pre></pre>
+<p>其中：</p>
+<ul>
+<li>ReactImageView 使用 Fresco 库进行图片加载</li>
+<li>ReactImageView 的继承关系为<ul>
+<li>ReactImageView<ul>
+<li>GenericDraweeView<ul>
+<li>DraweeView<ul>
+<li>ImageView</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>其中 Drawee 是 Fresco 库内部的一个<a href="https://github.com/facebook/fresco/tree/master/drawee">模块</a>。</li>
+</ul>
+<p>这里我们不深入 Fresco 库内部的实现原理。在上面的代码中，我们知道了通过上述代码，调用 Fresco 库进行了图片加载。</p>
+<p>同时在 maybeUpdateView 方法中，还有很多对 Prop 细节的解析，比如圆角、背景、边框、Scale 方式等等的解析与配置。这些操作都是基于 Fresco 库进行的二次封装，感兴趣的同学可以再进一步看一下。</p>
+<h2>Source 属性的处理</h2>
+<p>在我们的 JavaScript 代码中：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">&lt;Image source={require(&#x27;./my-icon.png&#x27;)} /&gt;
+</code></pre></pre>
+<p>指定了 source 属性，指定图片的位置。 source 属性是 Image 组件最终的属性，它是如何解析的呢？</p>
+<p>从 Image 使用文档中我们知道，React Native 的 Image 组件支持多种数据来源：JS 相对路径导入、Hybrid 资源引用、网络数据导入、Uri Data 都是可以的。</p>
+<p>这么多种类的来源如何进行处理呢？</p>
+<p>思考这个问题的思路如下：</p>
+<ul>
+<li>首先 source Prop 是 Image 的属性，因此它的过程是</li>
+<li>先调用 com.facebook.react.views.image.ReactImageManager#createViewInstance 创建实例</li>
+<li>再调用 com.facebook.react.views.image.ReactImageManager#setSource 设置属性</li>
+</ul>
+<p>因此就找到了 com.facebook.react.views.image.ReactImageManager#setSource 方法：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">// In JS this is Image.props.source
+@ReactProp(name = &quot;src&quot;)
+public void setSource(ReactImageView view, @Nullable ReadableArray sources) {
+  view.setSource(sources);
+}
+</code></pre></pre>
+<p>之后来到 com.facebook.react.views.image.ReactImageView#setSource 方法，它的核心实现如下：</p>
+<p>首先获取 source Props：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">String uri = source.getString(&quot;uri&quot;);
+ImageSource imageSource = new ImageSource(getContext(), uri);
+</code></pre></pre>
+<p>其中：</p>
+<ul>
+<li>uri 就是我们指定的 source 值 <code style="background:#f5f7ff;padding:2px">./my-icon.png</code></li>
+</ul>
+<p>如何判定 source 是来源自网络、Hybrid 还是 Uri Data 呢？这就需要借助于 ImageSource 这个类，它专门用于解析来源。</p>
+<p>ImageSource 解析来源的核心代码如下：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">private Uri computeUri(Context context) {
+  try {
+    Uri uri = Uri.parse(mSource);
+    // Verify scheme is set, so that relative uri (used by static resources) are not handled.
+    return uri.getScheme() == null ? computeLocalUri(context) : uri;
+  } catch (Exception e) {
+    return computeLocalUri(context);
+  }
+}
+
+private Uri computeLocalUri(Context context) {
+  isResource = true;
+  return ResourceDrawableIdHelper.getInstance().getResourceDrawableUri(context, mSource);
+}
+</code></pre></pre>
+<p>其中：</p>
+<ul>
+<li>通过计算之后，返回的则是标准的 Android Uri</li>
+<li>这个 Uri 可以 Fresco 图片库识别进行资源加载</li>
+</ul>
+<h2>Image 的四个回调方法</h2>
+<p>Image 组件有四个回调方法：</p>
+<ul>
+<li>onLoadStart</li>
+<li>onLoad</li>
+<li>onLoadEnd</li>
+<li>onError</li>
+</ul>
+<p>它们是从哪里发出，如何在 JS 层接到的呢？</p>
+<p>答案在 ReactImageManager 的 getExportedCustomDirectEventTypeConstants 方法中：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">@Override
+public @Nullable Map getExportedCustomDirectEventTypeConstants() {
+  return MapBuilder.of(
+    ImageLoadEvent.eventNameForType(ImageLoadEvent.ON_LOAD_START),
+      MapBuilder.of(&quot;registrationName&quot;, &quot;onLoadStart&quot;),
+    ImageLoadEvent.eventNameForType(ImageLoadEvent.ON_LOAD),
+      MapBuilder.of(&quot;registrationName&quot;, &quot;onLoad&quot;),
+    ImageLoadEvent.eventNameForType(ImageLoadEvent.ON_ERROR),
+      MapBuilder.of(&quot;registrationName&quot;, &quot;onError&quot;),
+    ImageLoadEvent.eventNameForType(ImageLoadEvent.ON_LOAD_END),
+      MapBuilder.of(&quot;registrationName&quot;, &quot;onLoadEnd&quot;));
+}
+</code></pre></pre>
+<p>这个方法中创建了一个 Map，对 ImageLoadEvent 枚举和名称进行了映射。</p>
+<p>这几个回调对应于 com.facebook.react.views.image.ImageLoadEvent 中的几个常量：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">// Currently ON_PROGRESS is not implemented, these can be added
+// easily once support exists in fresco.
+public static final int ON_ERROR = 1;
+public static final int ON_LOAD = 2;
+public static final int ON_LOAD_END = 3;
+public static final int ON_LOAD_START = 4;
+public static final int ON_PROGRESS = 5;
+</code></pre></pre>
+<p>这些事件是在哪里发出的呢？答案是在 ReactImageView 的 setShouldNotifyLoadEvents 方法中。</p>
+<p>这个方法的定义如下：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">@ReactProp(name = &quot;shouldNotifyLoadEvents&quot;)
+public void setLoadHandlersRegistered(
+            ReactImageView view, 
+            boolean shouldNotifyLoadEvents) {
+  view.setShouldNotifyLoadEvents(shouldNotifyLoadEvents);
+}
+</code></pre></pre>
+<p>其中，可以看出：</p>
+<ul>
+<li>这四个回调必须指定 shouldNotifyLoadEvents prop 才会触发</li>
+</ul>
+<p>下面我们看 setShouldNotifyLoadEvents 的内部实现，核心代码如下：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">final EventDispatcher mEventDispatcher = ((ReactContext) getContext()).getNativeModule(UIManagerModule.class).getEventDispatcher();
+
+mControllerListener = new BaseControllerListener&lt;ImageInfo&gt;() {
+    @Override
+    public void onSubmit(String id, Object callerContext) {
+      mEventDispatcher.dispatchEvent(
+        new ImageLoadEvent(getId(), ImageLoadEvent.ON_LOAD_START));
+    }
+
+    @Override
+    public void onFinalImageSet(
+      String id,
+      @Nullable final ImageInfo imageInfo,
+      @Nullable Animatable animatable) {
+      if (imageInfo != null) {
+        mEventDispatcher.dispatchEvent(
+          new ImageLoadEvent(getId(), ImageLoadEvent.ON_LOAD,
+            mImageSource.getSource(), imageInfo.getWidth(), imageInfo.getHeight()));
+        mEventDispatcher.dispatchEvent(
+          new ImageLoadEvent(getId(), ImageLoadEvent.ON_LOAD_END));
+      }
+    }
+
+    @Override
+    public void onFailure(String id, Throwable throwable) {
+      mEventDispatcher.dispatchEvent(
+        new ImageLoadEvent(getId(), ImageLoadEvent.ON_ERROR,
+          true, throwable.getMessage()));
+    }
+  };
+}
+</code></pre></pre>
+<p>其中：</p>
+<ul>
+<li>我们从 UIManagerModule 中获取到 EventDispatcher</li>
+<li>通过 EventDispatcher，我们能够从 Native 向 JS 发送 UI 事件</li>
+<li>这里的这几个回调就是通过 UI 事件在 JS 层触发的</li>
+</ul>
+<p>对于 EventDispatcher 的内部机制，限于篇幅我们暂不在本文中展开，点到为止。</p>
+<h2>Image.getSize</h2>
+<p>在查看 React Native 的 Bug 列表时，发现有一个说 Image.getSize 方法在 Android 失效了。我想修复这个 Bug，因此需要研究这个方法的实现原理。</p>
+<p>Issue 详情参见<a href="https://github.com/facebook/react-native/issues/23816">这里</a>。需要注意的是，这个 Bug 只在加载来自 Drawable 的图片时会出现，加载其他来源的图片没有问题。</p>
+<h3>Image.getSize</h3>
+<p>Image.getSize 方法位于 js 侧 Image 组件，它的代码在 Libraries/Image/Image.android.js。</p>
+<p>其代码如下：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">function getSize(
+  url: string,
+  success: (width: number, height: number) =&gt; void,
+  failure?: (error: any) =&gt; void,
+) {
+  return ImageLoader.getSize(url)
+    .then(function(sizes) {
+      success(sizes.width, sizes.height);
+    })
+    .catch(
+      failure ||
+        function() {
+          console.warn(&#x27;Failed to get size for image: &#x27; + url);
+        },
+    );
+}
+</code></pre></pre>
+<p>其中：</p>
+<ul>
+<li>由于 bug，这段代码会进入 catch 部分</li>
+<li>最终会在界面上报错 Failed to get size for image</li>
+</ul>
+<h3>ImageLoaderModule.getSize</h3>
+<p>在上面的代码中，ImageLoader 是一个 Native Module，被映射到了 ImageLoaderModule 类，位于 com/facebook/react/modules/image/ImageLoaderModule.java。</p>
+<p>下面我们来看这个方法的实现。这个类的完整代码参见<a href="https://github.com/facebook/react-native/blob/master/ReactAndroid/src/main/java/com/facebook/react/modules/image/ImageLoaderModule.java">这里</a>。</p>
+<p>首先方法签名：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">@ReactMethod
+public void getSize(
+    final String uriString,
+    final Promise promise) {
+</code></pre></pre>
+<p>其中：</p>
+<ul>
+<li>uriString 是我们要加载的 Drawable 图片</li>
+<li>promise 对应于 js 侧的 Promise</li>
+</ul>
+<p>例如，drawable 中有一个图片名为 <code style="background:#f5f7ff;padding:2px">tv_banner</code>，在  js 侧会调用 <code style="background:#f5f7ff;padding:2px">Image.getSize(&#x27;tv_banner&#x27;)</code>，传到上面 Java 侧的方法时，uriString 的值也是 <code style="background:#f5f7ff;padding:2px">tv_banner</code>。</p>
+<p>下面我们来看 getSize 方法内部：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">Uri uri = Uri.parse(uriString);
+</code></pre></pre>
+<p>首先，Uri.parse 会将 uriString 转为 Android 中的 Uri。</p>
+<p>由于这里的信息非常少，解析得到的 Uri 里面许多字段都为空：</p>
+<p><img style="max-width:60%" src="https://maxiee.github.io/images/ReactNativeCode1001.png" class="ui centered image"/></p>
+<p>这里可能是导致问题的原因，我们先记住这里接着往下看。</p>
+<p>ImageRequest 属于 Facebook 的 <a href="https://github.com/facebook/fresco/tree/master/imagepipeline">imagepipeline 库</a>。这是 <a href="https://github.com/facebook/fresco">Fresco 项目</a>的一个子项目。</p>
+<h3>ImagePipeline</h3>
+<p>好在社区中有一篇官方文档<a href="https://www.fresco-cn.org/docs/using-image-pipeline.html">直接使用Image Pipeline</a>，看起来跟我们的场景很像，快速学习一下。文档中的内容这里就不赘述了。</p>
+<p>我们回到 getSize 方法。</p>
+<p>首先是创建一个 ImageRequest：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">ImageRequest request = ImageRequestBuilder.newBuilderWithSource(uri).build();
+</code></pre></pre>
+<p>之后是获取数据源：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">DataSource&lt;CloseableReference&lt;CloseableImage&gt;&gt; dataSource =
+    Fresco.getImagePipeline().fetchDecodedImage(request, mCallerContext);
+</code></pre></pre>
+<p>之后是订阅数据：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">DataSubscriber&lt;CloseableReference&lt;CloseableImage&gt;&gt; dataSubscriber =
+  new BaseDataSubscriber&lt;CloseableReference&lt;CloseableImage&gt;&gt;() {
+    @Override
+    protected void onNewResultImpl(
+        DataSource&lt;CloseableReference&lt;CloseableImage&gt;&gt; dataSource) {
+      if (!dataSource.isFinished()) {
+        return;
+      }
+      CloseableReference&lt;CloseableImage&gt; ref = dataSource.getResult();
+      if (ref != null) {
+        try {
+          CloseableImage image = ref.get();
+
+          WritableMap sizes = Arguments.createMap();
+          sizes.putInt(&quot;width&quot;, image.getWidth());
+          sizes.putInt(&quot;height&quot;, image.getHeight());
+
+          promise.resolve(sizes);
+        } catch (Exception e) {
+          promise.reject(ERROR_GET_SIZE_FAILURE, e);
+        } finally {
+          CloseableReference.closeSafely(ref);
+        }
+      } else {
+        promise.reject(ERROR_GET_SIZE_FAILURE);
+      }
+    }
+
+    @Override
+    protected void onFailureImpl(DataSource&lt;CloseableReference&lt;CloseableImage&gt;&gt; dataSource) {
+      promise.reject(ERROR_GET_SIZE_FAILURE, dataSource.getFailureCause());
+    }
+  };
+</code></pre></pre>
+<p>最后是实际执行订阅操作：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">dataSource.subscribe(dataSubscriber, CallerThreadExecutor.getInstance());
+</code></pre></pre>
+<p>在上面的大代码块中，有多处异常逻辑，都会导致 promise.reject，最终是哪个导致的呢？</p>
+<p>我们都下断点来 Debug 一下，发现最终落入了 onFailureImpl。</p>
+<h3>fetchDecodedImage</h3>
+<p>onFailureImpl 是在哪个步骤出错的呢？这个要看图片实际加载的过程，这个过程位于 com.facebook.imagepipeline.core.ImagePipeline#fetchDecodedImage(com.facebook.imagepipeline.request.ImageRequest, java.lang.Object, com.facebook.imagepipeline.request.ImageRequest.RequestLevel, com.facebook.imagepipeline.listener.RequestListener) 方法。</p>
+<p>发现异常是从这一句抛出来的：</p>
+<pre><pre style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687;padding:1em;margin:.5em 0;overflow:auto"><code style="font-family:Consolas, Menlo, Monaco, &quot;Andale Mono WT&quot;, &quot;Andale Mono&quot;, &quot;Lucida Console&quot;, &quot;Lucida Sans Typewriter&quot;, &quot;DejaVu Sans Mono&quot;, &quot;Bitstream Vera Sans Mono&quot;, &quot;Liberation Mono&quot;, &quot;Nimbus Mono L&quot;, &quot;Courier New&quot;, Courier, monospace;font-size:14px;line-height:1.375;direction:ltr;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none;background:#f5f7ff;color:#5e6687">Producer&lt;CloseableReference&lt;CloseableImage&gt;&gt; producerSequence =
+    mProducerSequenceFactory.getDecodedImageProducerSequence(imageRequest);
+</code></pre></pre>
+<p>异常原因是什么呢？</p>
+<pre><code style="background:#f5f7ff;padding:2px">java.lang.IllegalArgumentException: Unsupported uri scheme! Uri is: tv_banner
+</code></pre>
+<p>从中可以看出，问题确实出在这个 Uri 身上。</p>
+<h3>Android drawable URI</h3>
+<p>Android 的 Drawable uri 应该是什么样的呢？</p>
+<p>它的格式可以参考下面文章：</p>
+<ul>
+<li>
+<p><a href="https://stackoverflow.com/questions/19566840/get-uri-from-drawable-image">Get URI from drawable image</a></p>
+</li>
+<li>
+<p><a href="https://stackoverflow.com/questions/6602417/get-the-uri-of-an-image-stored-in-drawable">Get the URI of an image stored in drawable</a></p>
+</li>
+</ul>
+<h2>结论</h2>
+<p>在本文中，我们深入分析了 Image 组件的实现原理。包括：</p>
+<ul>
+<li>图片展示</li>
+<li>回调</li>
+<li>source 处理</li>
+<li>Image.getSize</li>
+</ul>
+<p>同时 Image.getSize 是以跟踪问题的形式进行调试，并最终找到了问题所在。</p></div><div class="ui leaderboard ad"><ins class=" adsbygoogle" style="display:block" data-ad-client="ca-pub-8746515866560942" data-ad-slot="3546488844" data-ad-layout="" data-ad-format="auto" data-full-width-responsive="true"></ins></div></div></div></div></div></div></div><script type="text/javascript">
+    window.__routeInfo = {"template":"../src/pages/post","sharedHashesByProp":{},"data":{"post":{"name":"React Native 代码阅读（十）：Image 组件代码实现详解（Android）","desc":"Image 组件是 React Native 中的最常用组件之一，在本文中我们来看它在 Android 下的实现原理。","type":"md","link":"ReactNativeCode10md","create":"2019-03-11","filename":"ReactNativeCode10.md"},"content":"## 前言\n\nImage 组件是 React Native 中的最常用组件之一，在本文中我们来看它在 Android 下的实现原理。\n\n对于 Image 的使用，可以参考[官方文档](https://facebook.github.io/react-native/docs/images)。\n\n在 React Native 中使用方式很简单：\n\n```jsx\n<Image source={require('./my-icon.png')} />\n```\n\n这是如何实现的呢？它是如何映射到 Android 的 ImageView 呢？\n\n## image.android.js\n\nImage 组件定义在 image.android.js（Libraries/Image/Image.android.js）中。\n\n在这个文件中定义了：\n\n- Image 组件\n- getSize() 获取图片大小\n- prefetch() 预获取图片，存入磁盘缓存供后续使用\n- queryCache() 传入 URL 获取缓存状态（磁盘、内存、没有缓存）\n\n其中：\n\n- Image 组件对应于 Java 类 com.facebook.react.views.image.ReactImageManager\n- 几个方法对应于 Java 类 com/facebook/react/modules/image/ImageLoaderModule.java\n\n下面我们来详细看 Image 组件，它是一个函数式组件，一开始对 Props 进行一系列的校验。我们着重看它的 return 逻辑：\n\n```jsx\nreturn (\n  <TextAncestor.Consumer>\n    {hasTextAncestor =>\n      hasTextAncestor ? (\n        <TextInlineImageNativeComponent {...nativeProps} />\n      ) : (\n        <ImageViewNativeComponent {...nativeProps} />\n      )\n    }\n  </TextAncestor.Consumer>\n);\n```\n\n其中：包含一个判断逻辑，这里我们直接看 ImageViewNativeComponent。它位于：Libraries/Image/TextInlineImageNativeComponent.js：\n\n```js\n'use strict';\n\nconst requireNativeComponent = require('requireNativeComponent');\n\nconst ImageViewNativeComponent = requireNativeComponent('RCTImageView');\n\nmodule.exports = ImageViewNativeComponent;\n```\n\n## ReactImageManager\n\n上面代码中的 RCTImageView 对应于 Android Native 侧的 com.facebook.react.views.image.ReactImageManager。\n\nReactImageManager 有一个 createViewInstance，React Native 通过这个方法创建 ReactImageView 实例。\n\n同时 ReactImageManager 还有一系列 setter 方法：\n\n- setSource\n- setBlurRadius\n- setLoadingIndicatorSource\n- setBorderColor\n- setOverlayColor\n- setBorderWidth\n- setBorderRadius\n- setResizeMode\n- ……\n\n这些方法的参数都满足一定的模式：第一个参数为 ReactImageView 实例，第二个参数为属性的值。比如：\n\n```java\n// In JS this is Image.props.source\n@ReactProp(name = \"src\")\npublic void setSource(ReactImageView view, @Nullable ReadableArray sources) {\n  view.setSource(sources);\n}\n```\n\n每个 setter 方法都调用了 ReactImageView 的对应 setter 方法。\n\n需要注意的一点是，ReactImageView 每次被 set 属性后，不会立刻更新。它内部有一个 mIsDirty 状态，ReactImageView 会将这个状态先置为 true，之后统一根据是否 dirty 统一更新。\n\n## ReactImageView 图片的展示\n\n现在我们知道，React Native JS 侧的 Image 组件对应于 Android 的 ReactImageView。那么 ReactImageView 是如何把图片展示出来的呢？\n\n前面我们说到 ReactImageView 采用 dirty-update 的机制。update 方法为 com.facebook.react.views.image.ReactImageView#maybeUpdateView。\n\n它会首先判断是否 dirty，如果不 dirty 就直接退出方法：\n\n```java\nif (!mIsDirty) {\n  return;\n}\n```\n\n经过一系列的参数设置，最终创建出 Fresco 的图片加载请求：\n\n```java\nImageRequestBuilder imageRequestBuilder = ImageRequestBuilder.newBuilderWithSource(mImageSource.getUri())\n  .setPostprocessor(postprocessor)\n  .setResizeOptions(resizeOptions)\n  .setAutoRotateEnabled(true)\n  .setProgressiveRenderingEnabled(mProgressiveRenderingEnabled);\n\nImageRequest imageRequest = ReactNetworkImageRequest.fromBuilderWithHeaders(imageRequestBuilder, mHeaders);\n\n// This builder is reused\nmDraweeControllerBuilder.reset();\n\nmDraweeControllerBuilder\n  .setAutoPlayAnimations(true)\n  .setCallerContext(mCallerContext)\n  .setOldController(getController())\n  .setImageRequest(imageRequest);\n\nsetController(mDraweeControllerBuilder.build());\nmIsDirty = false;\n\nmDraweeControllerBuilder.reset();\n```\n\n其中：\n\n- ReactImageView 使用 Fresco 库进行图片加载\n- ReactImageView 的继承关系为\n    - ReactImageView\n        - GenericDraweeView\n            - DraweeView\n                - ImageView\n- 其中 Drawee 是 Fresco 库内部的一个[模块](https://github.com/facebook/fresco/tree/master/drawee)。\n\n这里我们不深入 Fresco 库内部的实现原理。在上面的代码中，我们知道了通过上述代码，调用 Fresco 库进行了图片加载。\n\n同时在 maybeUpdateView 方法中，还有很多对 Prop 细节的解析，比如圆角、背景、边框、Scale 方式等等的解析与配置。这些操作都是基于 Fresco 库进行的二次封装，感兴趣的同学可以再进一步看一下。\n\n## Source 属性的处理\n\n在我们的 JavaScript 代码中：\n\n```js\n<Image source={require('./my-icon.png')} />\n```\n\n指定了 source 属性，指定图片的位置。 source 属性是 Image 组件最终的属性，它是如何解析的呢？\n\n从 Image 使用文档中我们知道，React Native 的 Image 组件支持多种数据来源：JS 相对路径导入、Hybrid 资源引用、网络数据导入、Uri Data 都是可以的。\n\n这么多种类的来源如何进行处理呢？\n\n思考这个问题的思路如下：\n\n- 首先 source Prop 是 Image 的属性，因此它的过程是\n- 先调用 com.facebook.react.views.image.ReactImageManager#createViewInstance 创建实例\n- 再调用 com.facebook.react.views.image.ReactImageManager#setSource 设置属性\n\n因此就找到了 com.facebook.react.views.image.ReactImageManager#setSource 方法：\n\n```java\n// In JS this is Image.props.source\n@ReactProp(name = \"src\")\npublic void setSource(ReactImageView view, @Nullable ReadableArray sources) {\n  view.setSource(sources);\n}\n```\n\n之后来到 com.facebook.react.views.image.ReactImageView#setSource 方法，它的核心实现如下：\n\n首先获取 source Props：\n\n```java\nString uri = source.getString(\"uri\");\nImageSource imageSource = new ImageSource(getContext(), uri);\n```\n\n其中：\n\n- uri 就是我们指定的 source 值 `./my-icon.png`\n\n如何判定 source 是来源自网络、Hybrid 还是 Uri Data 呢？这就需要借助于 ImageSource 这个类，它专门用于解析来源。\n\nImageSource 解析来源的核心代码如下：\n\n```java\nprivate Uri computeUri(Context context) {\n  try {\n    Uri uri = Uri.parse(mSource);\n    // Verify scheme is set, so that relative uri (used by static resources) are not handled.\n    return uri.getScheme() == null ? computeLocalUri(context) : uri;\n  } catch (Exception e) {\n    return computeLocalUri(context);\n  }\n}\n\nprivate Uri computeLocalUri(Context context) {\n  isResource = true;\n  return ResourceDrawableIdHelper.getInstance().getResourceDrawableUri(context, mSource);\n}\n```\n\n其中：\n\n- 通过计算之后，返回的则是标准的 Android Uri\n- 这个 Uri 可以 Fresco 图片库识别进行资源加载\n\n## Image 的四个回调方法\n\nImage 组件有四个回调方法：\n\n- onLoadStart\n- onLoad\n- onLoadEnd\n- onError\n\n它们是从哪里发出，如何在 JS 层接到的呢？\n\n答案在 ReactImageManager 的 getExportedCustomDirectEventTypeConstants 方法中：\n\n```java\n@Override\npublic @Nullable Map getExportedCustomDirectEventTypeConstants() {\n  return MapBuilder.of(\n    ImageLoadEvent.eventNameForType(ImageLoadEvent.ON_LOAD_START),\n      MapBuilder.of(\"registrationName\", \"onLoadStart\"),\n    ImageLoadEvent.eventNameForType(ImageLoadEvent.ON_LOAD),\n      MapBuilder.of(\"registrationName\", \"onLoad\"),\n    ImageLoadEvent.eventNameForType(ImageLoadEvent.ON_ERROR),\n      MapBuilder.of(\"registrationName\", \"onError\"),\n    ImageLoadEvent.eventNameForType(ImageLoadEvent.ON_LOAD_END),\n      MapBuilder.of(\"registrationName\", \"onLoadEnd\"));\n}\n```\n\n这个方法中创建了一个 Map，对 ImageLoadEvent 枚举和名称进行了映射。\n\n这几个回调对应于 com.facebook.react.views.image.ImageLoadEvent 中的几个常量：\n\n```java\n// Currently ON_PROGRESS is not implemented, these can be added\n// easily once support exists in fresco.\npublic static final int ON_ERROR = 1;\npublic static final int ON_LOAD = 2;\npublic static final int ON_LOAD_END = 3;\npublic static final int ON_LOAD_START = 4;\npublic static final int ON_PROGRESS = 5;\n```\n\n这些事件是在哪里发出的呢？答案是在 ReactImageView 的 setShouldNotifyLoadEvents 方法中。\n\n这个方法的定义如下：\n\n```java\n@ReactProp(name = \"shouldNotifyLoadEvents\")\npublic void setLoadHandlersRegistered(\n    \t\tReactImageView view, \n    \t\tboolean shouldNotifyLoadEvents) {\n  view.setShouldNotifyLoadEvents(shouldNotifyLoadEvents);\n}\n```\n\n其中，可以看出：\n\n- 这四个回调必须指定 shouldNotifyLoadEvents prop 才会触发\n\n下面我们看 setShouldNotifyLoadEvents 的内部实现，核心代码如下：\n\n```java\nfinal EventDispatcher mEventDispatcher = ((ReactContext) getContext()).getNativeModule(UIManagerModule.class).getEventDispatcher();\n\nmControllerListener = new BaseControllerListener<ImageInfo>() {\n    @Override\n    public void onSubmit(String id, Object callerContext) {\n      mEventDispatcher.dispatchEvent(\n        new ImageLoadEvent(getId(), ImageLoadEvent.ON_LOAD_START));\n    }\n\n    @Override\n    public void onFinalImageSet(\n      String id,\n      @Nullable final ImageInfo imageInfo,\n      @Nullable Animatable animatable) {\n      if (imageInfo != null) {\n        mEventDispatcher.dispatchEvent(\n          new ImageLoadEvent(getId(), ImageLoadEvent.ON_LOAD,\n            mImageSource.getSource(), imageInfo.getWidth(), imageInfo.getHeight()));\n        mEventDispatcher.dispatchEvent(\n          new ImageLoadEvent(getId(), ImageLoadEvent.ON_LOAD_END));\n      }\n    }\n\n    @Override\n    public void onFailure(String id, Throwable throwable) {\n      mEventDispatcher.dispatchEvent(\n        new ImageLoadEvent(getId(), ImageLoadEvent.ON_ERROR,\n          true, throwable.getMessage()));\n    }\n  };\n}\n```\n\n其中：\n\n- 我们从 UIManagerModule 中获取到 EventDispatcher\n- 通过 EventDispatcher，我们能够从 Native 向 JS 发送 UI 事件\n- 这里的这几个回调就是通过 UI 事件在 JS 层触发的\n\n对于 EventDispatcher 的内部机制，限于篇幅我们暂不在本文中展开，点到为止。\n\n## Image.getSize\n\n在查看 React Native 的 Bug 列表时，发现有一个说 Image.getSize 方法在 Android 失效了。我想修复这个 Bug，因此需要研究这个方法的实现原理。\n\nIssue 详情参见[这里](https://github.com/facebook/react-native/issues/23816)。需要注意的是，这个 Bug 只在加载来自 Drawable 的图片时会出现，加载其他来源的图片没有问题。\n\n### Image.getSize\n\nImage.getSize 方法位于 js 侧 Image 组件，它的代码在 Libraries/Image/Image.android.js。\n\n其代码如下：\n\n```js\nfunction getSize(\n  url: string,\n  success: (width: number, height: number) => void,\n  failure?: (error: any) => void,\n) {\n  return ImageLoader.getSize(url)\n    .then(function(sizes) {\n      success(sizes.width, sizes.height);\n    })\n    .catch(\n      failure ||\n        function() {\n          console.warn('Failed to get size for image: ' + url);\n        },\n    );\n}\n```\n\n其中：\n\n- 由于 bug，这段代码会进入 catch 部分\n- 最终会在界面上报错 Failed to get size for image\n\n### ImageLoaderModule.getSize\n\n在上面的代码中，ImageLoader 是一个 Native Module，被映射到了 ImageLoaderModule 类，位于 com/facebook/react/modules/image/ImageLoaderModule.java。\n\n下面我们来看这个方法的实现。这个类的完整代码参见[这里](https://github.com/facebook/react-native/blob/master/ReactAndroid/src/main/java/com/facebook/react/modules/image/ImageLoaderModule.java)。\n\n首先方法签名：\n\n```java\n@ReactMethod\npublic void getSize(\n    final String uriString,\n    final Promise promise) {\n```\n\n其中：\n\n- uriString 是我们要加载的 Drawable 图片\n- promise 对应于 js 侧的 Promise\n\n例如，drawable 中有一个图片名为 `tv_banner`，在  js 侧会调用 `Image.getSize('tv_banner')`，传到上面 Java 侧的方法时，uriString 的值也是 `tv_banner`。\n\n下面我们来看 getSize 方法内部：\n\n```java\nUri uri = Uri.parse(uriString);\n```\n\n首先，Uri.parse 会将 uriString 转为 Android 中的 Uri。\n\n由于这里的信息非常少，解析得到的 Uri 里面许多字段都为空：\n\n![](image/ReactNativeCode1001.png)\n\n这里可能是导致问题的原因，我们先记住这里接着往下看。\n\nImageRequest 属于 Facebook 的 [imagepipeline 库](https://github.com/facebook/fresco/tree/master/imagepipeline)。这是 [Fresco 项目](https://github.com/facebook/fresco)的一个子项目。\n\n### ImagePipeline\n\n好在社区中有一篇官方文档[直接使用Image Pipeline](https://www.fresco-cn.org/docs/using-image-pipeline.html)，看起来跟我们的场景很像，快速学习一下。文档中的内容这里就不赘述了。\n\n我们回到 getSize 方法。\n\n首先是创建一个 ImageRequest：\n\n```java\nImageRequest request = ImageRequestBuilder.newBuilderWithSource(uri).build();\n```\n\n之后是获取数据源：\n\n```java\nDataSource<CloseableReference<CloseableImage>> dataSource =\n    Fresco.getImagePipeline().fetchDecodedImage(request, mCallerContext);\n```\n\n之后是订阅数据：\n\n```java\nDataSubscriber<CloseableReference<CloseableImage>> dataSubscriber =\n  new BaseDataSubscriber<CloseableReference<CloseableImage>>() {\n    @Override\n    protected void onNewResultImpl(\n        DataSource<CloseableReference<CloseableImage>> dataSource) {\n      if (!dataSource.isFinished()) {\n        return;\n      }\n      CloseableReference<CloseableImage> ref = dataSource.getResult();\n      if (ref != null) {\n        try {\n          CloseableImage image = ref.get();\n\n          WritableMap sizes = Arguments.createMap();\n          sizes.putInt(\"width\", image.getWidth());\n          sizes.putInt(\"height\", image.getHeight());\n\n          promise.resolve(sizes);\n        } catch (Exception e) {\n          promise.reject(ERROR_GET_SIZE_FAILURE, e);\n        } finally {\n          CloseableReference.closeSafely(ref);\n        }\n      } else {\n        promise.reject(ERROR_GET_SIZE_FAILURE);\n      }\n    }\n\n    @Override\n    protected void onFailureImpl(DataSource<CloseableReference<CloseableImage>> dataSource) {\n      promise.reject(ERROR_GET_SIZE_FAILURE, dataSource.getFailureCause());\n    }\n  };\n```\n\n最后是实际执行订阅操作：\n\n```java\ndataSource.subscribe(dataSubscriber, CallerThreadExecutor.getInstance());\n```\n\n在上面的大代码块中，有多处异常逻辑，都会导致 promise.reject，最终是哪个导致的呢？\n\n我们都下断点来 Debug 一下，发现最终落入了 onFailureImpl。\n\n### fetchDecodedImage\n\nonFailureImpl 是在哪个步骤出错的呢？这个要看图片实际加载的过程，这个过程位于 com.facebook.imagepipeline.core.ImagePipeline#fetchDecodedImage(com.facebook.imagepipeline.request.ImageRequest, java.lang.Object, com.facebook.imagepipeline.request.ImageRequest.RequestLevel, com.facebook.imagepipeline.listener.RequestListener) 方法。\n\n发现异常是从这一句抛出来的：\n\n```java\nProducer<CloseableReference<CloseableImage>> producerSequence =\n    mProducerSequenceFactory.getDecodedImageProducerSequence(imageRequest);\n```\n\n异常原因是什么呢？\n\n```\njava.lang.IllegalArgumentException: Unsupported uri scheme! Uri is: tv_banner\n```\n\n从中可以看出，问题确实出在这个 Uri 身上。\n\n### Android drawable URI\n\nAndroid 的 Drawable uri 应该是什么样的呢？\n\n它的格式可以参考下面文章：\n\n- [Get URI from drawable image](https://stackoverflow.com/questions/19566840/get-uri-from-drawable-image)\n\n- [Get the URI of an image stored in drawable](https://stackoverflow.com/questions/6602417/get-the-uri-of-an-image-stored-in-drawable)\n\n## 结论\n\n在本文中，我们深入分析了 Image 组件的实现原理。包括：\n\n- 图片展示\n- 回调\n- source 处理\n- Image.getSize\n\n同时 Image.getSize 是以跟踪问题的形式进行调试，并最终找到了问题所在。"},"path":"post/ReactNativeCode10md","sharedData":{},"siteData":{"title":"Maxiee Blog"}};</script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/vendors~src/pages/about~src/pages/post~src/pages/services.9ebe3a93.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/vendors~src/pages/bookmarks~src/pages/gallery~src/pages/post.0f2bae8a.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/vendors~src/pages/gallery~src/pages/post.bf181f2d.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/vendors~src/pages/post.3413cc1f.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/src/pages/post.083217cc.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/styles.ec85b004.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/templates/vendors~main.fc8eff89.js"></script><script defer="" type="text/javascript" src="https://maxiee.github.io/main.d5516191.js"></script></body></html>
